@@ -1,7 +1,3 @@
-//
-// Created by alexg on 04-Sep-24.
-//
-
 #ifndef STYLE_H
 #define STYLE_H
 
@@ -19,6 +15,6 @@ class Style {
      */
 };
 
-} // fr
+}
 
 #endif //STYLE_H
