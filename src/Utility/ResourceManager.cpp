@@ -1,4 +1,4 @@
 #include "ResourceManager.h"
 
-namespace fr {
+namespace fr::Utils {
 }

@@ -1,5 +1,5 @@
 
 #include "Style.h"
 
-namespace fr {
+namespace fr::Utils {
 }

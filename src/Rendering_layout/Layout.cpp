@@ -1,4 +1,4 @@
 #include "Layout.h"
 
-namespace fr {
+namespace fr::Rendering {
 }

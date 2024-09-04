@@ -1,4 +1,4 @@
 #include "Renderer.h"
 
-namespace fr {
+namespace fr::Rendering {
 }

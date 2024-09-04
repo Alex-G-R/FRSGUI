@@ -1,4 +1,4 @@
 #include "StyleManager.h"
 
-namespace fr {
+namespace fr::Rendering {
 }

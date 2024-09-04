@@ -1,5 +1,5 @@
 #include "EventDispatcher.h"
 
-namespace fr {
+namespace fr::Events {
 
 }
