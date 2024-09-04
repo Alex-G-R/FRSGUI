@@ -1,13 +1,13 @@
 #ifndef FRSGUI_H
 #define FRSGUI_H
 
-namespace fr {
-
 #include <Graphics.hpp>
 #include <System.hpp>
 #include <Window.hpp>
 #include <Audio.hpp>
 #include <Network.hpp>
+
+namespace fr {
 
 class FRSGUI {
 
