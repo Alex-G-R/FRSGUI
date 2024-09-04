@@ -21,4 +21,8 @@ add_executable(FRSGUI main.cpp
         src/Rendering_layout/Layout.cpp
         src/Rendering_layout/Layout.h
         src/Rendering_layout/StyleManager.cpp
-        src/Rendering_layout/StyleManager.h)
+        src/Rendering_layout/StyleManager.h
+        src/Utility/Style.cpp
+        src/Utility/Style.h
+        src/Utility/ResourceManager.cpp
+        src/Utility/ResourceManager.h)
