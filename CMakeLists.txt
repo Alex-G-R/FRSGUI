@@ -15,4 +15,10 @@ add_executable(FRSGUI main.cpp
         src/Event_system/Event.cpp
         src/Event_system/Event.h
         src/Event_system/EventDispatcher.cpp
-        src/Event_system/EventDispatcher.h)
+        src/Event_system/EventDispatcher.h
+        src/Rendering_layout/Renderer.cpp
+        src/Rendering_layout/Renderer.h
+        src/Rendering_layout/Layout.cpp
+        src/Rendering_layout/Layout.h
+        src/Rendering_layout/StyleManager.cpp
+        src/Rendering_layout/StyleManager.h)
