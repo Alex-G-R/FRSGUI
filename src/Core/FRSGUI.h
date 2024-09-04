@@ -3,6 +3,12 @@
 
 namespace fr {
 
+#include <Graphics.hpp>
+#include <System.hpp>
+#include <Window.hpp>
+#include <Audio.hpp>
+#include <Network.hpp>
+
 class FRSGUI {
 
     /*
@@ -12,7 +18,6 @@ class FRSGUI {
     Key Methods:
         run(): Initializes the GUI and enters the main loop.
     */
-
 };
 
 }

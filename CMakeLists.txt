@@ -26,3 +26,10 @@ add_executable(FRSGUI main.cpp
         src/Utility/Style.h
         src/Utility/ResourceManager.cpp
         src/Utility/ResourceManager.h)
+
+set(SFML_STATIC_LIBRARIES TRUE)
+set(SFML_DIR C:/dev/DEVEL/SFML/lib/cmake/SFML)
+find_package(SFML COMPONENTS system window graphics audio network REQUIRED)
+
+include_directories(C:/dev/DEVEL/SFML/include/SFML)
+target_link_libraries(FRSGUI sfml-system sfml-window sfml-graphics sfml-audio)
