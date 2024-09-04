@@ -8,7 +8,12 @@
 namespace fr {
 
 class Renderer {
+    /*
+    Role: Handles the actual rendering of UI_elements. May interface with SFML for drawing shapes, text, etc.
 
+    Key Methods:
+        void draw(const UI_element& element): Draws an element.
+     */
 };
 
 } // fr

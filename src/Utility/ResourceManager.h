@@ -8,7 +8,13 @@
 namespace fr {
 
 class ResourceManager {
+    /*
+    Role: Manages resources like fonts, textures, and sounds.
 
+    Key Methods:
+        sf::Font& getFont(const std::string& id): Retrieves a font by ID.
+        sf::Texture& getTexture(const std::string& id): Retrieves a texture by ID.
+     */
 };
 
 } // fr
