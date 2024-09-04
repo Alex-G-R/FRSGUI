@@ -5,7 +5,7 @@
 #ifndef STYLE_H
 #define STYLE_H
 
-namespace fr {
+namespace fr::Utils {
 
 class Style {
     /*

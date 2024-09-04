@@ -5,7 +5,7 @@
 #ifndef RENDERER_H
 #define RENDERER_H
 
-namespace fr {
+namespace fr::Rendering {
 
 class Renderer {
     /*

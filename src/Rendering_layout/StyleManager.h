@@ -5,7 +5,7 @@
 #ifndef STYLEMANAGER_H
 #define STYLEMANAGER_H
 
-namespace fr {
+namespace fr::Rendering {
 
 class StyleManager {
     /*

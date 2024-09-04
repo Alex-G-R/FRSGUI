@@ -5,7 +5,7 @@
 #ifndef EVENTDISPATCHER_H
 #define EVENTDISPATCHER_H
 
-namespace fr {
+namespace fr::Events {
 
 class EventDispatcher {
     /*

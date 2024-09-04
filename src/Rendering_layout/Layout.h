@@ -5,7 +5,7 @@
 #ifndef LAYOUT_H
 #define LAYOUT_H
 
-namespace fr {
+namespace fr::Rendering {
 
 class Layout {
     /*

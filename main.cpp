@@ -1,7 +1,12 @@
 #include <iostream>
 
+#include "src/Core/FRSGUI.h"
+
 int main()
 {
-    std::cout << "Hello, World!" << std::endl;
+    fr::FRSGUI frsgui;
+
+    std::cout << "Hello, FRSGUI!" << std::endl;
+
     return 0;
 }
