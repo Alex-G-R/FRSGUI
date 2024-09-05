@@ -8,5 +8,7 @@ int main()
 
     std::cout << "Hello, FRSGUI!" << std::endl;
 
+    // Create GUI here
+
     return 0;
 }
