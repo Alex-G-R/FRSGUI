@@ -2,7 +2,7 @@
 
 int main()
 {
-    auto render_window_ptr = std::make_shared<sf::RenderWindow>(sf::VideoMode(1920, 1080), "FRSGUI test", sf::Style::Default);
+    const auto render_window_ptr = std::make_shared<sf::RenderWindow>(sf::VideoMode(1920, 1080), "FRSGUI test", sf::Style::Default);
 
     fr::FRSGUI frsgui(render_window_ptr);
 
