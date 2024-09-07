@@ -6,9 +6,14 @@ int main()
 
     fr::FRSGUI frsgui(render_window_ptr);
 
-    frsgui.Run();
-
     // Create GUI here
+    auto square = std::make_shared<fr::UI_element>();
+    square->shape.setSize(sf::Vector2f(100.f, 100.f));
+    square->shape.setPosition(sf::Vector2f(100.f, 100.f));
+    square->shape.setFillColor(sf::Color::Red);
 
+    frsgui.addElement(square);
+
+    frsgui.Run();
     return 0;
 }

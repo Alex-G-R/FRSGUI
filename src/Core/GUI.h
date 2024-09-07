@@ -32,6 +32,8 @@ public:
     explicit GUI(const std::shared_ptr<sf::RenderWindow>& render_window_ptr);
     void Render();
     void Update();
+
+    void addElement(const std::shared_ptr<UI_element>& element);
 };
 
 }

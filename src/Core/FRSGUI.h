@@ -10,6 +10,7 @@
 #include <memory>
 
 #include "GUI.h"
+#include "UI_element.h"
 #include "../Rendering_layout/Renderer.h"
 
 namespace fr {
@@ -35,7 +36,8 @@ public:
     explicit FRSGUI(const std::shared_ptr<sf::RenderWindow>& render_window_ptr);
     void Run();
 
-    friend class Rendering::Renderer;
+    void addElement(const std::shared_ptr<UI_element>& element);
+
 };
 
 }

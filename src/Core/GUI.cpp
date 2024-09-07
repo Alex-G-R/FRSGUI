@@ -20,4 +20,10 @@ namespace fr {
 
     }
 
+    void GUI::addElement(const std::shared_ptr<UI_element>& element)
+    {
+        elements.emplace_back(element);
+    }
+
+
 }

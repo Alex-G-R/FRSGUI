@@ -43,4 +43,9 @@ namespace fr {
             Render();
         }
     }
+
+    void FRSGUI::addElement(const std::shared_ptr<UI_element>& element)
+    {
+        gui.addElement(element);
+    }
 }
