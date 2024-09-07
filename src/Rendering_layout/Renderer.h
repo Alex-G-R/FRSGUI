@@ -4,8 +4,9 @@
 #include "SFML/Graphics.hpp"
 #include <memory>
 
+// Forward declaration
 namespace fr {
-    class UI_element;  // Forward declaration
+    class UI_element;
 }
 
 namespace fr::Rendering {
@@ -21,7 +22,7 @@ private:
     std::shared_ptr<sf::RenderWindow> render_window_ptr;
 public:
     explicit Renderer(const std::shared_ptr<sf::RenderWindow>& render_window_ptr);
-    void draw(const UI_element* element);
+    void draw(UI_element* element);
 };
 
 }

@@ -8,8 +8,12 @@ namespace fr::Rendering {
 
     }
 
-    void Renderer::draw(const UI_element* element)
+    void Renderer::draw(UI_element* element)
     {
-        render_window_ptr->draw(element->shape);
+        // Dereference the pointer to pass the actual object
+        if (const sf::RectangleShape* shape = element->getShape())
+        {
+            render_window_ptr->draw(*shape);
+        }
     }
 }
