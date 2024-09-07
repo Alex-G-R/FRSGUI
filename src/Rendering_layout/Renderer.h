@@ -1,9 +1,12 @@
 #ifndef RENDERER_H
 #define RENDERER_H
 
-#include "../Core/UI_element.h"
 #include "SFML/Graphics.hpp"
 #include <memory>
+
+namespace fr {
+    class UI_element;  // Forward declaration
+}
 
 namespace fr::Rendering {
 
@@ -18,7 +21,7 @@ private:
     std::shared_ptr<sf::RenderWindow> render_window_ptr;
 public:
     explicit Renderer(const std::shared_ptr<sf::RenderWindow>& render_window_ptr);
-    void draw(const std::shared_ptr<UI_element>& element);
+    void draw(const UI_element* element);
 };
 
 }

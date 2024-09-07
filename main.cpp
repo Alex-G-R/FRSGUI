@@ -7,7 +7,7 @@ int main()
     fr::FRSGUI frsgui(render_window_ptr);
 
     // Create GUI here
-    auto square = std::make_shared<fr::UI_element>();
+    auto square = std::make_shared<fr::UI_element>(frsgui.getRenderer());
     square->shape.setSize(sf::Vector2f(100.f, 100.f));
     square->shape.setPosition(sf::Vector2f(100.f, 100.f));
     square->shape.setFillColor(sf::Color::Red);

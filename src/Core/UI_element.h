@@ -2,6 +2,10 @@
 #define UI_ELEMENT_H
 
 #include <Graphics.hpp>
+#include "../Rendering_layout/Renderer.h"
+#include <memory>
+
+class GUI;
 
 namespace fr {
 
@@ -26,9 +30,12 @@ class UI_element {
      */
 
 private:
+    std::shared_ptr<Rendering::Renderer> renderer_ptr{};
 
 public:
+    explicit UI_element(const std::shared_ptr<Rendering::Renderer>& renderer_ptr);
     sf::RectangleShape shape;
+    void Render();
 };
 
 }

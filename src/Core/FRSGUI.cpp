@@ -2,7 +2,7 @@
 
 namespace fr {
     FRSGUI::FRSGUI(const std::shared_ptr<sf::RenderWindow>& render_window_ptr) :
-    gui(render_window_ptr), render_window_ptr(render_window_ptr)
+    gui(render_window_ptr, renerer_ptr), render_window_ptr(render_window_ptr), renderer(render_window_ptr)
     {
 
     }
@@ -48,4 +48,10 @@ namespace fr {
     {
         gui.addElement(element);
     }
+
+    std::shared_ptr<Rendering::Renderer> FRSGUI::getRenderer()
+    {
+        return renerer_ptr;
+    }
+
 }

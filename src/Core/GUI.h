@@ -11,6 +11,7 @@
 
 namespace fr {
 
+
 class GUI {
     /*
     Role: Manages the overall UI. Contains a collection of UI_element objects and handles event propagation, rendering, and updates.
@@ -25,15 +26,18 @@ class GUI {
 
 private:
     std::vector<std::shared_ptr<UI_element>> elements;
-    Rendering::Renderer renderer;
     std::shared_ptr<sf::RenderWindow> render_window_ptr{};
+    std::shared_ptr<Rendering::Renderer> renderer_ptr{};
+
 
 public:
-    explicit GUI(const std::shared_ptr<sf::RenderWindow>& render_window_ptr);
+    GUI(const std::shared_ptr<sf::RenderWindow>& render_window_ptr, const std::shared_ptr<Rendering::Renderer>& renderer_ptr);
+
     void Render();
     void Update();
-
     void addElement(const std::shared_ptr<UI_element>& element);
+
+    friend class UI_element;
 };
 
 }
