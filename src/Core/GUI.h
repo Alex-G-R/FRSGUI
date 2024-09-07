@@ -1,7 +1,11 @@
 #ifndef GUI_H
 #define GUI_H
 
+#include <SFML/Graphics.hpp>
+
 #include "UI_element.h"
+#include "../Rendering_layout/Renderer.h"
+
 #include <vector>
 #include <memory>
 
@@ -20,10 +24,12 @@ class GUI {
      */
 
 private:
-    std::vector<std::unique_ptr<UI_element>> elements;
+    std::vector<std::shared_ptr<UI_element>> elements;
+    Rendering::Renderer renderer;
+    std::shared_ptr<sf::RenderWindow> render_window_ptr{};
 
 public:
-    GUI();
+    explicit GUI(const std::shared_ptr<sf::RenderWindow>& render_window_ptr);
     void Render();
     void Update();
 };

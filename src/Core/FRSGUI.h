@@ -7,7 +7,10 @@
 #include <Audio.hpp>
 #include <Network.hpp>
 
+#include <memory>
+
 #include "GUI.h"
+#include "../Rendering_layout/Renderer.h"
 
 namespace fr {
 
@@ -19,17 +22,20 @@ class FRSGUI {
     Key Methods:
         run(): Initializes the GUI and enters the main loop.
     */
+
 private:
     void Initialize();
     void Update();
     void Render();
 
-    GUI* gui_ptr{};
-    sf::RenderWindow* render_window_ptr{};
+    GUI gui;
+    std::shared_ptr<sf::RenderWindow> render_window_ptr{};
 
 public:
-    explicit FRSGUI(sf::RenderWindow* render_window_ptr);
+    explicit FRSGUI(const std::shared_ptr<sf::RenderWindow>& render_window_ptr);
     void Run();
+
+    friend class Rendering::Renderer;
 };
 
 }

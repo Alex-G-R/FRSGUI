@@ -1,9 +1,10 @@
 #include "FRSGUI.h"
 
 namespace fr {
-    FRSGUI::FRSGUI(sf::RenderWindow* render_window_ptr)
+    FRSGUI::FRSGUI(const std::shared_ptr<sf::RenderWindow>& render_window_ptr) :
+    gui(render_window_ptr), render_window_ptr(render_window_ptr)
     {
-        this->render_window_ptr = render_window_ptr;
+
     }
 
     void FRSGUI::Initialize()
@@ -20,6 +21,7 @@ namespace fr {
     {
         render_window_ptr->clear();
 
+        gui.Render();
 
         render_window_ptr->display();
     }

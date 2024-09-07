@@ -1,6 +1,8 @@
 #ifndef UI_ELEMENT_H
 #define UI_ELEMENT_H
 
+#include <Graphics.hpp>
+
 namespace fr {
 
 class UI_element {
@@ -22,6 +24,11 @@ class UI_element {
         virtual void onEvent(const Event& event): Handles events (to be overridden by derived classes).
         addChild(std::shared_ptr<UI_element> child): Adds a child element.
      */
+
+private:
+
+public:
+    sf::RectangleShape shape;
 };
 
 }
