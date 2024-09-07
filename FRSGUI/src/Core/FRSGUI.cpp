@@ -3,7 +3,7 @@
 namespace fr {
     FRSGUI::FRSGUI(const std::shared_ptr<sf::RenderWindow>& render_window_ptr) :
     gui(render_window_ptr, renerer_ptr), render_window_ptr(render_window_ptr),
-    renderer(render_window_ptr), style_sheet(style_manager.style_sheet)
+    renderer(render_window_ptr, this), style_sheet(style_manager.style_sheet)
     {
     }
 
