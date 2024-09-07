@@ -1,18 +1,18 @@
 #ifndef STYLEMANAGER_H
 #define STYLEMANAGER_H
 
+#include "../Utility/Style.h"
+#include <map>
+
 namespace fr::Rendering {
 
 class StyleManager {
-    /*
-    Role: Manages styles and themes for UI_elements.
 
-    Key Properties:
-        std::map<std::string, Style> styles: Maps class names to styles.
-
-    Key Methods:
-        Style getStyle(const std::string& className): Retrieves a style based on the class name.
-     */
+private:
+    std::map<std::string, Utils::Style> style_sheet;
+public:
+    StyleManager();
+    Utils::Style getStyle(const std::string& groupName);
 };
 
 }

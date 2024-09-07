@@ -1,18 +1,26 @@
 #ifndef STYLE_H
 #define STYLE_H
 
+#include <Graphics.hpp>
+
 namespace fr::Utils {
 
 class Style {
-    /*
-    Role: Encapsulates visual properties like color, font, border, etc.
+private:
 
-    Key Properties:
-        sf::Color backgroundColor
-        sf::Color textColor
-        sf::Font font
-        float borderRadius
-     */
+    sf::Vector2f size;
+    sf::Vector2f position;
+
+    sf::Color background_color;
+
+    // Outline
+    sf::Color outline_color;
+    float outline_thickness;
+
+
+public:
+    std::string style_name;
+    Style();
 };
 
 }
