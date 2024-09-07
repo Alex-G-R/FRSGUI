@@ -2,17 +2,16 @@
 #define STYLEMANAGER_H
 
 #include "../Utility/Style.h"
+#include <string>
 #include <map>
 
 namespace fr::Rendering {
 
 class StyleManager {
-
-private:
-    std::map<std::string, Utils::Style> style_sheet;
 public:
     StyleManager();
-    Utils::Style getStyle(const std::string& groupName);
+    Style getStyle(const std::string& groupName);
+    std::map<std::string, Style> style_sheet;
 };
 
 }

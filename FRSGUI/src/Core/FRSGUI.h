@@ -28,17 +28,18 @@ private:
     std::shared_ptr<Rendering::Renderer> renerer_ptr = std::make_shared<Rendering::Renderer>(renderer);
     GUI gui;
     std::shared_ptr<sf::RenderWindow> render_window_ptr{};
-    Rendering::StyleManager style_manage;
+    Rendering::StyleManager style_manager;
 
 public:
     explicit FRSGUI(const std::shared_ptr<sf::RenderWindow>& render_window_ptr);
+
     void Run();
 
     std::shared_ptr<Rendering::Renderer> getRenderer();
 
-    void addElement(const std::shared_ptr<UI_element>& element);
+    std::map<std::string, Style>& style_sheet;
 
-    void createStyle();
+    void addElement(const std::shared_ptr<UI_element>& element);
 
 };
 

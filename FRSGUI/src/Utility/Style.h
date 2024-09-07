@@ -3,10 +3,11 @@
 
 #include <Graphics.hpp>
 
-namespace fr::Utils {
+namespace fr {
 
 class Style {
-private:
+public:
+    Style();
 
     sf::Vector2f size;
     sf::Vector2f position;
@@ -16,11 +17,6 @@ private:
     // Outline
     sf::Color outline_color;
     float outline_thickness;
-
-
-public:
-    std::string style_name;
-    Style();
 };
 
 }
