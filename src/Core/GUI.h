@@ -1,6 +1,10 @@
 #ifndef GUI_H
 #define GUI_H
 
+#include "UI_element.h"
+#include <vector>
+#include <memory>
+
 namespace fr {
 
 class GUI {
@@ -14,6 +18,14 @@ class GUI {
         update(): Updates all UI elements as necessary.
 
      */
+
+private:
+    std::vector<std::unique_ptr<UI_element>> elements;
+
+public:
+    GUI();
+    void Render();
+    void Update();
 };
 
 }
