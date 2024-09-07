@@ -1,4 +1,4 @@
-#include "src/Core/FRSGUI.h"
+#include "FRSGUI/FRSGUI.hpp"
 
 int main()
 {
