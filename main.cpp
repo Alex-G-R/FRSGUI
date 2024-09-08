@@ -12,6 +12,7 @@ int main()
 
     fr::Style squares_style;
     squares_style.size = sf::Vector2f(100.f, 100.f);
+    squares_style.position = sf::Vector2f(200.f, 200.f);
     squares_style.background_color = sf::Color::Green;
     squares_style.outline_thickness = 2.f;
     squares_style.outline_color = sf::Color::White;

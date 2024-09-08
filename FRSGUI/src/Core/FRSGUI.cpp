@@ -44,15 +44,15 @@ namespace fr {
         }
     }
 
-    void FRSGUI::addElement(const std::shared_ptr<UI_element>& element)
-    {
-        gui.addElement(element);
-    }
-
+    // Getters
     std::shared_ptr<Rendering::Renderer> FRSGUI::getRenderer()
     {
         return renerer_ptr;
     }
 
-
+    // GUI public methods acces
+    void FRSGUI::addElement(const std::shared_ptr<UI_element>& element)
+    {
+        gui.addElement(element);
+    }
 }
