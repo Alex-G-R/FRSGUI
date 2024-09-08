@@ -12,16 +12,21 @@ int main()
     square->addGroup("squares_two");
 
     fr::Style squares_style;
-    squares_style.size = sf::Vector2f(100.f, 100.f);
-    squares_style.position = sf::Vector2f(200.f, 200.f);
-    squares_style.background_color = sf::Color::Green;
-    squares_style.outline_thickness = 2.f;
-    squares_style.outline_color = sf::Color::White;
+    squares_style.setSize(100.f, 100.f);
+    squares_style.setPosition(200.f, 200.f);
+    squares_style.setBgColor(sf::Color::Green);
+    squares_style.setOutlineThickness(2.f);
+    squares_style.setOutlineColor(sf::Color::White);
 
     fr::Style squares_style_two;
-    squares_style_two.background_color = sf::Color::Red;
+    //squares_style_two.setSize(100.f, 100.f);
+    //squares_style_two.setPosition(200.f, 200.f);
+    squares_style_two.setBgColor(sf::Color::Red);
+    //squares_style_two.setOutlineThickness(2.f);
+    //squares_style_two.setOutlineColor(sf::Color::Blue);
 
     frsgui.style_sheet.addStyleVec(fr::StyleVec("squares", squares_style, StyleType::CLASS, 1));
+    frsgui.style_sheet.addStyleVec(fr::StyleVec("squares_two", squares_style_two, StyleType::CLASS, 5));
 
     frsgui.addElement(square);
 

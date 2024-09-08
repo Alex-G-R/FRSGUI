@@ -15,18 +15,47 @@ namespace fr::Rendering {
         // Dereference the pointer to pass the actual object
         if (sf::RectangleShape* shape = element->getShape())
         {
+            int current_pos_priority = 0;
+            int current_size_priority = 0;
+            int current_backgroundColor_priority = 0;
+            int current_outlineThickness_priority = 0;
+            int current_outlineColor_priority = 0;
 
             for(const auto& group : element->getGroupsVector())
             {
-                for(const auto& styleVec : frsgui_ptr->style_sheet.getStyleVec())
+                for(auto& styleVec : frsgui_ptr->style_sheet.getStyleVec())
                 {
                     if(group == styleVec.group_name)
                     {
-                        shape->setPosition(styleVec.style.position);
-                        shape->setSize(styleVec.style.size);
-                        shape->setFillColor(styleVec.style.background_color);
-                        shape->setOutlineThickness(styleVec.style.outline_thickness);
-                        shape->setOutlineColor(styleVec.style.outline_color);
+                        // Position
+                        if ((styleVec.style.has_position) && (current_pos_priority == 0 || current_pos_priority < styleVec.style_priority)) {
+                            shape->setPosition(styleVec.style.getPosition());
+                            current_pos_priority = styleVec.style_priority;
+                        }
+
+                        // Size
+                        if ((styleVec.style.has_size) && (current_size_priority == 0 || current_size_priority < styleVec.style_priority)) {
+                            shape->setSize(styleVec.style.getSize());
+                            current_size_priority = styleVec.style_priority;
+                        }
+
+                        // BG color
+                        if ((styleVec.style.has_bg_color) && (current_backgroundColor_priority == 0 || current_backgroundColor_priority < styleVec.style_priority)) {
+                            shape->setFillColor(styleVec.style.getBgColor());
+                            current_backgroundColor_priority = styleVec.style_priority;
+                        }
+
+                        // Outline Thickness
+                        if ((styleVec.style.has_outline_thickness) && (current_outlineThickness_priority == 0 || current_outlineThickness_priority < styleVec.style_priority)) {
+                            shape->setOutlineThickness(styleVec.style.getOutlineThickness());
+                            current_outlineThickness_priority = styleVec.style_priority;
+                        }
+
+                        // Outline Color
+                        if ((styleVec.style.has_outline_color) && (current_outlineColor_priority == 0 || current_outlineColor_priority < styleVec.style_priority)) {
+                            shape->setOutlineColor(styleVec.style.getOutlineColor());
+                            current_outlineColor_priority = styleVec.style_priority;
+                        }
                     }
                 }
             }
