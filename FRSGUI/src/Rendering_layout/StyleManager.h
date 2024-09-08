@@ -10,7 +10,7 @@ namespace fr::Rendering {
 class StyleManager {
 public:
     StyleManager();
-    Style getStyle(const std::string& groupName);
+    // Style getStyle(const std::string& groupName);
     std::map<std::string, Style> style_sheet;
 };
 

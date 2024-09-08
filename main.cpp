@@ -9,6 +9,7 @@ int main()
     // Create GUI here
     auto square = std::make_shared<fr::UI_element>(frsgui.getRenderer());
     square->addGroup("squares");
+    square->addGroup("squares_two");
 
     fr::Style squares_style;
     squares_style.size = sf::Vector2f(100.f, 100.f);
@@ -17,7 +18,11 @@ int main()
     squares_style.outline_thickness = 2.f;
     squares_style.outline_color = sf::Color::White;
 
+    fr::Style squares_style_two;
+    squares_style_two.background_color = sf::Color::Red;
+
     frsgui.style_sheet["squares"] = squares_style;
+    frsgui.style_sheet["squares_two"] = squares_style_two;
 
     frsgui.addElement(square);
 
