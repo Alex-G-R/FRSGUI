@@ -26,6 +26,7 @@ private:
 public:
     // Constructor
     explicit UI_element(const std::shared_ptr<Rendering::Renderer>& renderer_ptr);
+    virtual ~UI_element();
 
     // Methods
     virtual void Render();

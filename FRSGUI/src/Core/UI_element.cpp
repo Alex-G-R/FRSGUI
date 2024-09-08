@@ -12,6 +12,8 @@ namespace fr {
         dirty = false;
     }
 
+    UI_element::~UI_element() = default;
+
     // methods
     void UI_element::Render()
     {
