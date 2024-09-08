@@ -17,6 +17,7 @@
 #include "../Rendering_layout/Renderer.h"
 #include "../Utility/Style.h"
 #include "../Rendering_layout/StyleManager.h"
+#include "../Rendering_layout/StyleSheet.h"
 
 namespace fr {
 
@@ -51,7 +52,7 @@ public:
     // GUI methods public acces
     void addElement(const std::shared_ptr<UI_element>& element);
 
-    std::map<std::string, Style>& style_sheet;
+    Rendering::StyleSheet& style_sheet;
 };
 
 }

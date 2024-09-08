@@ -18,15 +18,15 @@ namespace fr::Rendering {
 
             for(const auto& group : element->getGroupsVector())
             {
-                for(const auto& style : frsgui_ptr->style_sheet)
+                for(const auto& styleVec : frsgui_ptr->style_sheet.getStyleVec())
                 {
-                    if(group == style.first)
+                    if(group == styleVec.group_name)
                     {
-                        shape->setPosition(style.second.position);
-                        shape->setSize(style.second.size);
-                        shape->setFillColor(style.second.background_color);
-                        shape->setOutlineThickness(style.second.outline_thickness);
-                        shape->setOutlineColor(style.second.outline_color);
+                        shape->setPosition(styleVec.style.position);
+                        shape->setSize(styleVec.style.size);
+                        shape->setFillColor(styleVec.style.background_color);
+                        shape->setOutlineThickness(styleVec.style.outline_thickness);
+                        shape->setOutlineColor(styleVec.style.outline_color);
                     }
                 }
             }

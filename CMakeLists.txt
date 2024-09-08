@@ -28,7 +28,10 @@ add_executable(FRSGUI main.cpp
         FRSGUI/src/Utility/ResourceManager.h
         FRSGUI/FRSGUI.hpp
         FRSGUI/src/Rendering_layout/StyleSheet.cpp
-        FRSGUI/src/Rendering_layout/StyleSheet.h)
+        FRSGUI/src/Rendering_layout/StyleSheet.h
+        FRSGUI/src/Utility/StyleType.h
+        FRSGUI/src/Utility/StyleVec.h
+        FRSGUI/src/Utility/StyleVec.cpp)
 
 set(SFML_STATIC_LIBRARIES TRUE)
 set(SFML_DIR C:/dev/DEVEL/SFML/lib/cmake/SFML)

@@ -1,25 +1,20 @@
 #ifndef STYLESHEET_H
 #define STYLESHEET_H
 
-#include <string>
+#include <vector>
 
-#include "../Utility/Style.h"
-
-enum class StyleType
-{
-    ID,
-    CLASS
-};
+#include "../Utility/StyleVec.h"
 
 namespace fr::Rendering {
 
     class StyleSheet {
+
+    std::vector<StyleVec> style_vec;
+
     public:
         StyleSheet();
-        std::string group_name;
-        Style style;
-        StyleType style_type;
-        int style_priority;
+        void addStyleVec(const StyleVec& style_vec);
+        std::vector<StyleVec>& getStyleVec();
     };
 
 }

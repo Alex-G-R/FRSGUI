@@ -21,8 +21,7 @@ int main()
     fr::Style squares_style_two;
     squares_style_two.background_color = sf::Color::Red;
 
-    frsgui.style_sheet["squares"] = squares_style;
-    frsgui.style_sheet["squares_two"] = squares_style_two;
+    frsgui.style_sheet.addStyleVec(fr::StyleVec("squares", squares_style, StyleType::CLASS, 1));
 
     frsgui.addElement(square);
 
