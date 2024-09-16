@@ -19,11 +19,7 @@ int main()
     squares_style.setOutlineColor(sf::Color::White);
 
     fr::Style squares_style_two;
-    //squares_style_two.setSize(100.f, 100.f);
-    //squares_style_two.setPosition(200.f, 200.f);
     squares_style_two.setBgColor(sf::Color::Red);
-    //squares_style_two.setOutlineThickness(2.f);
-    //squares_style_two.setOutlineColor(sf::Color::Blue);
 
     frsgui.style_sheet.addStyleVec(fr::StyleVec("squares", squares_style, StyleType::CLASS, 1));
     frsgui.style_sheet.addStyleVec(fr::StyleVec("squares_two", squares_style_two, StyleType::CLASS, 5));

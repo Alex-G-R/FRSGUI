@@ -31,7 +31,11 @@ add_executable(FRSGUI main.cpp
         FRSGUI/src/Rendering_layout/StyleSheet.h
         FRSGUI/src/Utility/StyleType.h
         FRSGUI/src/Utility/StyleVec.h
-        FRSGUI/src/Utility/StyleVec.cpp)
+        FRSGUI/src/Utility/StyleVec.cpp
+        FRSGUI/src/Core/UI_element_derived/TextArea.cpp
+        FRSGUI/src/Core/UI_element_derived/TextArea.h
+        FRSGUI/src/Core/UI_element_derived/Slider.cpp
+        FRSGUI/src/Core/UI_element_derived/Slider.h)
 
 set(SFML_STATIC_LIBRARIES TRUE)
 set(SFML_DIR C:/dev/DEVEL/SFML/lib/cmake/SFML)
