@@ -6,20 +6,20 @@ Framework for Rapid and Simple development of General User Interface application
 
 # Objectives
 
-Task priority:
-  -> Custom UI_elements | (DONE)
-  -> Create hard-coded UI_elements:
-      -> Button
-      -> Input:
-          -> Textarea
-          -> Number inputs
-      -> Slider
-  -> Custom styling to these new elements
-  -> Custom handler functions for elements
-
-  -> Refactor rendering
-  -> Code optimalization
-
-  Future, shallow ideas:
-  -> Dynamic interaction with elements?
+Task priority: <br>
+  -> Custom UI_elements | (DONE) <br>
+  -> Create hard-coded UI_elements: <br>
+      -> Button <br>
+      -> Input: <br>
+          -> Textarea <br>
+          -> Number inputs <br>
+      -> Slider <br>
+  -> Custom styling to these new elements <br>
+  -> Custom handler functions for elements <br>
+<br>
+  -> Refactor rendering<br>
+  -> Code optimalization<br>
+<br>
+  Future, shallow ideas:<br>
+  -> Dynamic interaction with elements?<br>
   
