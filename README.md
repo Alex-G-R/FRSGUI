@@ -7,7 +7,7 @@ Framework for Rapid and Simple development of General User Interface application
 # Objectives
 
 Task priority: 
-  - Custom UI_elements | (DONE) 
+  - ~~Custom UI_elements~~
   - Create hard-coded UI_elements: 
       - Button 
       - Input: 
