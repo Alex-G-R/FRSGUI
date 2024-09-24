@@ -19,7 +19,7 @@ Task priority:
 
    - Refactor rendering
    - Code optimalization
-<br>
+
   - Future, shallow ideas:
     - Dynamic interaction with elements?
   
