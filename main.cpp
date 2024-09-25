@@ -31,15 +31,9 @@ int main()
     squares_style_three.setPosition(400.f, 300.f);
 
 
-
-
-    frsgui.addStyleVec("squares", squares_style, StyleType::CLASS, 1);
-    frsgui.addStyleVec("squares_two", squares_style_two, StyleType::CLASS, 5);
-    frsgui.addStyleVec("squares_three", squares_style_three, StyleType::CLASS, 10);
-
-
-
-
+    frsgui.addStyle("squares", squares_style, StyleType::CLASS, 1);
+    frsgui.addStyle("squares_two", squares_style_two, StyleType::CLASS, 5);
+    frsgui.addStyle("squares_three", squares_style_three, StyleType::CLASS, 3);
 
 
     frsgui.addElement(square);
