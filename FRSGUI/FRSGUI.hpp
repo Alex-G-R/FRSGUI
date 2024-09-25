@@ -4,5 +4,6 @@
 
 #include "src/Core/FRSGUI.h"
 #include "src/Utility/StyleVec.h"
+#include "src/Utility/HelperFunctions.hpp"
 
 #endif
