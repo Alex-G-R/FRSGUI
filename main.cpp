@@ -30,9 +30,17 @@ int main()
     squares_style_three.setBgColor(sf::Color::Blue);
     squares_style_three.setPosition(400.f, 300.f);
 
-    frsgui.style_sheet.addStyleVec(fr::StyleVec("squares", squares_style, StyleType::CLASS, 1));
-    frsgui.style_sheet.addStyleVec(fr::StyleVec("squares_two", squares_style_two, StyleType::CLASS, 5));
-    frsgui.style_sheet.addStyleVec(fr::StyleVec("squares_three", squares_style_three, StyleType::CLASS, 10));
+
+
+
+    frsgui.addStyleVec("squares", squares_style, StyleType::CLASS, 1);
+    frsgui.addStyleVec("squares_two", squares_style_two, StyleType::CLASS, 5);
+    frsgui.addStyleVec("squares_three", squares_style_three, StyleType::CLASS, 10);
+
+
+
+
+
 
     frsgui.addElement(square);
     frsgui.addElement(squareTwo);

@@ -9,4 +9,6 @@ inline std::shared_ptr<fr::UI_element> UI_element(const std::shared_ptr<fr::Rend
     return std::make_shared<fr::UI_element>(renderer);
 }
 
+
+
 #endif //HELPERFUNCTIONS_H

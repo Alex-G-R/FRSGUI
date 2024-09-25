@@ -51,6 +51,7 @@ public:
 
     // GUI methods public acces
     void addElement(const std::shared_ptr<UI_element>& element);
+    void addStyleVec(std::string group_name, const Style& style, StyleType style_type, int style_priority);
 
     Rendering::StyleSheet& style_sheet;
 };
