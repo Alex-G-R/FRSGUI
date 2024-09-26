@@ -5,6 +5,7 @@ namespace fr {
     gui(render_window_ptr, renerer_ptr), render_window_ptr(render_window_ptr),
     renderer(render_window_ptr, this), style_sheet(style_manager.style_sheet)
     {
+        render_window_ptr->setFramerateLimit(120);
     }
 
     void FRSGUI::Initialize()
