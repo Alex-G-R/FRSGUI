@@ -14,7 +14,7 @@ int main()
     square->addGroup("squares_two");
 
     squareTwo->addGroup("squares");
-    squareTwo->addGroup("squares_three");
+    squareTwo->setID("squares_three");
 
     fr::Style squares_style;
     squares_style.setSize(100.f, 100.f);
@@ -33,7 +33,7 @@ int main()
 
     frsgui.addStyle("squares", squares_style, StyleType::CLASS, 1);
     frsgui.addStyle("squares_two", squares_style_two, StyleType::CLASS, 5);
-    frsgui.addStyle("squares_three", squares_style_three, StyleType::CLASS, 3);
+    frsgui.addStyle("squares_three", squares_style_three, StyleType::ID, 3);
 
 
     frsgui.addElement(square);
