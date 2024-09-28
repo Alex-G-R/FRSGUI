@@ -8,45 +8,11 @@ namespace fr {
         render_window_ptr->setFramerateLimit(120);
     }
 
-    void FRSGUI::Initialize()
-    {
-
-    }
-
-    void FRSGUI::Update()
-    {
-
-    }
-
     void FRSGUI::Render()
     {
-        render_window_ptr->clear();
-
         gui.Render();
-
-        render_window_ptr->display();
     }
 
-    void FRSGUI::Run()
-    {
-        Initialize();
-
-        while(render_window_ptr->isOpen())
-        {
-            sf::Event event{};
-            while(render_window_ptr->pollEvent(event))
-            {
-                if(event.type == sf::Event::Closed)
-                {
-                    render_window_ptr->close();
-                    break;
-                }
-                event_dispatcher.dispatchEvent(event);
-            }
-            Update();
-            Render();
-        }
-    }
 
     // Getters
     std::shared_ptr<Rendering::Renderer> FRSGUI::getRenderer()
@@ -63,5 +29,10 @@ namespace fr {
     void FRSGUI::addStyle(std::string group_name, const Style& style, const StyleType style_type, const int style_priority)
     {
         style_sheet.addStyleVec(StyleVec(std::move(group_name), style, style_type, style_priority));
+    }
+
+    void FRSGUI::dispatchEvent(const sf::Event &event)
+    {
+        event_dispatcher.dispatchEvent(event);
     }
 }

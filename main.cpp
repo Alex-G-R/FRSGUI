@@ -68,6 +68,26 @@ int main()
     frsgui.addElement(square);
     frsgui.addElement(squareTwo);
 
-    frsgui.Run();
+
+    while(render_window_ptr->isOpen())
+    {
+        sf::Event event{};
+        while(render_window_ptr->pollEvent(event))
+        {
+            if(event.type == sf::Event::Closed)
+            {
+                render_window_ptr->close();
+                break;
+            }
+            frsgui.dispatchEvent(event);
+        }
+
+        render_window_ptr->clear();
+
+        frsgui.Render();
+
+        render_window_ptr->display();
+    }
+
     return 0;
 }

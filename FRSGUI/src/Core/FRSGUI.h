@@ -24,10 +24,6 @@ namespace fr {
 
 class FRSGUI {
 private:
-    void Initialize();
-    void Update();
-    void Render();
-
     // Renderer
     Rendering::Renderer renderer;
     std::shared_ptr<Rendering::Renderer> renerer_ptr = std::make_shared<Rendering::Renderer>(renderer);
@@ -48,7 +44,7 @@ public:
     explicit FRSGUI(const std::shared_ptr<sf::RenderWindow>& render_window_ptr);
 
     // Methods
-    void Run();
+    void Render();
 
     // Getters
     std::shared_ptr<Rendering::Renderer> getRenderer();
@@ -56,6 +52,7 @@ public:
     // GUI methods public acces
     void addElement(const std::shared_ptr<UI_element>& element);
     void addStyle(std::string group_name, const Style& style, StyleType style_type, int style_priority);
+    void dispatchEvent(const sf::Event& event);
 
     Rendering::StyleSheet& style_sheet;
 };
