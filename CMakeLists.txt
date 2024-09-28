@@ -12,8 +12,6 @@ add_executable(FRSGUI main.cpp
         FRSGUI/src/Core/UI_element.h
         FRSGUI/src/Core/UI_element_derived/Button.cpp
         FRSGUI/src/Core/UI_element_derived/Button.h
-        FRSGUI/src/Event_system/Event.cpp
-        FRSGUI/src/Event_system/Event.h
         FRSGUI/src/Event_system/EventDispatcher.cpp
         FRSGUI/src/Event_system/EventDispatcher.h
         FRSGUI/src/Rendering_layout/Renderer.cpp

@@ -18,6 +18,7 @@
 #include "../Utility/Style.h"
 #include "../Rendering_layout/StyleManager.h"
 #include "../Rendering_layout/StyleSheet.h"
+#include "../Event_system/EventDispatcher.h"
 
 namespace fr {
 
@@ -33,6 +34,9 @@ private:
 
     // GUI
     GUI gui;
+
+    // Event dispatcher
+    Events::EventDispatcher event_dispatcher;
 
     // Style manager
     Rendering::StyleManager style_manager;

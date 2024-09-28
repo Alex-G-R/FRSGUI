@@ -84,16 +84,5 @@ namespace fr::Rendering {
             // Draw the shape
             render_window_ptr->draw(*shape);
         }
-
-        /* Children to be implemented? */
-        // Recursively render children - sorted by z_order
-        // auto children = element->getChildren();
-        // std::sort(children.begin(), children.end(), [](const auto& lhs, const auto& rhs) {
-        //     return lhs->getZOrder() < rhs->getZOrder();
-        // });
-
-        // for (auto& child : children) {
-        //     draw(child.get());
-        // }
     }
 }

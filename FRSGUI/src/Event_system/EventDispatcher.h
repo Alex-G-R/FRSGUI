@@ -1,15 +1,20 @@
 #ifndef EVENTDISPATCHER_H
 #define EVENTDISPATCHER_H
 
+#include "SFML/Graphics.hpp"
+#include "../Core/UI_element.h"
+#include <memory>
+
+
 namespace fr::Events {
 
 class EventDispatcher {
-    /*
-    Role: Handles event propagation through the UI hierarchy.
+public:
+    explicit EventDispatcher(std::vector<std::shared_ptr<UI_element>>& elements_ptr);
+    void dispatchEvent(const sf::Event& event);
 
-    Key Methods:
-        void dispatchEvent(const Event& event, UI_element& root): Dispatches the event to the appropriate element starting from a root element.
-     */
+private:
+    std::vector<std::shared_ptr<UI_element>>& elements_ptr;
 };
 
 }
