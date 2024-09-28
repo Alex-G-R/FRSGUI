@@ -25,6 +25,18 @@ namespace fr {
 
     }
 
+    void UI_element::deleteGroup(const std::string &group_name)
+    {
+        for (auto it = groups.begin(); it != groups.end(); ) {
+            if (*it == group_name) {
+                it = groups.erase(it); // Erase returns the next iterator
+            } else {
+                ++it; // Only increment if not erasing
+            }
+        }
+    }
+
+
     // setters
     void UI_element::setID(const std::string& id)
     {

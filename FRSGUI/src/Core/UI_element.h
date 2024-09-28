@@ -32,6 +32,8 @@ public:
     virtual void Render();
     virtual void Update();
 
+    void deleteGroup(const std::string& group);
+
     // Setters
     void setID(const std::string& id);
     void addGroup(const std::string& group);
