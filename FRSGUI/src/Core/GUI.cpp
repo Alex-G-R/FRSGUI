@@ -25,5 +25,15 @@ namespace fr {
         elements.emplace_back(element);
     }
 
+    std::shared_ptr<UI_element>& GUI::getElementByID(const std::string& id)
+    {
+        for(auto& element : elements)
+        {
+            if(element->getID() == id)
+            {
+                return element;
+            }
+        };
+    }
 
 }

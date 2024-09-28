@@ -20,11 +20,11 @@ namespace fr {
     }
 
     // Set the click callback function
-    void Button::setOnClick(const std::function<void(const FRSGUI& frsgui)>& callback) {
+    void Button::setOnClick(const std::function<void(FRSGUI& frsgui)>& callback) {
         onClickCallback = callback; // Store the callback
     }
 
-    void Button::click(const FRSGUI& frsgui) {
+    void Button::click(FRSGUI& frsgui) {
         if (onClickCallback) { // Check if a callback is set
             onClickCallback(frsgui); // Call the stored callback
         }

@@ -27,6 +27,8 @@ public:
     void Update();
     void addElement(const std::shared_ptr<UI_element>& element);
 
+    std::shared_ptr<UI_element>& getElementByID(const std::string& id);
+
     friend class UI_element;
 };
 

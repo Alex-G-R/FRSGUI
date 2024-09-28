@@ -2,9 +2,9 @@
 
 #include <iostream>
 
-void click_fun(const fr::FRSGUI& frsgui)
+void click_fun(fr::FRSGUI& frsgui)
 {
-    std::cout << "i click \n";
+    frsgui.getElementByID("squares_three")->addGroup("yellow_color");
 }
 
 int main()

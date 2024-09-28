@@ -35,4 +35,10 @@ namespace fr {
     {
         event_dispatcher.dispatchEvent(event);
     }
+
+    std::shared_ptr<UI_element>& FRSGUI::getElementByID(const std::string &id)
+    {
+        return gui.getElementByID(id);
+    }
+
 }
