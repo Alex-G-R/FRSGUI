@@ -9,15 +9,15 @@ Framework for Rapid and Simple development of General User Interface application
 Task priority: 
   - ~~Custom UI_elements~~
   - Create hard-coded UI_elements: 
-      - Button 
+      - ~~Button~~
       - Input: 
           - Textarea 
           - Number inputs 
       - Slider 
-  - Custom styling to these new elements 
-  - Custom handler functions for elements 
+  - ~~Custom styling to these new elements~~
+  - ~~Custom handler functions for elements~~ 
 
-   - Refactor rendering
+   - ~~Refactor rendering~~
    - Code optimalization
 
   - Future, shallow ideas:
