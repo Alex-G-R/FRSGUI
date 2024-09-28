@@ -1,5 +1,6 @@
 #include "GUI.h"
 
+
 namespace fr {
     GUI::GUI(const std::shared_ptr<sf::RenderWindow>& render_window_ptr, const std::shared_ptr<Rendering::Renderer>& renderer_ptr) :
     render_window_ptr(render_window_ptr), renderer_ptr(renderer_ptr)
@@ -34,6 +35,7 @@ namespace fr {
                 return element;
             }
         };
+        throw std::invalid_argument("Provided ID does not match with any element. \n getElementByID([?] <- Invalid ID)");
     }
 
 }

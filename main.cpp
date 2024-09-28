@@ -5,7 +5,7 @@
 void click_fun(fr::FRSGUI& frsgui)
 {
     frsgui.getElementByID("squares_three")->addGroup("yellow_color");
-    frsgui.getElementByID("SQUA1")->deleteGroup("squares_two");
+    frsgui.getElementByID("SQUA1f")->deleteGroup("squares_two");
 }
 
 int main()
