@@ -2,7 +2,7 @@
 
 namespace fr {
     FRSGUI::FRSGUI(const std::shared_ptr<sf::RenderWindow>& render_window_ptr) :
-    gui(render_window_ptr, renerer_ptr), event_dispatcher(gui.elements), render_window_ptr(render_window_ptr),
+    gui(render_window_ptr, renerer_ptr), event_dispatcher(gui.elements, this), render_window_ptr(render_window_ptr),
     renderer(render_window_ptr, this), style_sheet(style_manager.style_sheet)
     {
         render_window_ptr->setFramerateLimit(120);

@@ -2,9 +2,9 @@
 
 #include <iostream>
 
-void click_fun()
+void click_fun(const fr::FRSGUI& frsgui)
 {
-    std::cout << "button clicked \n";
+    std::cout << "i click \n";
 }
 
 int main()
