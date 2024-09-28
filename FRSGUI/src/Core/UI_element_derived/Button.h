@@ -1,18 +1,35 @@
 #ifndef BUTTON_H
 #define BUTTON_H
 
+#include "../UI_element.h"
+#include <functional>
+
 namespace fr {
 
-class Button {
-    /*
-    Role: Specific UI components derived from UI_element.
+class Button : public UI_element {
+private:
+    std::function<void()> onClickCallback; // Callback function for click events
 
-    Key Properties and Methods:
-    Each derived class would have additional properties and methods specific to its function.
-    For example, Button might have a onClick() method, while Slider would have methods for adjusting and retrieving values.
+public:
+    // Constructor
+    Button(const std::shared_ptr<Rendering::Renderer>& renderer_ptr);
 
-     */
+    // Destructor
+    ~Button() override;
+
+    // Override the Render method if necessary
+    void Render() override;
+
+   // Override the Update method if necessary
+   void Update() override;
+
+   // Set the click callback function
+   void setOnClick(const std::function<void()>& callback);
+
+   // Method to handle click events (this can be called in your Update method)
+   void click();
 };
+
 
 }
 

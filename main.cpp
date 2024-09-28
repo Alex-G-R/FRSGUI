@@ -1,5 +1,12 @@
 #include "FRSGUI/FRSGUI.hpp"
 
+#include <iostream>
+
+void click_fun()
+{
+    std::cout << "button clicked \n";
+}
+
 int main()
 {
     const auto render_window_ptr = std::make_shared<sf::RenderWindow>(sf::VideoMode(1920, 1080), "FRSGUI test", sf::Style::Default);
@@ -38,6 +45,24 @@ int main()
     frsgui.addStyle("squares_two", squares_style_two, StyleType::CLASS, 5);
     frsgui.addStyle("squares_three", squares_style_three, StyleType::ID, 3);
     frsgui.addStyle("yellow_color", yellow_color, StyleType::CLASS, 10);
+
+
+    // button test
+    const auto btn = Button(frsgui.getRenderer());
+
+    btn->addGroup("btn");
+
+    btn->setOnClick(click_fun);
+
+    fr::Style btn_style;
+    btn_style.setSize(100.f, 100.f);
+    btn_style.setPosition(800.f, 200.f);
+    btn_style.setBgColor(sf::Color::Cyan);
+    btn_style.setOutlineThickness(2.f);
+    btn_style.setOutlineColor(sf::Color::Magenta);
+
+    frsgui.addStyle("btn", btn_style, StyleType::CLASS, 1);
+    frsgui.addElement(btn);
 
 
     frsgui.addElement(square);

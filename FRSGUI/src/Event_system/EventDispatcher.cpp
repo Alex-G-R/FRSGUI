@@ -1,5 +1,6 @@
 #include "EventDispatcher.h"
-#include <iostream>
+
+#include "../Core/UI_element_derived/Button.h"
 
 namespace fr::Events {
     EventDispatcher::EventDispatcher(std::vector<std::shared_ptr<UI_element> > &elements_ptr) :
@@ -17,8 +18,11 @@ namespace fr::Events {
                 // Check if the mouse is within the rectangle's bounds
                 if (element->getShape()->getGlobalBounds().contains(static_cast<float>(event.mouseButton.x) ,static_cast<float>(event.mouseButton.y)))
                 {
-                    // Rectangle has been clicked
-                    element->addGroup("yellow_color");
+                    // Attempt to dynamically cast the UI_element to a Button
+                    if (Button* button = dynamic_cast<Button*>(element.get())) {
+                        // The element is a Button - so call the click function
+                        button->click(); // Calls Button's click() method
+                    }
                 }
             }
         }
