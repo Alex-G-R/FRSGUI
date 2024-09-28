@@ -21,6 +21,7 @@ namespace fr::Events {
                 {
                     // Rectangle has been clicked
                     std::cout << "CONTACT \n";
+                    element->addGroup("yellow_color");
                 }
             }
         }

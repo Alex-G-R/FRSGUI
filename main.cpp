@@ -30,10 +30,14 @@ int main()
     squares_style_three.setBgColor(sf::Color::Blue);
     squares_style_three.setPosition(400.f, 300.f);
 
+    fr::Style yellow_color;
+    yellow_color.setBgColor(sf::Color::Yellow);
+
 
     frsgui.addStyle("squares", squares_style, StyleType::CLASS, 1);
     frsgui.addStyle("squares_two", squares_style_two, StyleType::CLASS, 5);
     frsgui.addStyle("squares_three", squares_style_three, StyleType::ID, 3);
+    frsgui.addStyle("yellow_color", yellow_color, StyleType::CLASS, 10);
 
 
     frsgui.addElement(square);
