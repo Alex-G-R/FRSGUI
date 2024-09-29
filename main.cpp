@@ -5,7 +5,10 @@
 void click_fun(fr::FRSGUI& frsgui)
 {
     frsgui.getElementByID("squares_three")->addGroup("yellow_color");
-    frsgui.getElementByID("SQUA1f")->deleteGroup("squares_two");
+    frsgui.getElementByID("SQUA1")->deleteGroup("squares_two");
+
+    // Change player position by 1
+
 }
 
 int main()
@@ -54,8 +57,6 @@ int main()
 
     btn->addGroup("btn");
 
-    btn->setOnClick(click_fun);
-
     fr::Style btn_style;
     btn_style.setSize(100.f, 100.f);
     btn_style.setPosition(800.f, 200.f);
@@ -69,6 +70,20 @@ int main()
 
     frsgui.addElement(square);
     frsgui.addElement(squareTwo);
+
+
+    // testing custom event handlers
+    // game
+    sf::RectangleShape player;
+    player.setFillColor(sf::Color::White);
+    player.setPosition(800.f, 800.f);
+    player.setSize(sf::Vector2f(50.f, 50.f));
+
+    btn->setOnClick([&player](fr::FRSGUI&)
+    {
+        std::cout << "Button clicked! \n";
+        player.move(10.f, 0.f);
+    });
 
 
     while(render_window_ptr->isOpen())
@@ -87,6 +102,8 @@ int main()
         render_window_ptr->clear();
 
         frsgui.Render();
+
+        render_window_ptr->draw(player);
 
         render_window_ptr->display();
     }
