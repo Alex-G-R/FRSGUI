@@ -22,7 +22,7 @@ namespace fr::Events {
                     // Attempt to dynamically cast the UI_element to a Button
                     if (Button* button = dynamic_cast<Button*>(element.get())) {
                         // The element is a Button - so call the click function
-                        button->click(*frsgui_ptr); // Calls Button's click() method
+                        button->click(); // Calls Button's click() method
                     }
                 }
             }

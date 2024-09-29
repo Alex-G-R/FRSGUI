@@ -2,12 +2,6 @@
 
 #include <iostream>
 
-void click_fun(fr::FRSGUI& frsgui)
-{
-    frsgui.getElementByID("squares_three")->addGroup("yellow_color");
-    frsgui.getElementByID("SQUA1")->deleteGroup("squares_two");
-}
-
 int main()
 {
     const auto render_window_ptr = std::make_shared<sf::RenderWindow>(sf::VideoMode(1920, 1080), "FRSGUI test", sf::Style::Default);
@@ -76,13 +70,9 @@ int main()
     player.setPosition(800.f, 800.f);
     player.setSize(sf::Vector2f(50.f, 50.f));
 
-    btn->setOnClick([&player](fr::FRSGUI& frsgui_ref)
+    btn->setOnClick([&player, &square]()
     {
-        /* Ver 1 */
-        // frsgui_ref.getElementByID("squares_three")->addGroup("yellow_color");
-        // frsgui_ref.getElementByID("SQUA1")->deleteGroup("squares_two");
-        /* Ver 2  */
-        // click_fun(frsgui_ref);
+        square->deleteGroup("squares_two");
 
         /* Custom functionality */
         std::cout << "Button clicked! \n";
@@ -106,7 +96,6 @@ int main()
         render_window_ptr->clear();
 
         frsgui.Render();
-
         render_window_ptr->draw(player);
 
         render_window_ptr->display();

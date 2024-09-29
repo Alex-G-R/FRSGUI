@@ -9,7 +9,7 @@ namespace fr {
 
 class Button : public UI_element {
 private:
-    std::function<void(FRSGUI& frsgui)> onClickCallback; // Callback function for click events
+    std::function<void()> onClickCallback; // Callback function for click events
 
 public:
     // Constructor
@@ -25,10 +25,10 @@ public:
    void Update() override;
 
    // Set the click callback function
-   void setOnClick(const std::function<void(FRSGUI& frsgui)>& callback);
+   void setOnClick(const std::function<void()>& callback);
 
    // Method to handle click events (this can be called in your Update method)
-   void click(FRSGUI& frsgui);
+   void click();
 };
 
 
