@@ -6,9 +6,6 @@ void click_fun(fr::FRSGUI& frsgui)
 {
     frsgui.getElementByID("squares_three")->addGroup("yellow_color");
     frsgui.getElementByID("SQUA1")->deleteGroup("squares_two");
-
-    // Change player position by 1
-
 }
 
 int main()
@@ -79,8 +76,15 @@ int main()
     player.setPosition(800.f, 800.f);
     player.setSize(sf::Vector2f(50.f, 50.f));
 
-    btn->setOnClick([&player](fr::FRSGUI&)
+    btn->setOnClick([&player](fr::FRSGUI& frsgui_ref)
     {
+        /* Ver 1 */
+        // frsgui_ref.getElementByID("squares_three")->addGroup("yellow_color");
+        // frsgui_ref.getElementByID("SQUA1")->deleteGroup("squares_two");
+        /* Ver 2  */
+        // click_fun(frsgui_ref);
+
+        /* Custom functionality */
         std::cout << "Button clicked! \n";
         player.move(10.f, 0.f);
     });
