@@ -14,7 +14,7 @@ int main()
 
     square->addGroup("squares");
     square->addGroup("squares_two");
-    square->setID("SQUA1");
+    square->setID("Foo");
 
     squareTwo->addGroup("squares");
     squareTwo->setID("squares_three");
@@ -72,16 +72,20 @@ int main()
 
     btn->setOnClick([&player, &square, &squares_style_two, &frsgui]()
     {
+        /* Object manipulation by capture */
         // square->deleteGroup("squares_two");
+
+        /* Object manipulation by FRSGUI capture */
+        // frsgui.getElementByID("Foo")->deleteGroup("squares_two");
 
         /* Custom functionality */
         // std::cout << "Button clicked! \n";
         // player.move(10.f, 0.f);
 
         /* Styles manipulation */
-        fr::Style update;
-        update.setBgColor(sf::Color::Yellow);
-        frsgui.updateStyle("squares_two", update);
+        // fr::Style update;
+        // update.setBgColor(sf::Color::Yellow);
+        // frsgui.updateStyle("squares_two", update);
     });
 
 
