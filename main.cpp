@@ -70,13 +70,18 @@ int main()
     player.setPosition(800.f, 800.f);
     player.setSize(sf::Vector2f(50.f, 50.f));
 
-    btn->setOnClick([&player, &square]()
+    btn->setOnClick([&player, &square, &squares_style_two, &frsgui]()
     {
-        square->deleteGroup("squares_two");
+        // square->deleteGroup("squares_two");
 
         /* Custom functionality */
-        std::cout << "Button clicked! \n";
-        player.move(10.f, 0.f);
+        // std::cout << "Button clicked! \n";
+        // player.move(10.f, 0.f);
+
+        /* Styles manipulation */
+        fr::Style update;
+        update.setBgColor(sf::Color::Yellow);
+        frsgui.updateStyle("squares_two", update);
     });
 
 
