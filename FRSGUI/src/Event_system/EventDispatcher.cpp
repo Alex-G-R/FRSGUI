@@ -20,7 +20,7 @@ namespace fr::Events {
                 if (element->getShape()->getGlobalBounds().contains(static_cast<float>(event.mouseButton.x) ,static_cast<float>(event.mouseButton.y)))
                 {
                     // Attempt to dynamically cast the UI_element to a Button
-                    if (Button* button = dynamic_cast<Button*>(element.get())) {
+                    if (auto* button = dynamic_cast<Button*>(element.get())) {
                         // The element is a Button - so call the click function
                         button->click(); // Calls Button's click() method
                     }
