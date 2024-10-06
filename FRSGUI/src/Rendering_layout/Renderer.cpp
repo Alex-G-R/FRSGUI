@@ -11,7 +11,7 @@ namespace fr::Rendering {
 
     void Renderer::draw(UI_element* element)
     {
-        // Only render if is visible
+        // Only render if is visible (UI_element visibilty)
         if (!element->isVisible()) {
             return;
         }

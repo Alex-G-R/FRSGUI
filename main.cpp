@@ -104,9 +104,11 @@ int main()
 
         render_window_ptr->clear();
 
-        frsgui.Render();
+        // Your rendering
         render_window_ptr->draw(player);
 
+        // Render GUI at the end
+        frsgui.Render();
         render_window_ptr->display();
     }
 
