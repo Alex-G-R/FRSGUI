@@ -2,8 +2,6 @@
 #include "../Core/FRSGUI.h"
 #include "../Core/UI_element.h"
 
-#include <iostream>
-
 namespace fr::Rendering {
     Renderer::Renderer(const std::shared_ptr<sf::RenderWindow>& render_window_ptr, FRSGUI* frsgui_ptr) :
     render_window_ptr(render_window_ptr), frsgui_ptr(frsgui_ptr)
