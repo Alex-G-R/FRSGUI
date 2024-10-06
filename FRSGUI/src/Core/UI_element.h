@@ -16,10 +16,14 @@ private:
 
     std::string id;
     std::vector<std::string> groups;
+
+    bool visible;
+
+    // Not use for now
     std::vector<std::shared_ptr<UI_element>> children;
     int z_order;
-    bool visible;
     bool dirty;
+    // -----
 
     std::shared_ptr<Rendering::Renderer> renderer_ptr{};
 
