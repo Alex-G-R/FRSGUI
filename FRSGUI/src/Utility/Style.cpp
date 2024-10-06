@@ -4,6 +4,7 @@
 namespace fr {
     Style::Style()
     {
+        visible = false;
         outline_thickness = 0.f;
 
         has_size  = false;
@@ -11,6 +12,7 @@ namespace fr {
         has_bg_color = false;
         has_outline_color = false;
         has_outline_thickness = false;
+        has_visibility = false;
     }
 
     void Style::setSize(const sf::Vector2f& size)
@@ -55,6 +57,13 @@ namespace fr {
         has_outline_thickness = true;
     }
 
+    void Style::setVisibility(const bool visible)
+    {
+        this->visible = visible;
+        has_visibility = true;
+    }
+
+
 
     sf::Vector2f& Style::getSize()
     {
@@ -76,5 +85,10 @@ namespace fr {
     {
         return outline_thickness;
     }
+    bool Style::isVisible()
+    {
+        return visible;
+    }
+
 
 }

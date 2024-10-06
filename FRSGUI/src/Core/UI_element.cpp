@@ -8,7 +8,6 @@ namespace fr {
     {
         id = "";
         z_order = 0;
-        visible = true;
         dirty = false;
     }
 
@@ -58,11 +57,6 @@ namespace fr {
         this->z_order = z_order;
     }
 
-    void UI_element::setVisibility(const bool &is_visible)
-    {
-        visible = is_visible;
-    }
-
     void UI_element::setDirty(const bool &is_dirty)
     {
         dirty = is_dirty;
@@ -87,11 +81,6 @@ namespace fr {
     int UI_element::getZOrder()
     {
         return z_order;
-    }
-
-    bool UI_element::isVisible()
-    {
-        return visible;
     }
 
     bool UI_element::isDirty()

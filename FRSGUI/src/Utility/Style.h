@@ -12,6 +12,7 @@ private:
     sf::Color background_color;
     sf::Color outline_color;
     float outline_thickness;
+    bool visible;
 
 public:
     Style();
@@ -24,6 +25,7 @@ public:
     void setBgColor(const sf::Color& bg_color);
     void setOutlineColor(const sf::Color& outline_color);
     void setOutlineThickness(const float& outline_thickness);
+    void setVisibility(bool visible);
 
     // getters
     sf::Vector2f& getSize();
@@ -31,6 +33,7 @@ public:
     sf::Color& getBgColor();
     sf::Color& getOutlineColor();
     float& getOutlineThickness();
+    bool isVisible();
 
 
     // Status propierties
@@ -39,6 +42,7 @@ public:
     bool has_bg_color;
     bool has_outline_color;
     bool has_outline_thickness;
+    bool has_visibility;
 };
 
 }

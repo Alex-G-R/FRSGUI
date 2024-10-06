@@ -43,6 +43,10 @@ namespace fr::Rendering
                 {
                     s.style.setOutlineThickness(style_update.getOutlineThickness());
                 }
+                if(style_update.has_visibility)
+                {
+                    s.style.setVisibility(style_update.isVisible());
+                }
             }
         }
     }

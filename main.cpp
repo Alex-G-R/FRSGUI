@@ -28,6 +28,7 @@ int main()
 
     fr::Style squares_style_two;
     squares_style_two.setBgColor(sf::Color::Red);
+    //squares_style_two.setVisibility(false);
 
     fr::Style squares_style_three;
     squares_style_three.setBgColor(sf::Color::Blue);
@@ -83,9 +84,9 @@ int main()
         // player.move(10.f, 0.f);
 
         /* Styles manipulation */
-        // fr::Style update;
-        // update.setBgColor(sf::Color::Yellow);
-        // frsgui.updateStyle("squares_two", update);
+        fr::Style update;
+        update.setVisibility(false);
+        frsgui.updateStyle("squares_two", update);
     });
 
 

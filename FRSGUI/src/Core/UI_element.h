@@ -17,8 +17,6 @@ private:
     std::string id;
     std::vector<std::string> groups;
 
-    bool visible;
-
     // Not use for now
     std::vector<std::shared_ptr<UI_element>> children;
     int z_order;
@@ -43,7 +41,6 @@ public:
     void addGroup(const std::string& group);
     void addChild(const std::shared_ptr<UI_element>& child);
     void setZOrder(const int& z_order);
-    void setVisibility(const bool& is_visible);
     void setDirty(const bool& is_dirty);
 
 
@@ -52,7 +49,6 @@ public:
     std::vector<std::string>& getGroupsVector();
     std::vector<std::shared_ptr<UI_element>>& getChildren();
     int getZOrder();
-    bool isVisible();
     bool isDirty();
     sf::RectangleShape* getShape();
 };

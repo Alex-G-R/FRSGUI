@@ -2,6 +2,8 @@
 #include "../Core/FRSGUI.h"
 #include "../Core/UI_element.h"
 
+#include <iostream>
+
 namespace fr::Rendering {
     Renderer::Renderer(const std::shared_ptr<sf::RenderWindow>& render_window_ptr, FRSGUI* frsgui_ptr) :
     render_window_ptr(render_window_ptr), frsgui_ptr(frsgui_ptr)
@@ -11,9 +13,27 @@ namespace fr::Rendering {
 
     void Renderer::draw(UI_element* element)
     {
-        // Only render if is visible (UI_element visibilty)
-        if (!element->isVisible()) {
-            return;
+        // Only render if is visible
+        for (auto& styleVec : frsgui_ptr->style_sheet.getStyleVec())
+        {
+            if (styleVec.style_type == StyleType::ID && styleVec.group_name == element->getID())
+            {
+                // Match by ID
+                if(styleVec.style.has_visibility == true && styleVec.style.isVisible() == false)
+                    return;
+            }
+            else if (styleVec.style_type == StyleType::CLASS)
+            {
+                for (const auto& group : element->getGroupsVector())
+                {
+                    // Match by group
+                    if (group == styleVec.group_name)
+                    {
+                        if(styleVec.style.has_visibility == true && styleVec.style.isVisible() == false)
+                            return;
+                    }
+                }
+            }
         }
 
         // Dereference the pointer to pass the actual object
@@ -30,17 +50,22 @@ namespace fr::Rendering {
             std::vector<std::string> element_groups = element->getGroupsVector();
 
             // Iterate over the styles defined in the stylesheet
-            for (auto& styleVec : frsgui_ptr->style_sheet.getStyleVec()) {
+            for (auto& styleVec : frsgui_ptr->style_sheet.getStyleVec())
+            {
                 bool applyStyle = false;
 
                 // Check if the style should apply by ID or group(class)
-                if (styleVec.style_type == StyleType::ID && styleVec.group_name == element_id) {
+                if (styleVec.style_type == StyleType::ID && styleVec.group_name == element_id)
+                {
                     // Apply style by ID
                     applyStyle = true;
-                } else if (styleVec.style_type == StyleType::CLASS) {
+                }
+                else if (styleVec.style_type == StyleType::CLASS) {
                     // Apply style if it matches one of the elements groups
-                    for (const auto& group : element_groups) {
-                        if (group == styleVec.group_name) {
+                    for (const auto& group : element_groups)
+                    {
+                        if (group == styleVec.group_name)
+                        {
                             applyStyle = true;
                             break;
                         }
