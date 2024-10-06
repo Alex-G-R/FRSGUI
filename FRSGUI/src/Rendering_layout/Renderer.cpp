@@ -18,7 +18,7 @@ namespace fr::Rendering {
         {
             if (styleVec.style_type == StyleType::ID && styleVec.group_name == element->getID())
             {
-                // Match by ID
+                // Skip rendering if element style by ID has set visibility to false
                 if(styleVec.style.has_visibility == true && styleVec.style.isVisible() == false)
                     return;
             }
@@ -29,6 +29,7 @@ namespace fr::Rendering {
                     // Match by group
                     if (group == styleVec.group_name)
                     {
+                        // Skip rendering if element style by group (CLASS) has set visibility to false
                         if(styleVec.style.has_visibility == true && styleVec.style.isVisible() == false)
                             return;
                     }
