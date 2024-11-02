@@ -7,6 +7,7 @@ Framework for Rapid and Simple development of General User Interface application
 # Objectives
 
 Task priority: 
+  - CHANGE THE PASSES BY CONST REFERENCE TO PASS BY VALUE WHEN USING SIMPLE DATATYPES YOU DONKEY!!!!! (ref/ptr = 8 bytes, uint32 = 4bytes nice brain nice)
   - ~~Custom UI_elements~~
   - Create hard-coded UI_elements: 
       - ~~Button~~
