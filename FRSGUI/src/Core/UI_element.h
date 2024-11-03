@@ -17,7 +17,7 @@ private:
     std::string id;
     std::vector<std::string> groups;
 
-    // Not use for now
+    // Not used for now
     std::vector<std::shared_ptr<UI_element>> children;
     int z_order;
     bool dirty;
