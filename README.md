@@ -22,5 +22,5 @@ Task priority:
    - Code optimalization
 
   - Future, shallow ideas:
-    - Dynamic interaction with elements?
+    - Dynamic interaction with elements? (drag and drop, resize by mouse)
   
