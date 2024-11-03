@@ -12,7 +12,7 @@ namespace fr
 
 class StyleVec {
 public:
-    StyleVec(std::string group_name, const Style& style, const StyleType& style_type, const int& style_priority);
+    StyleVec(std::string group_name, const Style& style, StyleType style_type, int style_priority);
     std::string group_name;
     Style style;
     StyleType style_type;

@@ -15,25 +15,25 @@ namespace fr {
         has_visibility = false;
     }
 
-    void Style::setSize(const sf::Vector2f& size)
+    void Style::setSize(sf::Vector2f size)
     {
         this->size = size;
         has_size = true;
     }
 
-    void Style::setSize(const float& size_x, const float& size_y)
+    void Style::setSize( float size_x, float size_y)
     {
         this->size = sf::Vector2f(size_x, size_y);
         has_size = true;
     }
 
-    void Style::setPosition(const sf::Vector2f& pos)
+    void Style::setPosition(sf::Vector2f pos)
     {
         this->position = pos;
         has_position = true;
     }
 
-    void Style::setPosition(const float& pos_x, const float& pos_y)
+    void Style::setPosition(float pos_x, float pos_y)
     {
         this->position = sf::Vector2f(pos_x, pos_y);
         has_position = true;
@@ -51,7 +51,7 @@ namespace fr {
         has_outline_color = true;
     }
 
-    void Style::setOutlineThickness(const float& outline_thickness)
+    void Style::setOutlineThickness(float outline_thickness)
     {
         this->outline_thickness = outline_thickness;
         has_outline_thickness = true;

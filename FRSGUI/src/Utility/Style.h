@@ -18,13 +18,13 @@ public:
     Style();
 
     // setters
-    void setSize(const sf::Vector2f& size);
-    void setSize(const float& size_x, const float& size_y);
-    void setPosition(const sf::Vector2f& pos);
-    void setPosition(const float& pos_x, const float& pos_y);
+    void setSize(sf::Vector2f size);
+    void setSize(float size_x, float size_y);
+    void setPosition(sf::Vector2f pos);
+    void setPosition(float pos_x, float pos_y);
     void setBgColor(const sf::Color& bg_color);
     void setOutlineColor(const sf::Color& outline_color);
-    void setOutlineThickness(const float& outline_thickness);
+    void setOutlineThickness(float outline_thickness);
     void setVisibility(bool visible);
 
     // getters

@@ -87,6 +87,10 @@ int main()
         fr::Style update;
         update.setVisibility(false);
         frsgui.updateStyle("squares_two", update);
+
+        // Size debug |
+        std::cout << "Size of element: " << sizeof(square) << "\n";
+        std::cout << "Size of frsgui: " << sizeof(frsgui) << "\n";
     });
 
 
