@@ -40,8 +40,8 @@ public:
     void setID(const std::string& id);
     void addGroup(const std::string& group);
     void addChild(const std::shared_ptr<UI_element>& child);
-    void setZOrder(const int& z_order);
-    void setDirty(const bool& is_dirty);
+    void setZOrder(int z_order);
+    void setDirty(bool is_dirty);
 
 
     // Getters

@@ -52,12 +52,12 @@ namespace fr {
         children.emplace_back(child);
     }
 
-    void UI_element::setZOrder(const int &z_order)
+    void UI_element::setZOrder(int z_order)
     {
         this->z_order = z_order;
     }
 
-    void UI_element::setDirty(const bool &is_dirty)
+    void UI_element::setDirty(bool is_dirty)
     {
         dirty = is_dirty;
     }
@@ -85,7 +85,7 @@ namespace fr {
 
     bool UI_element::isDirty()
     {
-        return  dirty;
+        return dirty;
     }
 
     sf::RectangleShape *UI_element::getShape()
