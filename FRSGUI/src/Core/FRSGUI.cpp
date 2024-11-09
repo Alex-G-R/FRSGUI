@@ -26,16 +26,10 @@ namespace fr {
         gui.addElement(element);
     }
 
-    void FRSGUI::addStyle(std::string group_name, const Style& style, const StyleType style_type, const int style_priority)
+    void FRSGUI::addStyle(std::string group_name, std::shared_ptr<fr::Style> style, const StyleType style_type, const int style_priority)
     {
         style_sheet.addStyleVec(StyleVec(std::move(group_name), style, style_type, style_priority));
     }
-
-    void FRSGUI::updateStyle(const std::string &style_name, Style &style_update)
-    {
-        style_sheet.updateStyleVec(style_name, style_update);
-    }
-
 
     void FRSGUI::dispatchEvent(const sf::Event &event)
     {

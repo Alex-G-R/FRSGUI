@@ -51,8 +51,7 @@ public:
 
     // GUI methods public acces
     void addElement(const std::shared_ptr<UI_element>& element);
-    void addStyle(std::string group_name, const Style& style, StyleType style_type, int style_priority);
-    void updateStyle(const std::string& style_name, Style& style_update);
+    void addStyle(std::string group_name, std::shared_ptr<fr::Style> style, StyleType style_type, int style_priority);
     void dispatchEvent(const sf::Event& event);
     std::shared_ptr<UI_element>& getElementByID(const std::string& id);
 

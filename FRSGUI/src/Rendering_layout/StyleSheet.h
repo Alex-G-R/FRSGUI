@@ -16,7 +16,6 @@ namespace fr::Rendering {
     public:
         StyleSheet();
         void addStyleVec(const StyleVec& style_vec);
-        void updateStyleVec(const std::string& style_name, Style& style_update);
         std::vector<StyleVec>& getStyleVec();
     };
 
