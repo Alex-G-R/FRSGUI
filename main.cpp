@@ -12,6 +12,8 @@ int main()
     const auto square = UI_element(frsgui.getRenderer());
     square->addGroup("squares");
     square->addGroup("squares_two");
+    square->addGroup("squares_three");
+    square->addGroup("squares_four");
     square->setID("Foo");
 
     auto squares_style = Style("squares", StyleType::CLASS, 1,{
@@ -25,6 +27,14 @@ int main()
 
     auto squares_two = Style("squares_two", StyleType::CLASS, 10, {
         {fr::KEY::BACKGROUND_COLOR, sf::Color::Black}
+    }, frsgui);
+
+    auto squares_three = Style("squares_three", StyleType::CLASS, 15, {
+        {fr::KEY::OUTLINE_COLOR, sf::Color::Blue}
+    }, frsgui);
+
+    auto squares_four = Style("squares_four", StyleType::CLASS, 7, {
+        {fr::KEY::BACKGROUND_COLOR, sf::Color::Cyan}
     }, frsgui);
 
     frsgui.addElement(square);
