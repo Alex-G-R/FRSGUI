@@ -2,26 +2,12 @@
 #define STYLE_H
 
 #include <Graphics.hpp>
-
-#include <iostream>
 #include <unordered_map>
-#include <string>
-#include <vector>
 #include <variant>
 
-// Lemme tell you this shit is going to burn
+#include "KEY.h"
 
 namespace fr {
-
-enum class KEY
-{
-    POSITION,
-    SIZE,
-    BACKGROUND_COLOR,
-    OUTLINE_COLOR,
-    OUTLINE_THICKNESS,
-    VISIBLE
-};
 
 using type = std::variant<bool, int, float, double, sf::Color, sf::Vector2f>;
 
@@ -40,46 +26,10 @@ public:
         {KEY::VISIBLE, false}
     };
 
-    Style(std::initializer_list<std::pair<KEY, type>> init)
-    {
+    Style(std::initializer_list<std::pair<KEY, type>> init);
 
-        for(const auto& [key, value] : init)
-        {
-            properties[key] = value;
-
-            // If the key is found in the flags map set its value to true
-            if (flags.find(key) != flags.end()) {
-                flags[key] = true;
-            }
-        }
-    }
-
-    type getProperty(KEY property_key)
-    {
-        for(const auto& [key, value] : properties)
-        {
-            if(property_key == key)
-            {
-               return value;
-            }
-        }
-
-        throw std::runtime_error("Property key not found");  // key is not found
-    }
-
-    void update_style(std::initializer_list<std::pair<KEY, type>> init)
-    {
-        for(const auto& [key, value] : init)
-        {
-            properties[key] = value;
-
-            // If the key is found in the flags map set its value to true
-            if (flags.find(key) != flags.end()) {
-                flags[key] = true;
-            }
-        }
-    };
-
+    type getProperty(KEY property_key);
+    void update_style(std::initializer_list<std::pair<KEY, type>> init);
 };
 
 }

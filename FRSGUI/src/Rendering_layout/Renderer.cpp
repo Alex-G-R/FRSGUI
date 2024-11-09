@@ -1,6 +1,7 @@
 #include "Renderer.h"
 #include "../Core/FRSGUI.h"
 #include "../Core/UI_element.h"
+#include <iostream>
 
 namespace fr::Rendering {
 
