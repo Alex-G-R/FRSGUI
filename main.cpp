@@ -9,7 +9,12 @@ int main()
     fr::FRSGUI frsgui(render_window_ptr);
 
     // Create GUI here
-    const auto square = UI_element(frsgui.getRenderer(), "Foo", {"squares", "squares_two", "squares_three", "squares_four"}, frsgui);
+    const auto square = UI_element(frsgui.getRenderer(), "Foo", {
+        "squares",
+        "squares_two",
+        "squares_three",
+        "squares_four"
+    }, frsgui);
     //square->addGroup("squares");
     //square->addGroup("squares_two");
     //square->addGroup("squares_three");
