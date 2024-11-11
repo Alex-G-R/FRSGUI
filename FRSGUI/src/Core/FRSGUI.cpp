@@ -26,7 +26,7 @@ namespace fr {
         gui.addElement(element);
     }
 
-    void FRSGUI::addStyle(std::string group_name, std::shared_ptr<fr::Style> style, const StyleType style_type, const int style_priority)
+    void FRSGUI::addStyle(std::string group_name, std::shared_ptr<fr::Style> style, const ApplyBy style_type, const int style_priority)
     {
         style_sheet.addStyleVec(StyleVec(std::move(group_name), style, style_type, style_priority));
     }

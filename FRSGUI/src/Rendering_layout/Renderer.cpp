@@ -50,12 +50,12 @@ namespace fr::Rendering {
         for (auto& styleVec : frsgui_ptr->style_sheet.getStyleVec())
         {
             // Check if the style should apply by ID or group(class)
-            if (styleVec.style_type == StyleType::ID && styleVec.group_name == element_id)
+            if (styleVec.style_type == ApplyBy::ID && styleVec.group_name == element_id)
             {
                 // Apply style by ID
                 applyStyles(current_priority, styleVec, shape);
             }
-            else if (styleVec.style_type == StyleType::CLASS) {
+            else if (styleVec.style_type == ApplyBy::CLASS) {
                 // Apply style if it matches one of the elements groups
                 for (const auto& group : element_groups)
                 {
@@ -67,8 +67,6 @@ namespace fr::Rendering {
                 }
             }
         }
-
-
 
         // Draw the shape
         render_window_ptr->draw(*shape);
@@ -174,7 +172,7 @@ namespace fr::Rendering {
     {
         for (auto& styleVec : frsgui_ptr->style_sheet.getStyleVec())
         {
-            if (styleVec.style_type == StyleType::ID && styleVec.group_name == element->getID())
+            if (styleVec.style_type == ApplyBy::ID && styleVec.group_name == element->getID())
             {   // Skip rendering if element style by ID has set visibility to false
                 if(styleVec.style->flags[KEY::VISIBLE] == true)
                 {
@@ -195,7 +193,7 @@ namespace fr::Rendering {
                 }
             }
 
-            else if (styleVec.style_type == StyleType::CLASS)
+            else if (styleVec.style_type == ApplyBy::CLASS)
             {
                 for (const auto& group : element->getGroupsVector())
                 {

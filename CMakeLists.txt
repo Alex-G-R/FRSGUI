@@ -27,7 +27,7 @@ add_executable(FRSGUI main.cpp
         FRSGUI/FRSGUI.hpp
         FRSGUI/src/Rendering_layout/StyleSheet.cpp
         FRSGUI/src/Rendering_layout/StyleSheet.h
-        FRSGUI/src/Utility/StyleType.h
+        FRSGUI/src/Utility/ApplyBy.h
         FRSGUI/src/Utility/StyleVec.h
         FRSGUI/src/Utility/StyleVec.cpp
         FRSGUI/src/Core/UI_element_derived/TextArea.cpp

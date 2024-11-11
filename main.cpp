@@ -16,7 +16,7 @@ int main()
     square->addGroup("squares_four");
     square->setID("Foo");
 
-    auto squares_style = Style("squares", StyleType::CLASS, 1,{
+    auto squares_style = Style("squares", fr::ApplyBy::CLASS, 1,{
         {fr::KEY::POSITION, sf::Vector2f(50.f, 50.f)},
         {fr::KEY::SIZE, sf::Vector2f(500.f, 30.f)},
         {fr::KEY::BACKGROUND_COLOR, sf::Color{255, 0, 0, 255}},
@@ -25,15 +25,15 @@ int main()
         {fr::KEY::VISIBLE, true}
     }, frsgui);
 
-    auto squares_two = Style("squares_two", StyleType::CLASS, 10, {
+    auto squares_two = Style("squares_two", fr::ApplyBy::CLASS, 10, {
         {fr::KEY::BACKGROUND_COLOR, sf::Color::Black}
     }, frsgui);
 
-    auto squares_three = Style("squares_three", StyleType::CLASS, 15, {
+    auto squares_three = Style("squares_three", fr::ApplyBy::CLASS, 15, {
         {fr::KEY::OUTLINE_COLOR, sf::Color::Blue}
     }, frsgui);
 
-    auto squares_four = Style("squares_four", StyleType::CLASS, 7, {
+    auto squares_four = Style("squares_four", fr::ApplyBy::CLASS, 7, {
         {fr::KEY::BACKGROUND_COLOR, sf::Color::Cyan}
     }, frsgui);
 
@@ -43,7 +43,7 @@ int main()
     const auto btn = Button(frsgui.getRenderer());
     btn->addGroup("btn");
 
-    auto btn_style = Style("btn", StyleType::CLASS, 1,{
+    auto btn_style = Style("btn", fr::ApplyBy::CLASS, 1,{
         {fr::KEY::SIZE, sf::Vector2f(100.f, 100.f)},
         {fr::KEY::POSITION, sf::Vector2f(800.f, 300.f)},
         {fr::KEY::BACKGROUND_COLOR, sf::Color::Cyan}
