@@ -49,7 +49,7 @@ int main()
         {fr::KEY::BACKGROUND_COLOR, sf::Color::Cyan}
     }, frsgui);
 
-    frsgui.addElement(btn);
+    //frsgui.addElement(btn);
 
     // testing custom event handlers
     sf::RectangleShape player;
@@ -79,6 +79,18 @@ int main()
         // std::cout << "Size of element: " << sizeof(square) << "\n";
         // std::cout << "Size of frsgui: " << sizeof(frsgui) << "\n";
     });
+
+    const auto input = Input(frsgui.getRenderer());
+    input->addGroup("input");
+    auto input_style = Style("input", fr::ApplyBy::CLASS, 1, {
+        {fr::KEY::SIZE, sf::Vector2f(300.f, 50.f)},
+        {fr::KEY::POSITION, sf::Vector2f(500.f, 500.f)},
+        {fr::KEY::OUTLINE_THICKNESS, 1},
+        {fr::KEY::OUTLINE_COLOR, sf::Color(160, 160, 160)},
+        {fr::KEY::BACKGROUND_COLOR, sf::Color(35, 34, 33)}
+    }, frsgui);
+    frsgui.addElement(input);
+    frsgui.addElement(btn);
 
 
     while(render_window_ptr->isOpen())

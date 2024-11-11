@@ -13,6 +13,10 @@ inline std::shared_ptr<fr::Button> Button(const std::shared_ptr<fr::Rendering::R
     return std::make_shared<fr::Button>(renderer);
 }
 
+inline std::shared_ptr<fr::Input> Input(const std::shared_ptr<fr::Rendering::Renderer> &renderer) {
+    return std::make_shared<fr::Input>(renderer);
+}
+
 inline std::shared_ptr<fr::Style> Style(std::string style_name, fr::ApplyBy styletype, int style_priority,std::initializer_list<std::pair<fr::KEY, fr::type>> init, fr::FRSGUI& frsgui)
 {
     auto my_instance = std::make_shared<fr::Style>(init);

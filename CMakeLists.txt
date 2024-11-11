@@ -30,12 +30,12 @@ add_executable(FRSGUI main.cpp
         FRSGUI/src/Utility/ApplyBy.h
         FRSGUI/src/Utility/StyleVec.h
         FRSGUI/src/Utility/StyleVec.cpp
-        FRSGUI/src/Core/UI_element_derived/TextArea.cpp
-        FRSGUI/src/Core/UI_element_derived/TextArea.h
         FRSGUI/src/Core/UI_element_derived/Slider.cpp
         FRSGUI/src/Core/UI_element_derived/Slider.h
         FRSGUI/src/Utility/HelperFunctions.hpp
-        FRSGUI/src/Utility/KEY.h)
+        FRSGUI/src/Utility/KEY.h
+        FRSGUI/src/Core/UI_element_derived/Input.cpp
+        FRSGUI/src/Core/UI_element_derived/Input.h)
 
 set(SFML_STATIC_LIBRARIES TRUE)
 set(SFML_DIR C:/dev/DEVEL/SFML/lib/cmake/SFML)
