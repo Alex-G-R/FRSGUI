@@ -5,18 +5,25 @@
 #include <memory>
 #include "../Core/FRSGUI.h"
 
+/* Raw Ui_element */
 inline std::shared_ptr<fr::UI_element> UI_element(const std::shared_ptr<fr::Rendering::Renderer> &renderer) {
     return std::make_shared<fr::UI_element>(renderer);
 }
 
+/* Button */
 inline std::shared_ptr<fr::Button> Button(const std::shared_ptr<fr::Rendering::Renderer> &renderer) {
     return std::make_shared<fr::Button>(renderer);
 }
 
+/* Input and Input overload for numeric only */
 inline std::shared_ptr<fr::Input> Input(const std::shared_ptr<fr::Rendering::Renderer> &renderer) {
     return std::make_shared<fr::Input>(renderer);
 }
+inline std::shared_ptr<fr::Input> Input(const std::shared_ptr<fr::Rendering::Renderer> &renderer, bool is_numerical_only) {
+    return std::make_shared<fr::Input>(renderer, is_numerical_only);
+}
 
+/* Style block */
 inline std::shared_ptr<fr::Style> Style(std::string style_name, fr::ApplyBy styletype, int style_priority,std::initializer_list<std::pair<fr::KEY, fr::type>> init, fr::FRSGUI& frsgui)
 {
     auto my_instance = std::make_shared<fr::Style>(init);

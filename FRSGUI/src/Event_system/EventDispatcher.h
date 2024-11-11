@@ -13,13 +13,15 @@ class EventDispatcher {
 public:
     explicit EventDispatcher(std::vector<std::shared_ptr<UI_element>>& elements_ptr, FRSGUI* frsgui_ptr);
     void dispatchEvent(const sf::Event& event);
-
     void deselect_inputs();
 
     FRSGUI* frsgui_ptr{};
 private:
     std::vector<std::shared_ptr<UI_element>>& elements_ptr;
     std::vector<std::shared_ptr<Input>> get_input_elements();
+
+    void Handle_LeftMouseButtonClick(const sf::Event& event);
+    void Handle_TextEnterd(const sf::Event& event);
 };
 
 }

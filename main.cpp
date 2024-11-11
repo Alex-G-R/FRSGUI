@@ -80,7 +80,8 @@ int main()
         // std::cout << "Size of frsgui: " << sizeof(frsgui) << "\n";
     });
 
-    const auto input = Input(frsgui.getRenderer());
+    // Bool is_numerical_only is an overload, defaults to false
+    const auto input = Input(frsgui.getRenderer(), false);
     input->addGroup("input");
     auto input_style = Style("input", fr::ApplyBy::CLASS, 1, {
         {fr::KEY::SIZE, sf::Vector2f(300.f, 50.f)},
