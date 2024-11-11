@@ -35,7 +35,8 @@ add_executable(FRSGUI main.cpp
         FRSGUI/src/Utility/HelperFunctions.hpp
         FRSGUI/src/Utility/KEY.h
         FRSGUI/src/Core/UI_element_derived/Input.cpp
-        FRSGUI/src/Core/UI_element_derived/Input.h)
+        FRSGUI/src/Core/UI_element_derived/Input.h
+)
 
 set(SFML_STATIC_LIBRARIES TRUE)
 set(SFML_DIR C:/dev/DEVEL/SFML/lib/cmake/SFML)

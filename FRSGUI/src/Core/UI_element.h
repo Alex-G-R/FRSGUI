@@ -28,6 +28,9 @@ private:
 public:
     // Constructor
     explicit UI_element(const std::shared_ptr<Rendering::Renderer>& renderer_ptr);
+    UI_element(const std::shared_ptr<Rendering::Renderer>& renderer_ptr, std::string ID, std::initializer_list<std::string> groups);
+    UI_element(const std::shared_ptr<Rendering::Renderer>& renderer_ptr, std::initializer_list<std::string> groups);
+    UI_element(const std::shared_ptr<Rendering::Renderer>& renderer_ptr, std::string ID);
     virtual ~UI_element();
 
     // Methods

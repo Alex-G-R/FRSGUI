@@ -13,7 +13,10 @@ private:
 
 public:
     // Constructor
-    Button(const std::shared_ptr<Rendering::Renderer>& renderer_ptr);
+    explicit Button(const std::shared_ptr<Rendering::Renderer>& renderer_ptr);
+    Button(const std::shared_ptr<Rendering::Renderer>& renderer_ptr, std::string ID, std::initializer_list<std::string> groups);
+    Button(const std::shared_ptr<Rendering::Renderer>& renderer_ptr, std::initializer_list<std::string> groups);
+    Button(const std::shared_ptr<Rendering::Renderer>& renderer_ptr, std::string ID);
 
     // Destructor
     ~Button() override;

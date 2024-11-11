@@ -17,6 +17,14 @@ public:
     Input(const std::shared_ptr<Rendering::Renderer>& renderer_ptr);
     Input(const std::shared_ptr<Rendering::Renderer>& renderer_ptr, bool is_number_only_input);
 
+    Input(const std::shared_ptr<Rendering::Renderer>& renderer_ptr, std::string ID, std::initializer_list<std::string> groups);
+    Input(const std::shared_ptr<Rendering::Renderer>& renderer_ptr, std::initializer_list<std::string> groups);
+    Input(const std::shared_ptr<Rendering::Renderer>& renderer_ptr, std::string ID);
+
+    Input(const std::shared_ptr<Rendering::Renderer>& renderer_ptr, bool is_number_only_input, std::string ID, std::initializer_list<std::string> groups);
+    Input(const std::shared_ptr<Rendering::Renderer>& renderer_ptr, bool is_number_only_input, std::initializer_list<std::string> groups);
+    Input(const std::shared_ptr<Rendering::Renderer>& renderer_ptr, bool is_number_only_input, std::string ID);
+
     void set_select(bool selected);
     bool get_select();
 

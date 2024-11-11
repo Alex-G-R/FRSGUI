@@ -55,7 +55,7 @@ namespace fr::Rendering {
                 // Apply style by ID
                 applyStyles(current_priority, styleVec, shape);
             }
-            else if (styleVec.style_type == ApplyBy::CLASS) {
+            else if (styleVec.style_type == ApplyBy::GROUP) {
                 // Apply style if it matches one of the elements groups
                 for (const auto& group : element_groups)
                 {
@@ -193,7 +193,7 @@ namespace fr::Rendering {
                 }
             }
 
-            else if (styleVec.style_type == ApplyBy::CLASS)
+            else if (styleVec.style_type == ApplyBy::GROUP)
             {
                 for (const auto& group : element->getGroupsVector())
                 {

@@ -18,6 +18,53 @@ fr::Input::Input(const std::shared_ptr<Rendering::Renderer>& renderer_ptr, bool 
         stored_data = "";
 }
 
+
+fr::Input::Input(const std::shared_ptr<Rendering::Renderer>& renderer_ptr, std::string ID)
+        : UI_element(renderer_ptr, std::move(ID))
+{
+        is_number_only_input = false;
+        selected = false;
+        stored_data = "";
+}
+
+fr::Input::Input(const std::shared_ptr<Rendering::Renderer>& renderer_ptr, std::initializer_list<std::string> groups)
+    : UI_element(renderer_ptr, groups)
+{
+        is_number_only_input = false;
+        selected = false;
+        stored_data = "";
+}
+
+fr::Input::Input(const std::shared_ptr<Rendering::Renderer>& renderer_ptr, std::string ID, std::initializer_list<std::string> groups)
+    : UI_element(renderer_ptr, std::move(ID), groups)
+{
+        is_number_only_input = false;
+        selected = false;
+        stored_data = "";
+}
+
+
+fr::Input::Input(const std::shared_ptr<Rendering::Renderer>& renderer_ptr, bool is_number_only_input, std::string ID)
+        : UI_element(renderer_ptr, std::move(ID)), is_number_only_input(is_number_only_input)
+{
+        selected = false;
+        stored_data = "";
+}
+
+fr::Input::Input(const std::shared_ptr<Rendering::Renderer>& renderer_ptr, bool is_number_only_input, std::initializer_list<std::string> groups)
+    : UI_element(renderer_ptr, groups), is_number_only_input(is_number_only_input)
+{
+        selected = false;
+        stored_data = "";
+}
+
+fr::Input::Input(const std::shared_ptr<Rendering::Renderer>& renderer_ptr, bool is_number_only_input, std::string ID, std::initializer_list<std::string> groups)
+    : UI_element(renderer_ptr, std::move(ID), groups), is_number_only_input(is_number_only_input)
+{
+        selected = false;
+        stored_data = "";
+}
+
 void fr::Input::push_data(sf::Uint32 char_to_add_unicode)
 {
         // Handle backspace

@@ -7,7 +7,7 @@ namespace fr
     enum class ApplyBy
     {
         ID,
-        CLASS
+        GROUP
     };
 
 }

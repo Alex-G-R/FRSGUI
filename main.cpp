@@ -9,14 +9,14 @@ int main()
     fr::FRSGUI frsgui(render_window_ptr);
 
     // Create GUI here
-    const auto square = UI_element(frsgui.getRenderer());
-    square->addGroup("squares");
-    square->addGroup("squares_two");
-    square->addGroup("squares_three");
-    square->addGroup("squares_four");
-    square->setID("Foo");
+    const auto square = UI_element(frsgui.getRenderer(), "Foo", {"squares", "squares_two", "squares_three", "squares_four"}, frsgui);
+    //square->addGroup("squares");
+    //square->addGroup("squares_two");
+    //square->addGroup("squares_three");
+    //square->addGroup("squares_four");
+    //square->setID("Foo");
 
-    auto squares_style = Style("squares", fr::ApplyBy::CLASS, 1,{
+    auto squares_style = Style("squares", fr::ApplyBy::GROUP, 1,{
         {fr::KEY::POSITION, sf::Vector2f(50.f, 50.f)},
         {fr::KEY::SIZE, sf::Vector2f(500.f, 30.f)},
         {fr::KEY::BACKGROUND_COLOR, sf::Color{255, 0, 0, 255}},
@@ -25,31 +25,28 @@ int main()
         {fr::KEY::VISIBLE, true}
     }, frsgui);
 
-    auto squares_two = Style("squares_two", fr::ApplyBy::CLASS, 10, {
+    auto squares_two = Style("squares_two", fr::ApplyBy::GROUP, 10, {
         {fr::KEY::BACKGROUND_COLOR, sf::Color::Black}
     }, frsgui);
 
-    auto squares_three = Style("squares_three", fr::ApplyBy::CLASS, 15, {
+    auto squares_three = Style("squares_three", fr::ApplyBy::GROUP, 15, {
         {fr::KEY::OUTLINE_COLOR, sf::Color::Blue}
     }, frsgui);
 
-    auto squares_four = Style("squares_four", fr::ApplyBy::CLASS, 7, {
+    auto squares_four = Style("squares_four", fr::ApplyBy::GROUP, 7, {
         {fr::KEY::BACKGROUND_COLOR, sf::Color::Cyan}
     }, frsgui);
 
-    frsgui.addElement(square);
-
     //button test
-    const auto btn = Button(frsgui.getRenderer());
+    const auto btn = Button(frsgui.getRenderer(), frsgui);
     btn->addGroup("btn");
+    // frsgui.addElement(btn);
 
-    auto btn_style = Style("btn", fr::ApplyBy::CLASS, 1,{
+    auto btn_style = Style("btn", fr::ApplyBy::GROUP, 1,{
         {fr::KEY::SIZE, sf::Vector2f(100.f, 100.f)},
         {fr::KEY::POSITION, sf::Vector2f(800.f, 300.f)},
         {fr::KEY::BACKGROUND_COLOR, sf::Color::Cyan}
     }, frsgui);
-
-    //frsgui.addElement(btn);
 
     // testing custom event handlers
     sf::RectangleShape player;
@@ -81,17 +78,15 @@ int main()
     });
 
     // Bool is_numerical_only is an overload, defaults to false
-    const auto input = Input(frsgui.getRenderer(), false);
+    const auto input = Input(frsgui.getRenderer(), false, frsgui);
     input->addGroup("input");
-    auto input_style = Style("input", fr::ApplyBy::CLASS, 1, {
+    auto input_style = Style("input", fr::ApplyBy::GROUP, 1, {
         {fr::KEY::SIZE, sf::Vector2f(300.f, 50.f)},
         {fr::KEY::POSITION, sf::Vector2f(500.f, 500.f)},
         {fr::KEY::OUTLINE_THICKNESS, 1},
         {fr::KEY::OUTLINE_COLOR, sf::Color(160, 160, 160)},
         {fr::KEY::BACKGROUND_COLOR, sf::Color(35, 34, 33)}
     }, frsgui);
-    frsgui.addElement(input);
-    frsgui.addElement(btn);
 
 
     while(render_window_ptr->isOpen())

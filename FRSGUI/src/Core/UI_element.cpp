@@ -2,11 +2,45 @@
 
 namespace fr {
 
-    // constructor
+    // constructor and overloads
     UI_element::UI_element(const std::shared_ptr<Rendering::Renderer> &renderer_ptr):
     renderer_ptr(renderer_ptr)
     {
         id = "";
+        z_order = 0;
+        dirty = false;
+    }
+
+    UI_element::UI_element(const std::shared_ptr<Rendering::Renderer>& renderer_ptr, std::string ID, std::initializer_list<std::string> groups):
+    renderer_ptr(renderer_ptr)
+    {
+        id = std::move(ID);
+        z_order = 0;
+        dirty = false;
+
+        for(const auto& group : groups)
+        {
+            this->groups.push_back(group);
+        }
+    }
+
+    UI_element::UI_element(const std::shared_ptr<Rendering::Renderer>& renderer_ptr, std::initializer_list<std::string> groups):
+    renderer_ptr(renderer_ptr)
+    {
+        id = "";
+        z_order = 0;
+        dirty = false;
+
+        for(const auto& group : groups)
+        {
+            this->groups.push_back(group);
+        }
+    }
+
+    UI_element::UI_element(const std::shared_ptr<Rendering::Renderer>& renderer_ptr, std::string ID):
+    renderer_ptr(renderer_ptr)
+    {
+        id = std::move(ID);
         z_order = 0;
         dirty = false;
     }
