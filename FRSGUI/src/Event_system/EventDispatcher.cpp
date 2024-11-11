@@ -26,6 +26,7 @@ namespace fr::Events {
 
     void EventDispatcher::Handle_TextEnterd(const sf::Event &event)
     {
+        // Search for a selected input field and if found send in the unicode data from the event
         for(const auto& input : get_input_elements())
         {
             if(input->get_select() == true)
