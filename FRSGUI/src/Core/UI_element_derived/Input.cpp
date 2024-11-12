@@ -11,14 +11,6 @@ fr::Input::Input(const std::shared_ptr<Rendering::Renderer>& renderer_ptr)
         stored_data = "";
 }
 
-fr::Input::Input(const std::shared_ptr<Rendering::Renderer>& renderer_ptr, bool is_number_only_input)
-        : UI_element(renderer_ptr), is_number_only_input(is_number_only_input)
-{
-        selected = false;
-        stored_data = "";
-}
-
-
 fr::Input::Input(const std::shared_ptr<Rendering::Renderer>& renderer_ptr, std::string ID)
         : UI_element(renderer_ptr, std::move(ID))
 {
@@ -43,6 +35,13 @@ fr::Input::Input(const std::shared_ptr<Rendering::Renderer>& renderer_ptr, std::
         stored_data = "";
 }
 
+
+fr::Input::Input(const std::shared_ptr<Rendering::Renderer>& renderer_ptr, bool is_number_only_input)
+        : UI_element(renderer_ptr), is_number_only_input(is_number_only_input)
+{
+        selected = false;
+        stored_data = "";
+}
 
 fr::Input::Input(const std::shared_ptr<Rendering::Renderer>& renderer_ptr, bool is_number_only_input, std::string ID)
         : UI_element(renderer_ptr, std::move(ID)), is_number_only_input(is_number_only_input)
