@@ -36,6 +36,9 @@ add_executable(FRSGUI main.cpp
         FRSGUI/src/Utility/KEY.h
         FRSGUI/src/Core/UI_element_derived/Input.cpp
         FRSGUI/src/Core/UI_element_derived/Input.h
+        FRSGUI/src/Utility/Constructor_overloads/Input-overloads.h
+        FRSGUI/src/Utility/Constructor_overloads/Button-overloads.h
+        FRSGUI/src/Utility/Constructor_overloads/UI_element-overloads.h
 )
 
 set(SFML_STATIC_LIBRARIES TRUE)
