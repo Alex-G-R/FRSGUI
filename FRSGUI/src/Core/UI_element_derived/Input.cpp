@@ -105,7 +105,7 @@ void fr::Input::push_data(sf::Uint32 char_to_add_unicode)
 
 void fr::Input::load_text()
 {
-        if(!font.loadFromFile("C:/dev/FRSGUI/fonts/Caliban.ttf"))
+        if(!font.loadFromFile("C:/dev/FRSGUI/fonts/arial.ttf"))
         {
                 std::cout << "Font loading error \n";
         }

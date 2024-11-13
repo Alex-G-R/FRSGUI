@@ -52,7 +52,7 @@ namespace fr::Rendering {
 
             // Position the cursor at the end of the main text
             float cursorXPosition = text.getGlobalBounds().left + text.getGlobalBounds().width;
-            cursor.setPosition(cursorXPosition+1, inputPosition.y);
+            cursor.setPosition(cursorXPosition+1, inputPosition.y - 2);
 
             // Draw the cursor `|`
             render_window_ptr->draw(cursor);
