@@ -7,6 +7,7 @@
 
 // Forward declaration
 namespace fr {
+    class Input;
     class UI_element;
     class FRSGUI;
 }
@@ -20,6 +21,7 @@ private:
 public:
     explicit Renderer(const std::shared_ptr<sf::RenderWindow>& render_window_ptr, FRSGUI* frsgui_ptr);
     void draw(UI_element* element);
+    void draw(sf::Text& text, Input& input_field);
 };
 
 }

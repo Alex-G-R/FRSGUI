@@ -86,7 +86,7 @@ int main()
     const auto input = Input(frsgui.getRenderer(), false, frsgui);
     input->addGroup("input");
     auto input_style = Style("input", fr::ApplyBy::GROUP, 1, {
-        {fr::KEY::SIZE, sf::Vector2f(300.f, 50.f)},
+        {fr::KEY::SIZE, sf::Vector2f(300.f, 30.f)},
         {fr::KEY::POSITION, sf::Vector2f(500.f, 500.f)},
         {fr::KEY::OUTLINE_THICKNESS, 1},
         {fr::KEY::OUTLINE_COLOR, sf::Color(160, 160, 160)},

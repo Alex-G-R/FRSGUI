@@ -23,6 +23,7 @@ private:
     bool dirty;
     // -----
 
+protected:
     std::shared_ptr<Rendering::Renderer> renderer_ptr{};
 
 public:

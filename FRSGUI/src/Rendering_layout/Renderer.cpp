@@ -14,6 +14,50 @@ namespace fr::Rendering {
 
     }
 
+    void Renderer::draw(sf::Text& text, Input& input_field)
+    {
+        text.setCharacterSize(24);
+
+        // Get position and width of input field
+        auto inputPosition = input_field.getShape()->getPosition();
+        float inputWidth = input_field.getShape()->getSize().x;
+
+        // Set the text position relative to input field
+        text.setPosition(inputPosition.x + 2.f, inputPosition.y);
+
+        // Get the full text string from input
+        std::string fullText = input_field.get_data();
+        text.setString(fullText);
+
+        // Check if text width exceeds input field width
+        while (text.getGlobalBounds().width > inputWidth && !fullText.empty()) {
+            // If too wide remove characters from the beginning of the string
+            fullText.erase(0, 1);
+            text.setString(fullText);
+        }
+
+        // Draw the main text first
+        render_window_ptr->draw(text);
+
+        // If the cursor `|` should be displayed create and configure a separate sf::Text for it
+        if (input_field.get_select() == true)
+        {
+            sf::Text cursor(text);
+            cursor.setString("|");
+            cursor.setCharacterSize(text.getCharacterSize());
+
+
+            // Set the color for the cursor
+            cursor.setFillColor(sf::Color(133, 134, 135, 255));
+
+            // Position the cursor at the end of the main text
+            float cursorXPosition = text.getGlobalBounds().left + text.getGlobalBounds().width;
+            cursor.setPosition(cursorXPosition+1, inputPosition.y);
+
+            // Draw the cursor `|`
+            render_window_ptr->draw(cursor);
+        }
+    }
     void Renderer::draw(UI_element* element)
     {
         //Only render if is visible

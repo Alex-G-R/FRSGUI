@@ -9,6 +9,7 @@ fr::Input::Input(const std::shared_ptr<Rendering::Renderer>& renderer_ptr)
         is_number_only_input = false;
         selected = false;
         stored_data = "";
+        load_text();
 }
 
 fr::Input::Input(const std::shared_ptr<Rendering::Renderer>& renderer_ptr, std::string ID)
@@ -17,6 +18,7 @@ fr::Input::Input(const std::shared_ptr<Rendering::Renderer>& renderer_ptr, std::
         is_number_only_input = false;
         selected = false;
         stored_data = "";
+        load_text();
 }
 
 fr::Input::Input(const std::shared_ptr<Rendering::Renderer>& renderer_ptr, std::initializer_list<std::string> groups)
@@ -25,6 +27,7 @@ fr::Input::Input(const std::shared_ptr<Rendering::Renderer>& renderer_ptr, std::
         is_number_only_input = false;
         selected = false;
         stored_data = "";
+        load_text();
 }
 
 fr::Input::Input(const std::shared_ptr<Rendering::Renderer>& renderer_ptr, std::string ID, std::initializer_list<std::string> groups)
@@ -33,6 +36,7 @@ fr::Input::Input(const std::shared_ptr<Rendering::Renderer>& renderer_ptr, std::
         is_number_only_input = false;
         selected = false;
         stored_data = "";
+        load_text();
 }
 
 
@@ -41,6 +45,7 @@ fr::Input::Input(const std::shared_ptr<Rendering::Renderer>& renderer_ptr, bool 
 {
         selected = false;
         stored_data = "";
+        load_text();
 }
 
 fr::Input::Input(const std::shared_ptr<Rendering::Renderer>& renderer_ptr, bool is_number_only_input, std::string ID)
@@ -48,6 +53,7 @@ fr::Input::Input(const std::shared_ptr<Rendering::Renderer>& renderer_ptr, bool 
 {
         selected = false;
         stored_data = "";
+        load_text();
 }
 
 fr::Input::Input(const std::shared_ptr<Rendering::Renderer>& renderer_ptr, bool is_number_only_input, std::initializer_list<std::string> groups)
@@ -55,6 +61,7 @@ fr::Input::Input(const std::shared_ptr<Rendering::Renderer>& renderer_ptr, bool 
 {
         selected = false;
         stored_data = "";
+        load_text();
 }
 
 fr::Input::Input(const std::shared_ptr<Rendering::Renderer>& renderer_ptr, bool is_number_only_input, std::string ID, std::initializer_list<std::string> groups)
@@ -62,6 +69,8 @@ fr::Input::Input(const std::shared_ptr<Rendering::Renderer>& renderer_ptr, bool 
 {
         selected = false;
         stored_data = "";
+
+        load_text();
 }
 
 void fr::Input::push_data(sf::Uint32 char_to_add_unicode)
@@ -73,6 +82,9 @@ void fr::Input::push_data(sf::Uint32 char_to_add_unicode)
                 std::cout << stored_data << "\n";
                 return;
         }
+
+        if(stored_data.length() == 0 && char_to_add_unicode == 8)
+                return;
 
         if(this->is_number_only_input)
         {
@@ -88,6 +100,27 @@ void fr::Input::push_data(sf::Uint32 char_to_add_unicode)
                 stored_data += static_cast<char>(char_to_add_unicode);
                 std::cout << stored_data << "\n";
         }
+}
+
+
+void fr::Input::load_text()
+{
+        if(!font.loadFromFile("C:/dev/FRSGUI/fonts/Caliban.ttf"))
+        {
+                std::cout << "Font loading error \n";
+        }
+
+        displayd_text.setFont(font);
+        displayd_text.setCharacterSize(16);
+        displayd_text.setString("HELLO STRING");
+        //std::cout << this->getShape()->getPosition().x << " " <<  this->getShape()->getPosition().y << "\n";
+
+}
+
+void fr::Input::Render()
+{
+        renderer_ptr->draw(this);
+        renderer_ptr->draw(displayd_text, *this);
 }
 
 

@@ -13,6 +13,10 @@ private:
     bool selected;
     std::string stored_data;
 
+    sf::Font font;
+
+    sf::Text displayd_text;
+
 public:
     Input(const std::shared_ptr<Rendering::Renderer>& renderer_ptr);
     Input(const std::shared_ptr<Rendering::Renderer>& renderer_ptr, bool is_number_only_input);
@@ -24,6 +28,10 @@ public:
     Input(const std::shared_ptr<Rendering::Renderer>& renderer_ptr, bool is_number_only_input, std::string ID, std::initializer_list<std::string> groups);
     Input(const std::shared_ptr<Rendering::Renderer>& renderer_ptr, bool is_number_only_input, std::initializer_list<std::string> groups);
     Input(const std::shared_ptr<Rendering::Renderer>& renderer_ptr, bool is_number_only_input, std::string ID);
+
+
+    void load_text();
+    void Render() override;
 
     void set_select(bool selected);
     bool get_select();
