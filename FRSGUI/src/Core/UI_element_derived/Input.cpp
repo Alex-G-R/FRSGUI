@@ -75,6 +75,10 @@ fr::Input::Input(const std::shared_ptr<Rendering::Renderer>& renderer_ptr, bool 
 
 void fr::Input::push_data(sf::Uint32 char_to_add_unicode)
 {
+        // Ignore enter
+        if(char_to_add_unicode == 13)
+                return;
+
         // Handle backspace
         if(stored_data.length() > 0 && char_to_add_unicode == 8)
         {
