@@ -11,7 +11,11 @@ namespace fr
         BACKGROUND_COLOR,
         OUTLINE_COLOR,
         OUTLINE_THICKNESS,
-        VISIBLE
+        VISIBLE,
+
+        // Input field specific
+        CURSOR_COLOR,
+        CHARACTER_SIZE
     };
 
 }

@@ -90,7 +90,9 @@ int main()
         {fr::KEY::POSITION, sf::Vector2f(500.f, 500.f)},
         {fr::KEY::OUTLINE_THICKNESS, 1},
         {fr::KEY::OUTLINE_COLOR, sf::Color(160, 160, 160)},
-        {fr::KEY::BACKGROUND_COLOR, sf::Color(35, 34, 33)}
+        {fr::KEY::BACKGROUND_COLOR, sf::Color(35, 34, 33)},
+        // ended here
+        {fr::KEY::CURSOR_COLOR, sf::Color(133, 134, 135, 255)}
     }, frsgui);
 
 

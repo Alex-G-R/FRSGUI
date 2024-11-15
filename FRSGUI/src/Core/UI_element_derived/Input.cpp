@@ -123,7 +123,10 @@ void fr::Input::load_text()
 
 void fr::Input::Render()
 {
+        // Draw the element
         renderer_ptr->draw(this);
+
+        // Draw the text of the input
         renderer_ptr->draw(displayd_text, *this);
 }
 
