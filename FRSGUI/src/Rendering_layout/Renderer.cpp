@@ -30,7 +30,7 @@ namespace fr::Rendering {
         text.setString(fullText);
 
         // Check if text width exceeds input field width
-        while (text.getGlobalBounds().width > inputWidth && !fullText.empty()) {
+        while (text.getGlobalBounds().width + 10 > inputWidth && !fullText.empty()) {
             // If too wide remove characters from the beginning of the string
             fullText.erase(0, 1);
             text.setString(fullText);
