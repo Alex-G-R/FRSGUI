@@ -15,11 +15,7 @@ int main()
         "squares_three",
         "squares_four"
     }, frsgui);
-    //square->addGroup("squares");
-    //square->addGroup("squares_two");
-    //square->addGroup("squares_three");
-    //square->addGroup("squares_four");
-    //square->setID("Foo");
+
 
     auto squares_style = Style("squares", fr::ApplyBy::GROUP, 1,{
         {fr::KEY::POSITION, sf::Vector2f(50.f, 50.f)},
@@ -82,7 +78,7 @@ int main()
         // std::cout << "Size of frsgui: " << sizeof(frsgui) << "\n";
     });
 
-    // Bool is_numerical_only is an overload, defaults to false
+    //Bool is_numerical_only is an overload, defaults to false
     const auto input = Input(frsgui.getRenderer(), false, frsgui);
     input->addGroup("input");
     auto input_style = Style("input", fr::ApplyBy::GROUP, 1, {

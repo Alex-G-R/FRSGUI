@@ -21,6 +21,7 @@ private:
 public:
     explicit Renderer(const std::shared_ptr<sf::RenderWindow>& render_window_ptr, FRSGUI* frsgui_ptr);
     void draw(UI_element* element);
+    bool shouldRender(UI_element* element);
     void draw(sf::Text& text, Input& input_field);
 };
 
