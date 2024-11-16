@@ -115,9 +115,6 @@ void fr::Input::load_text()
         }
 
         displayd_text.setFont(font);
-        displayd_text.setCharacterSize(16);
-        displayd_text.setString("HELLO STRING");
-        //std::cout << this->getShape()->getPosition().x << " " <<  this->getShape()->getPosition().y << "\n";
 
 }
 
