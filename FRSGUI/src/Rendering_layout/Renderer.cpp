@@ -7,6 +7,7 @@
 namespace fr::Rendering {
 
 void applyStylesRectangleShape(std::unordered_map<KEY, int>& current_priority, StyleVec& styleVec, sf::RectangleShape* shape);
+void applyStylesText(std::unordered_map<KEY, int>& current_priority, StyleVec& styleVec, sf::Text& text, sf::Color& cursor_color);
 
 Renderer::Renderer(const std::shared_ptr<sf::RenderWindow>& render_window_ptr, FRSGUI* frsgui_ptr) :
 render_window_ptr(render_window_ptr), frsgui_ptr(frsgui_ptr)
@@ -62,43 +63,8 @@ void Renderer::draw(sf::Text& text, Input& input_field)
     {
         // Check if the style should apply by ID or group(class)
         if (styleVec.style_type == ApplyBy::ID && styleVec.group_name == element_id)
-        {
-            // Apply style by ID
-
-            // Character size
-            if (styleVec.style->flags[KEY::CHARACTER_SIZE] && (current_priority[KEY::CHARACTER_SIZE] < styleVec.style_priority)) {
-
-                type value = styleVec.style->getProperty(KEY::CHARACTER_SIZE);
-
-                std::visit([&](auto&& arg)
-                {
-                    using T = std::decay_t<decltype(arg)>;
-                    if constexpr(std::is_same_v<T, int>)
-                    {
-                        text.setCharacterSize(arg);
-                    }
-                }, value);
-
-                current_priority[KEY::CHARACTER_SIZE] = styleVec.style_priority;
-            }
-
-            // Cursor color
-            if (styleVec.style->flags[KEY::CURSOR_COLOR] && (current_priority[KEY::CURSOR_COLOR] < styleVec.style_priority)) {
-
-                type value = styleVec.style->getProperty(KEY::CURSOR_COLOR);
-
-                std::visit([&](auto&& arg)
-                {
-                    using T = std::decay_t<decltype(arg)>;
-                    if constexpr(std::is_same_v<T, sf::Color>)
-                    {
-                        cursor_color = arg;
-                    }
-                }, value);
-
-                current_priority[KEY::CURSOR_COLOR] = styleVec.style_priority;
-            }
-
+        { // Apply style by ID
+            applyStylesText(current_priority, styleVec, text, cursor_color);
         }
         else if (styleVec.style_type == ApplyBy::GROUP) {
             // Apply style if it matches one of the elements groups
@@ -106,39 +72,7 @@ void Renderer::draw(sf::Text& text, Input& input_field)
             {
                 if (group == styleVec.group_name)
                 {
-                    // Character size
-                    if (styleVec.style->flags[KEY::CHARACTER_SIZE] && (current_priority[KEY::CHARACTER_SIZE] < styleVec.style_priority)) {
-
-                        type value = styleVec.style->getProperty(KEY::CHARACTER_SIZE);
-
-                        std::visit([&](auto&& arg)
-                        {
-                            using T = std::decay_t<decltype(arg)>;
-                            if constexpr(std::is_same_v<T, int>)
-                            {
-                                text.setCharacterSize(arg);
-                            }
-                        }, value);
-
-                        current_priority[KEY::CHARACTER_SIZE] = styleVec.style_priority;
-                    }
-
-                    // Cursor color
-                    if (styleVec.style->flags[KEY::CURSOR_COLOR] && (current_priority[KEY::CURSOR_COLOR] < styleVec.style_priority)) {
-
-                        type value = styleVec.style->getProperty(KEY::CURSOR_COLOR);
-
-                        std::visit([&](auto&& arg)
-                        {
-                            using T = std::decay_t<decltype(arg)>;
-                            if constexpr(std::is_same_v<T, sf::Color>)
-                            {
-                                cursor_color = arg;
-                            }
-                        }, value);
-
-                        current_priority[KEY::CURSOR_COLOR] = styleVec.style_priority;
-                    }
+                    applyStylesText(current_priority, styleVec, text, cursor_color);
                     break;
                 }
             }
@@ -225,6 +159,43 @@ void Renderer::draw(UI_element* element)
 
     // Draw the shape
     render_window_ptr->draw(*shape);
+}
+
+void applyStylesText(std::unordered_map<KEY, int>& current_priority, StyleVec& styleVec, sf::Text& text, sf::Color& cursor_color)
+{
+    // Character size
+    if (styleVec.style->flags[KEY::CHARACTER_SIZE] && (current_priority[KEY::CHARACTER_SIZE] < styleVec.style_priority)) {
+
+        type value = styleVec.style->getProperty(KEY::CHARACTER_SIZE);
+
+        std::visit([&](auto&& arg)
+        {
+            using T = std::decay_t<decltype(arg)>;
+            if constexpr(std::is_same_v<T, int>)
+            {
+                text.setCharacterSize(arg);
+            }
+        }, value);
+
+        current_priority[KEY::CHARACTER_SIZE] = styleVec.style_priority;
+    }
+
+    // Cursor color
+    if (styleVec.style->flags[KEY::CURSOR_COLOR] && (current_priority[KEY::CURSOR_COLOR] < styleVec.style_priority)) {
+
+        type value = styleVec.style->getProperty(KEY::CURSOR_COLOR);
+
+        std::visit([&](auto&& arg)
+        {
+            using T = std::decay_t<decltype(arg)>;
+            if constexpr(std::is_same_v<T, sf::Color>)
+            {
+                cursor_color = arg;
+            }
+        }, value);
+
+        current_priority[KEY::CURSOR_COLOR] = styleVec.style_priority;
+    }
 }
 
 void applyStylesRectangleShape(std::unordered_map<KEY, int>& current_priority, StyleVec& styleVec, sf::RectangleShape* shape)
