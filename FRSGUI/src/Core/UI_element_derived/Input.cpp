@@ -109,39 +109,39 @@ void fr::Input::push_data(sf::Uint32 char_to_add_unicode)
 
 void fr::Input::load_text()
 {
-        if(!font.loadFromFile("C:/dev/FRSGUI/fonts/arial.ttf"))
-        {
-                std::cout << "Font loading error \n";
-        }
+    if(!font.loadFromFile("C:/dev/FRSGUI/fonts/arial.ttf"))
+    {
+            std::cout << "Font loading error \n";
+    }
 
-        displayd_text.setFont(font);
+    displayd_text.setFont(font);
 
 }
 
 void fr::Input::Render()
 {
-        // Draw the element
-        renderer_ptr->draw(this);
+    // Draw the element
+    renderer_ptr->draw(this);
 
-        // Draw the text of the input
-        renderer_ptr->draw(displayd_text, *this);
+    // Draw the text of the input
+    renderer_ptr->draw(displayd_text, *this);
 }
 
 
 std::string fr::Input::get_data()
 {
-        return stored_data;
+    return stored_data;
 }
 
 
 void fr::Input::set_select(bool selected)
 {
-        std::cout << "Select changed to " << selected << " from " << this->selected << "\n";
-        this->selected = selected;
+    std::cout << "Select changed to " << selected << " from " << this->selected << "\n";
+    this->selected = selected;
 }
 
 bool fr::Input::get_select()
 {
-        return this->selected;
+    return this->selected;
 }
 
