@@ -25,7 +25,8 @@ public:
         {KEY::OUTLINE_THICKNESS, false},
         {KEY::VISIBLE, false},
         {KEY::CURSOR_COLOR, false},
-        {KEY::CHARACTER_SIZE, false}
+        {KEY::CHARACTER_SIZE, false},
+        {KEY::TEXT_COLOR, false}
     };
 
     Style(std::initializer_list<std::pair<KEY, type>> init);

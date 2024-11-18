@@ -15,7 +15,7 @@ int main()
         "squares_three",
         "squares_four"
     }, frsgui);
-    square->setTextString("Hello");
+    square->setTextString("Hello FRSGUI!");
 
     auto squares_style = Style("squares", fr::ApplyBy::GROUP, 1,{
         {fr::KEY::POSITION, sf::Vector2f(50.f, 50.f)},
@@ -24,7 +24,8 @@ int main()
         {fr::KEY::OUTLINE_THICKNESS, 10.f},
         {fr::KEY::OUTLINE_COLOR, sf::Color{0, 255, 0, 255}},
         {fr::KEY::VISIBLE, true},
-        {fr::KEY::CHARACTER_SIZE, 20}
+        {fr::KEY::CHARACTER_SIZE, 20},
+        {fr::KEY::TEXT_COLOR, sf::Color::Magenta}
     }, frsgui);
 
     auto squares_two = Style("squares_two", fr::ApplyBy::GROUP, 17, {

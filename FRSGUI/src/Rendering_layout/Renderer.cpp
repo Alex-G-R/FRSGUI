@@ -38,7 +38,8 @@ void Renderer::draw(UI_element* element)
         {KEY::OUTLINE_THICKNESS, 0},
         {KEY::OUTLINE_COLOR, 0},
         {KEY::CURSOR_COLOR, 0},
-        {KEY::CHARACTER_SIZE, 0}
+        {KEY::CHARACTER_SIZE, 0},
+        {KEY::TEXT_COLOR, 0}
     };
 
 
@@ -161,6 +162,23 @@ void applyStylesText(std::unordered_map<KEY, int>& current_priority, StyleVec& s
         }, value);
 
         current_priority[KEY::CHARACTER_SIZE] = styleVec.style_priority;
+    }
+
+    // Text color
+    if (styleVec.style->flags[KEY::TEXT_COLOR] && (current_priority[KEY::TEXT_COLOR] < styleVec.style_priority)) {
+
+        type value = styleVec.style->getProperty(KEY::TEXT_COLOR);
+
+        std::visit([&](auto&& arg)
+        {
+            using T = std::decay_t<decltype(arg)>;
+            if constexpr(std::is_same_v<T, sf::Color>)
+            {
+                text.setFillColor(arg);
+            }
+        }, value);
+
+        current_priority[KEY::TEXT_COLOR] = styleVec.style_priority;
     }
 
     // Cursor color

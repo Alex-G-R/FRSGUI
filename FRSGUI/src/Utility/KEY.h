@@ -14,7 +14,8 @@ namespace fr
         OUTLINE_THICKNESS,
         VISIBLE,
         CURSOR_COLOR,
-        CHARACTER_SIZE
+        CHARACTER_SIZE,
+        TEXT_COLOR
     };
 
 }
