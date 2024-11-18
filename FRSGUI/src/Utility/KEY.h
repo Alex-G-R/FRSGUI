@@ -14,10 +14,7 @@ namespace fr
         OUTLINE_THICKNESS,
         VISIBLE,
         CURSOR_COLOR,
-        CHARACTER_SIZE,
-
-        // Constructor key
-        TEXT_STRING
+        CHARACTER_SIZE
     };
 
 }
