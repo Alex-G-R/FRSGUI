@@ -199,6 +199,7 @@ void applyStylesText(std::unordered_map<KEY, int>& current_priority, StyleVec& s
 }
 
 // Template function to handle setting properties
+// NOT USED |||| ISSUE WITH HANDLING STYLE PRIORITY - TO FIX?
 auto setProperty = [](auto&& styleVec, auto&& current_priority, auto&& shape, auto&& key, auto&& setter)
 {
     if(styleVec.style->flags[key] && (current_priority[key] < styleVec.style_priority))
@@ -218,39 +219,107 @@ auto setProperty = [](auto&& styleVec, auto&& current_priority, auto&& shape, au
 void applyStylesRectangleShape(std::unordered_map<KEY, int>& current_priority, StyleVec& styleVec, sf::RectangleShape* shape)
 {
     // Position
-    auto setPosition = [](auto* shape, const sf::Vector2f& pos)
-    {
-        shape->setPosition(pos);
-    };
-    setProperty(styleVec, current_priority, shape, KEY::POSITION, setPosition);
+    //auto setPosition = [](auto* shape, const sf::Vector2f& pos)
+    //{
+    //    shape->setPosition(pos);
+    //};
+    //setProperty(styleVec, current_priority, shape, KEY::POSITION, setPosition);
+    if (styleVec.style->flags[KEY::POSITION] && (current_priority[KEY::POSITION] < styleVec.style_priority)) {
+        type value = styleVec.style->getProperty(KEY::POSITION);
 
+        std::visit([&](auto&& arg)
+        {
+            using T = std::decay_t<decltype(arg)>;
+            if constexpr(std::is_same_v<T, sf::Vector2f>)
+            {
+                shape->setPosition(arg);
+            }
+        }, value);
+        current_priority[KEY::POSITION] = styleVec.style_priority;
+    }
     // Size
-    auto setSize = [](auto* shape, const sf::Vector2f& size)
-    {
-        shape->setSize(size);
-    };
-    setProperty(styleVec, current_priority, shape, KEY::SIZE, setSize);
+    //auto setSize = [](auto* shape, const sf::Vector2f& size)
+    //{
+    //    shape->setSize(size);
+    //};
+    //setProperty(styleVec, current_priority, shape, KEY::SIZE, setSize);
+    if (styleVec.style->flags[KEY::SIZE] && (current_priority[KEY::SIZE] < styleVec.style_priority)) {
+        type value = styleVec.style->getProperty(KEY::SIZE);
+        std::visit([&](auto&& arg)
+        {
+            using T = std::decay_t<decltype(arg)>;
+            if constexpr(std::is_same_v<T, sf::Vector2f>)
+            {
+                shape->setSize(arg);
+            }
+        }, value);
+        current_priority[KEY::SIZE] = styleVec.style_priority;
+    }
 
     // Background color
-    auto setBgColor = [](auto* shape, const sf::Color& bgColor)
-    {
-        shape->setFillColor(bgColor);
-    };
-    setProperty(styleVec, current_priority, shape, KEY::BACKGROUND_COLOR, setBgColor);
+    //auto setBgColor = [](auto* shape, const sf::Color& bgColor)
+    //{
+    //    shape->setFillColor(bgColor);
+    //};
+    //setProperty(styleVec, current_priority, shape, KEY::BACKGROUND_COLOR, setBgColor);
+    if (styleVec.style->flags[KEY::BACKGROUND_COLOR] && (current_priority[KEY::BACKGROUND_COLOR] < styleVec.style_priority)) {
+        type value = styleVec.style->getProperty(KEY::BACKGROUND_COLOR);
+        std::visit([&](auto&& arg)
+        {
+            using T = std::decay_t<decltype(arg)>;
+            if constexpr(std::is_same_v<T, sf::Color>)
+            {
+                shape->setFillColor(arg);
+            }
+        }, value);
+        current_priority[KEY::BACKGROUND_COLOR] = styleVec.style_priority;
+    }
 
     // Outline thickness
-    auto setOutlineThickness = [](auto* shape, const float thickness)
-    {
-        shape->setOutlineThickness(thickness);
-    };
-    setProperty(styleVec, current_priority, shape, KEY::OUTLINE_THICKNESS, setOutlineThickness);
+    //auto setOutlineThickness = [](auto* shape, const float thickness)
+    //{
+    //    shape->setOutlineThickness(thickness);
+    //};
+    //setProperty(styleVec, current_priority, shape, KEY::OUTLINE_THICKNESS, setOutlineThickness);
+    if (styleVec.style->flags[KEY::OUTLINE_THICKNESS] && (current_priority[KEY::OUTLINE_THICKNESS] < styleVec.style_priority)) {
+        type value = styleVec.style->getProperty(KEY::OUTLINE_THICKNESS);
+        std::visit([&](auto&& arg)
+        {
+            using T = std::decay_t<decltype(arg)>;
+            if constexpr(std::is_same_v<T, float>)
+            {
+                shape->setOutlineThickness(arg);
+            }
+            else if constexpr(std::is_same_v<T, int>)
+            {
+                shape->setOutlineThickness(static_cast<float>(arg));
+            }
+            else if constexpr(std::is_same_v<T, double>)
+            {
+                shape->setOutlineThickness(static_cast<float>(arg));
+            }
+        }, value);
+        current_priority[KEY::OUTLINE_THICKNESS] = styleVec.style_priority;
+    }
 
     // Outline color
-    auto setOutlineColor = [](auto* shape, const sf::Color& outlineColor)
-    {
-        shape->setOutlineColor(outlineColor);
-    };
-    setProperty(styleVec, current_priority, shape, KEY::OUTLINE_COLOR, setOutlineColor);
+    //auto setOutlineColor = [](auto* shape, const sf::Color& outlineColor)
+    //{
+    //    shape->setOutlineColor(outlineColor);
+    //};
+    //setProperty(styleVec, current_priority, shape, KEY::OUTLINE_COLOR, setOutlineColor);
+    if (styleVec.style->flags[KEY::OUTLINE_COLOR] && (current_priority[KEY::OUTLINE_COLOR] < styleVec.style_priority)) {
+        type value = styleVec.style->getProperty(KEY::OUTLINE_COLOR);
+        std::visit([&](auto&& arg)
+        {
+            using T = std::decay_t<decltype(arg)>;
+            if constexpr(std::is_same_v<T, sf::Color>)
+            {
+                shape->setOutlineColor(arg);
+            }
+        }, value);
+        current_priority[KEY::OUTLINE_COLOR] = styleVec.style_priority;
+    }
 }
 
 
