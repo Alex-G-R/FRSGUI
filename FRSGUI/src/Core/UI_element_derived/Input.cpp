@@ -10,6 +10,8 @@ fr::Input::Input(const std::shared_ptr<Rendering::Renderer>& renderer_ptr)
         selected = false;
         stored_data = "";
         load_text();
+
+        has_cursor = true;
 }
 
 fr::Input::Input(const std::shared_ptr<Rendering::Renderer>& renderer_ptr, std::string ID)
@@ -19,6 +21,8 @@ fr::Input::Input(const std::shared_ptr<Rendering::Renderer>& renderer_ptr, std::
         selected = false;
         stored_data = "";
         load_text();
+
+        has_cursor = true;
 }
 
 fr::Input::Input(const std::shared_ptr<Rendering::Renderer>& renderer_ptr, std::initializer_list<std::string> groups)
@@ -28,6 +32,8 @@ fr::Input::Input(const std::shared_ptr<Rendering::Renderer>& renderer_ptr, std::
         selected = false;
         stored_data = "";
         load_text();
+
+        has_cursor = true;
 }
 
 fr::Input::Input(const std::shared_ptr<Rendering::Renderer>& renderer_ptr, std::string ID, std::initializer_list<std::string> groups)
@@ -37,6 +43,8 @@ fr::Input::Input(const std::shared_ptr<Rendering::Renderer>& renderer_ptr, std::
         selected = false;
         stored_data = "";
         load_text();
+
+        has_cursor = true;
 }
 
 
@@ -46,6 +54,8 @@ fr::Input::Input(const std::shared_ptr<Rendering::Renderer>& renderer_ptr, bool 
         selected = false;
         stored_data = "";
         load_text();
+
+        has_cursor = true;
 }
 
 fr::Input::Input(const std::shared_ptr<Rendering::Renderer>& renderer_ptr, bool is_number_only_input, std::string ID)
@@ -54,6 +64,8 @@ fr::Input::Input(const std::shared_ptr<Rendering::Renderer>& renderer_ptr, bool 
         selected = false;
         stored_data = "";
         load_text();
+
+        has_cursor = true;
 }
 
 fr::Input::Input(const std::shared_ptr<Rendering::Renderer>& renderer_ptr, bool is_number_only_input, std::initializer_list<std::string> groups)
@@ -62,6 +74,8 @@ fr::Input::Input(const std::shared_ptr<Rendering::Renderer>& renderer_ptr, bool 
         selected = false;
         stored_data = "";
         load_text();
+
+        has_cursor = true;
 }
 
 fr::Input::Input(const std::shared_ptr<Rendering::Renderer>& renderer_ptr, bool is_number_only_input, std::string ID, std::initializer_list<std::string> groups)
@@ -71,6 +85,8 @@ fr::Input::Input(const std::shared_ptr<Rendering::Renderer>& renderer_ptr, bool 
         stored_data = "";
 
         load_text();
+
+        has_cursor = true;
 }
 
 void fr::Input::push_data(sf::Uint32 char_to_add_unicode)
@@ -84,6 +100,7 @@ void fr::Input::push_data(sf::Uint32 char_to_add_unicode)
         {
                 stored_data.pop_back();
                 std::cout << stored_data << "\n";
+                setTextString(stored_data);
                 return;
         }
 
@@ -97,12 +114,14 @@ void fr::Input::push_data(sf::Uint32 char_to_add_unicode)
                 {
                         stored_data += static_cast<char>(char_to_add_unicode);
                         std::cout << stored_data << "\n";
+                        setTextString(stored_data);
                 }
         }
         else
         {
                 stored_data += static_cast<char>(char_to_add_unicode);
                 std::cout << stored_data << "\n";
+                setTextString(stored_data);
         }
 }
 
@@ -116,15 +135,6 @@ void fr::Input::load_text()
 
     displayd_text.setFont(font);
 
-}
-
-void fr::Input::Render()
-{
-    // Draw the element
-    renderer_ptr->draw(this);
-
-    // Draw the text of the input
-    renderer_ptr->draw(displayd_text, *this);
 }
 
 

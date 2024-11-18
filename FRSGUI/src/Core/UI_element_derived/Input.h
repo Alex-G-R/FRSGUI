@@ -10,7 +10,6 @@ private:
     // Numeric flag
     bool is_number_only_input;
 
-    bool selected;
     std::string stored_data;
 
     sf::Font font;
@@ -31,7 +30,6 @@ public:
 
 
     void load_text();
-    void Render() override;
 
     void set_select(bool selected);
     bool get_select();

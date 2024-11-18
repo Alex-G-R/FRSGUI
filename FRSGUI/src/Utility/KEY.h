@@ -6,16 +6,18 @@ namespace fr
 {
     enum class KEY
     {
+        // Basic styling key
         POSITION,
         SIZE,
         BACKGROUND_COLOR,
         OUTLINE_COLOR,
         OUTLINE_THICKNESS,
         VISIBLE,
-
-        // Input field specific
         CURSOR_COLOR,
-        CHARACTER_SIZE
+        CHARACTER_SIZE,
+
+        // Constructor key
+        TEXT_STRING
     };
 
 }

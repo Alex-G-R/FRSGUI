@@ -16,91 +16,6 @@ render_window_ptr(render_window_ptr), frsgui_ptr(frsgui_ptr)
 
 }
 
-void Renderer::draw(sf::Text& text, Input& input_field)
-{
-    //Only render if is visible
-    if(!shouldRender(&input_field))
-    {
-        return;
-    }
-
-    // Track current priorities for input style specific styles
-    std::unordered_map<KEY, int> current_priority{
-            {KEY::CURSOR_COLOR, 0},
-            {KEY::CHARACTER_SIZE, 0}
-    };
-
-    // Get position and width of input field
-    auto inputPosition = input_field.getShape()->getPosition();
-    float inputWidth = input_field.getShape()->getSize().x;
-
-    // Set the text position relative to input field
-    text.setPosition(inputPosition.x, inputPosition.y);
-
-    // Get the full text string from input
-    std::string fullText = input_field.get_data();
-    text.setString(fullText);
-
-    // Check if text width exceeds input field width
-    while (text.getGlobalBounds().width + 10 > inputWidth && !fullText.empty()) {
-        // If too wide remove characters from the beginning of the string
-        fullText.erase(0, 1);
-        text.setString(fullText);
-    }
-
-    // Style handling for both ID and groups
-    std::string element_id = input_field.getID();
-    std::vector<std::string> element_groups = input_field.getGroupsVector();
-
-    // Do not render if no styles applied
-    if(element_groups.empty())
-        return;
-
-    sf::Color cursor_color;
-
-    // Iterate over the styles defined in the stylesheet
-    for (auto& styleVec : frsgui_ptr->style_sheet.getStyleVec())
-    {
-        // Check if the style should apply by ID or group(class)
-        if (styleVec.style_type == ApplyBy::ID && styleVec.group_name == element_id)
-        { // Apply style by ID
-            applyStylesText(current_priority, styleVec, text, cursor_color);
-        }
-        else if (styleVec.style_type == ApplyBy::GROUP) {
-            // Apply style if it matches one of the elements groups
-            for (const auto& group : element_groups)
-            {
-                if (group == styleVec.group_name)
-                {
-                    applyStylesText(current_priority, styleVec, text, cursor_color);
-                    break;
-                }
-            }
-        }
-    }
-
-    // Draw the main text first
-    render_window_ptr->draw(text);
-
-    // If the cursor `|` should be displayed create and configure a separate sf::Text for it
-    if (input_field.get_select() == true)
-    {
-        sf::Text cursor(text);
-        cursor.setString("|");
-        cursor.setCharacterSize(text.getCharacterSize());
-
-
-        // Set the color for the cursor
-        cursor.setFillColor(cursor_color);
-
-        // Position the cursor at the end of the main text
-        float cursorXPosition = text.getGlobalBounds().left + text.getGlobalBounds().width;
-        cursor.setPosition(cursorXPosition+1, inputPosition.y);
-        // Draw the cursor `|`
-        render_window_ptr->draw(cursor);
-    }
-}
-
 void Renderer::draw(UI_element* element)
 {
     //Only render if is visible
@@ -159,6 +74,74 @@ void Renderer::draw(UI_element* element)
 
     // Draw the shape
     render_window_ptr->draw(*shape);
+
+    // Draw element text
+    // Get position and width of the element
+    auto elementPosition = shape->getPosition();
+    float elementWidth = shape->getSize().x;
+
+    sf::Text text = element->getText();
+
+    // Set the text position relative to input field
+    text.setPosition(elementPosition.x, elementPosition.y);
+
+    // Get the full text string from input
+    std::string fullText = element->getTextString();
+    text.setString(fullText);
+
+
+    sf::Color cursor_color;
+    // Iterate over the styles defined in the stylesheet
+    for (auto& styleVec : frsgui_ptr->style_sheet.getStyleVec())
+    {
+        // Check if the style should apply by ID or group(class)
+        if (styleVec.style_type == ApplyBy::ID && styleVec.group_name == element_id)
+        { // Apply style by ID
+            applyStylesText(current_priority, styleVec, text, cursor_color);
+        }
+        else if (styleVec.style_type == ApplyBy::GROUP) {
+            // Apply style if it matches one of the elements groups
+            for (const auto& group : element_groups)
+            {
+                if (group == styleVec.group_name)
+                {
+                    applyStylesText(current_priority, styleVec, text, cursor_color);
+                    break;
+                }
+            }
+        }
+    }
+
+    // Check if text width exceeds input field width
+    while (text.getGlobalBounds().width + 10 > elementWidth && !fullText.empty()) {
+        // If too wide remove characters from the beginning of the string
+        fullText.erase(0, 1);
+        text.setString(fullText);
+    }
+
+    render_window_ptr->draw(text);
+
+    // Draw the cursor
+    if(element->has_cursor == true)
+    {
+        // If the cursor `|` should be displayed create and configure a separate sf::Text for it
+        if (element->selected == true)
+        {
+            sf::Text cursor(text);
+            cursor.setString("|");
+            cursor.setCharacterSize(text.getCharacterSize());
+
+
+            // Set the color for the cursor
+            cursor.setFillColor(cursor_color);
+
+            // Position the cursor at the end of the main text
+            float cursorXPosition = text.getGlobalBounds().left + text.getGlobalBounds().width;
+            cursor.setPosition(cursorXPosition+1, elementPosition.y);
+            // Draw the cursor `|`
+            render_window_ptr->draw(cursor);
+        }
+    }
 }
 
 void applyStylesText(std::unordered_map<KEY, int>& current_priority, StyleVec& styleVec, sf::Text& text, sf::Color& cursor_color)
@@ -198,32 +181,9 @@ void applyStylesText(std::unordered_map<KEY, int>& current_priority, StyleVec& s
     }
 }
 
-// Template function to handle setting properties
-// NOT USED |||| ISSUE WITH HANDLING STYLE PRIORITY - TO FIX?
-auto setProperty = [](auto&& styleVec, auto&& current_priority, auto&& shape, auto&& key, auto&& setter)
-{
-    if(styleVec.style->flags[key] && (current_priority[key] < styleVec.style_priority))
-    {
-        auto value = styleVec.style->getProperty(key);
-
-        std::visit([&](auto&& arg)
-        {
-            using T = std::decay_t<decltype(arg)>;
-            if constexpr(std::is_invocable_v<decltype(setter), decltype(shape), T>) {
-                setter(shape, arg);
-            }
-        }, value);
-    }
-};
-
 void applyStylesRectangleShape(std::unordered_map<KEY, int>& current_priority, StyleVec& styleVec, sf::RectangleShape* shape)
 {
     // Position
-    //auto setPosition = [](auto* shape, const sf::Vector2f& pos)
-    //{
-    //    shape->setPosition(pos);
-    //};
-    //setProperty(styleVec, current_priority, shape, KEY::POSITION, setPosition);
     if (styleVec.style->flags[KEY::POSITION] && (current_priority[KEY::POSITION] < styleVec.style_priority)) {
         type value = styleVec.style->getProperty(KEY::POSITION);
 
@@ -238,11 +198,6 @@ void applyStylesRectangleShape(std::unordered_map<KEY, int>& current_priority, S
         current_priority[KEY::POSITION] = styleVec.style_priority;
     }
     // Size
-    //auto setSize = [](auto* shape, const sf::Vector2f& size)
-    //{
-    //    shape->setSize(size);
-    //};
-    //setProperty(styleVec, current_priority, shape, KEY::SIZE, setSize);
     if (styleVec.style->flags[KEY::SIZE] && (current_priority[KEY::SIZE] < styleVec.style_priority)) {
         type value = styleVec.style->getProperty(KEY::SIZE);
         std::visit([&](auto&& arg)
@@ -257,11 +212,6 @@ void applyStylesRectangleShape(std::unordered_map<KEY, int>& current_priority, S
     }
 
     // Background color
-    //auto setBgColor = [](auto* shape, const sf::Color& bgColor)
-    //{
-    //    shape->setFillColor(bgColor);
-    //};
-    //setProperty(styleVec, current_priority, shape, KEY::BACKGROUND_COLOR, setBgColor);
     if (styleVec.style->flags[KEY::BACKGROUND_COLOR] && (current_priority[KEY::BACKGROUND_COLOR] < styleVec.style_priority)) {
         type value = styleVec.style->getProperty(KEY::BACKGROUND_COLOR);
         std::visit([&](auto&& arg)
@@ -276,11 +226,6 @@ void applyStylesRectangleShape(std::unordered_map<KEY, int>& current_priority, S
     }
 
     // Outline thickness
-    //auto setOutlineThickness = [](auto* shape, const float thickness)
-    //{
-    //    shape->setOutlineThickness(thickness);
-    //};
-    //setProperty(styleVec, current_priority, shape, KEY::OUTLINE_THICKNESS, setOutlineThickness);
     if (styleVec.style->flags[KEY::OUTLINE_THICKNESS] && (current_priority[KEY::OUTLINE_THICKNESS] < styleVec.style_priority)) {
         type value = styleVec.style->getProperty(KEY::OUTLINE_THICKNESS);
         std::visit([&](auto&& arg)
@@ -303,11 +248,6 @@ void applyStylesRectangleShape(std::unordered_map<KEY, int>& current_priority, S
     }
 
     // Outline color
-    //auto setOutlineColor = [](auto* shape, const sf::Color& outlineColor)
-    //{
-    //    shape->setOutlineColor(outlineColor);
-    //};
-    //setProperty(styleVec, current_priority, shape, KEY::OUTLINE_COLOR, setOutlineColor);
     if (styleVec.style->flags[KEY::OUTLINE_COLOR] && (current_priority[KEY::OUTLINE_COLOR] < styleVec.style_priority)) {
         type value = styleVec.style->getProperty(KEY::OUTLINE_COLOR);
         std::visit([&](auto&& arg)

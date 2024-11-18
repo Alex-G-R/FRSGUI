@@ -15,33 +15,33 @@ int main()
         "squares_three",
         "squares_four"
     }, frsgui);
-
+    square->setTextString("Hello");
 
     auto squares_style = Style("squares", fr::ApplyBy::GROUP, 1,{
         {fr::KEY::POSITION, sf::Vector2f(50.f, 50.f)},
         {fr::KEY::SIZE, sf::Vector2f(500.f, 30.f)},
-        {fr::KEY::BACKGROUND_COLOR, sf::Color{255, 0, 0, 255}},
+        {fr::KEY::BACKGROUND_COLOR, sf::Color{0, 255, 0, 255}},
         {fr::KEY::OUTLINE_THICKNESS, 10.f},
         {fr::KEY::OUTLINE_COLOR, sf::Color{0, 255, 0, 255}},
-        {fr::KEY::VISIBLE, true}
+        {fr::KEY::VISIBLE, true},
+        {fr::KEY::CHARACTER_SIZE, 20}
     }, frsgui);
 
-    auto squares_two = Style("squares_two", fr::ApplyBy::GROUP, 10, {
+    auto squares_two = Style("squares_two", fr::ApplyBy::GROUP, 17, {
         {fr::KEY::BACKGROUND_COLOR, sf::Color::Black}
     }, frsgui);
 
     auto squares_three = Style("squares_three", fr::ApplyBy::GROUP, 15, {
-        {fr::KEY::OUTLINE_COLOR, sf::Color::Blue}
+        {fr::KEY::OUTLINE_COLOR, sf::Color::Red}
     }, frsgui);
 
     auto squares_four = Style("squares_four", fr::ApplyBy::GROUP, 7, {
-        {fr::KEY::BACKGROUND_COLOR, sf::Color::Cyan}
+        {fr::KEY::BACKGROUND_COLOR, sf::Color::Yellow}
     }, frsgui);
 
     //button test
     const auto btn = Button(frsgui.getRenderer(), frsgui);
     btn->addGroup("btn");
-    // frsgui.addElement(btn);
 
     auto btn_style = Style("btn", fr::ApplyBy::GROUP, 1,{
         {fr::KEY::SIZE, sf::Vector2f(100.f, 100.f)},

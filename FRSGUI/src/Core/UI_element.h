@@ -23,6 +23,9 @@ private:
     bool dirty;
     // -----
 
+    sf::Font font;
+    sf::Text text;
+
 protected:
     std::shared_ptr<Rendering::Renderer> renderer_ptr{};
 
@@ -46,6 +49,7 @@ public:
     void addChild(const std::shared_ptr<UI_element>& child);
     void setZOrder(int z_order);
     void setDirty(bool is_dirty);
+    void setTextString(const std::string& text);
 
 
     // Getters
@@ -55,6 +59,12 @@ public:
     int getZOrder();
     bool isDirty();
     sf::RectangleShape* getShape();
+    std::string getTextString();
+    sf::Text& getText();
+
+    // Flags
+    bool has_cursor;
+    bool selected;
 };
 
 }

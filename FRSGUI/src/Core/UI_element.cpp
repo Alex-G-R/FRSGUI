@@ -1,4 +1,5 @@
 #include "UI_element.h"
+#include <iostream>
 
 namespace fr {
 
@@ -9,6 +10,14 @@ namespace fr {
         id = "";
         z_order = 0;
         dirty = false;
+        if(!font.loadFromFile("C:/dev/FRSGUI/fonts/arial.ttf"))
+        {
+            std::cout << "Font loading error \n";
+        }
+        text.setFont(font);
+
+        has_cursor = false;
+        selected = false;
     }
 
     UI_element::UI_element(const std::shared_ptr<Rendering::Renderer>& renderer_ptr, std::string ID, std::initializer_list<std::string> groups):
@@ -22,6 +31,15 @@ namespace fr {
         {
             this->groups.push_back(group);
         }
+
+        if(!font.loadFromFile("C:/dev/FRSGUI/fonts/arial.ttf"))
+        {
+            std::cout << "Font loading error \n";
+        }
+        text.setFont(font);
+
+        has_cursor = false;
+        selected = false;
     }
 
     UI_element::UI_element(const std::shared_ptr<Rendering::Renderer>& renderer_ptr, std::initializer_list<std::string> groups):
@@ -35,6 +53,15 @@ namespace fr {
         {
             this->groups.push_back(group);
         }
+
+        if(!font.loadFromFile("C:/dev/FRSGUI/fonts/arial.ttf"))
+        {
+            std::cout << "Font loading error \n";
+        }
+        text.setFont(font);
+
+        has_cursor = false;
+        selected = false;
     }
 
     UI_element::UI_element(const std::shared_ptr<Rendering::Renderer>& renderer_ptr, std::string ID):
@@ -43,6 +70,15 @@ namespace fr {
         id = std::move(ID);
         z_order = 0;
         dirty = false;
+
+        if(!font.loadFromFile("C:/dev/FRSGUI/fonts/arial.ttf"))
+        {
+            std::cout << "Font loading error \n";
+        }
+        text.setFont(font);
+
+        has_cursor = false;
+        selected = false;
     }
 
     UI_element::~UI_element() = default;
@@ -96,6 +132,12 @@ namespace fr {
         dirty = is_dirty;
     }
 
+    void UI_element::setTextString(const std::string& text)
+    {
+        this->text.setString(text);
+    }
+
+
     // getters
     std::string UI_element::getID()
     {
@@ -126,6 +168,17 @@ namespace fr {
     {
         return &shape;
     }
+
+    std::string UI_element::getTextString()
+    {
+        return text.getString();
+    }
+
+    sf::Text& UI_element::getText()
+    {
+        return text;
+    }
+
 
 
 }
