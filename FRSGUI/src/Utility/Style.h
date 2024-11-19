@@ -21,14 +21,7 @@ public:
 
     Style(std::initializer_list<std::pair<KEY, type>> init);
 
-    void create_flags()
-    {
-      for(int key_int = static_cast<int>(KEY::POSITION); key_int < static_cast<int>(KEY::DEVEL_LAST_KEY); ++key_int)
-      {
-          auto key = static_cast<KEY>(key_int);
-          flags.emplace(key, false);
-      }
-    };
+    void create_flags();
 
     type getProperty(KEY property_key);
     void update_style(std::initializer_list<std::pair<KEY, type>> init);

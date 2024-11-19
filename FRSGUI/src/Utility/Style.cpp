@@ -18,6 +18,16 @@ namespace fr {
         }
     }
 
+    void Style::create_flags()
+    {
+        for(int key_int = static_cast<int>(KEY::POSITION); key_int < static_cast<int>(KEY::DEVEL_LAST_KEY); ++key_int)
+        {
+            auto key = static_cast<KEY>(key_int);
+            flags.emplace(key, false);
+        }
+    }
+
+
     type Style::getProperty(KEY property_key)
     {
         for(const auto& [key, value] : properties)
