@@ -17,19 +17,18 @@ class Style {
 
 public:
     // Status propierties
-    std::unordered_map<KEY, bool> flags = {
-        {KEY::POSITION, false},
-        {KEY::SIZE, false},
-        {KEY::BACKGROUND_COLOR, false},
-        {KEY::OUTLINE_COLOR, false},
-        {KEY::OUTLINE_THICKNESS, false},
-        {KEY::VISIBLE, false},
-        {KEY::CURSOR_COLOR, false},
-        {KEY::CHARACTER_SIZE, false},
-        {KEY::TEXT_COLOR, false}
-    };
+    std::unordered_map<KEY, bool> flags = {};
 
     Style(std::initializer_list<std::pair<KEY, type>> init);
+
+    void create_flags()
+    {
+      for(int key_int = static_cast<int>(KEY::POSITION); key_int < static_cast<int>(KEY::DEVEL_LAST_KEY); ++key_int)
+      {
+          auto key = static_cast<KEY>(key_int);
+          flags.emplace(key, false);
+      }
+    };
 
     type getProperty(KEY property_key);
     void update_style(std::initializer_list<std::pair<KEY, type>> init);

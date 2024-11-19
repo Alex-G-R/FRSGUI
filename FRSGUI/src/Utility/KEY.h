@@ -15,7 +15,10 @@ namespace fr
         VISIBLE,
         CURSOR_COLOR,
         CHARACTER_SIZE,
-        TEXT_COLOR
+        TEXT_COLOR,
+
+        // COUNT - only for inner FRSGUI functionality
+        DEVEL_LAST_KEY
     };
 
 }

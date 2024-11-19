@@ -5,6 +5,8 @@ namespace fr {
 
     Style::Style(std::initializer_list<std::pair<KEY, type>> init)
     {
+        create_flags();
+
         for(const auto& [key, value] : init)
         {
             properties[key] = value;
