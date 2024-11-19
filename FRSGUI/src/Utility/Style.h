@@ -14,14 +14,13 @@ using type = std::variant<bool, int, float, double, sf::Color, sf::Vector2f>;
 class Style {
 
     std::unordered_map<KEY, type> properties;
+    void create_flags();
 
 public:
     // Status propierties
     std::unordered_map<KEY, bool> flags = {};
 
     Style(std::initializer_list<std::pair<KEY, type>> init);
-
-    void create_flags();
 
     type getProperty(KEY property_key);
     void update_style(std::initializer_list<std::pair<KEY, type>> init);
