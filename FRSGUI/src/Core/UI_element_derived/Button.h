@@ -18,15 +18,6 @@ public:
     Button(const std::shared_ptr<Rendering::Renderer>& renderer_ptr, std::initializer_list<std::string> groups);
     Button(const std::shared_ptr<Rendering::Renderer>& renderer_ptr, std::string ID);
 
-    // Destructor
-    ~Button() override;
-
-    // Override the Render method if necessary
-    void Render() override;
-
-   // Override the Update method if necessary
-   void Update() override;
-
    // Set the click callback function
    void setOnClick(const std::function<void()>& callback);
 
