@@ -1,12 +1,19 @@
 #include "FRSGUI/FRSGUI.hpp"
 
 #include <iostream>
+#include <filesystem>
 
 int main()
 {
     const auto render_window_ptr = std::make_shared<sf::RenderWindow>(sf::VideoMode(1920, 1080), "FRSGUI test", sf::Style::Default);
 
     fr::FRSGUI frsgui(render_window_ptr);
+
+    //std::filesystem::path relativePath = "./fonts/man.ttf";
+    //std::filesystem::path fullPath = std::filesystem::absolute(relativePath);
+    //std::cout << "Full Path: " << fullPath << std::endl;
+
+    frsgui.add_font("man", "./fonts/man.ttf");
 
     // Create GUI here
     const auto square = UI_element(frsgui.getRenderer(), "Foo", {
@@ -25,8 +32,10 @@ int main()
         {fr::KEY::OUTLINE_COLOR, sf::Color{0, 255, 0, 255}},
         {fr::KEY::VISIBLE, true},
         {fr::KEY::CHARACTER_SIZE, 20},
-        {fr::KEY::TEXT_COLOR, sf::Color::Magenta}
+        {fr::KEY::TEXT_COLOR, sf::Color::Magenta},
+        {fr::KEY::FONT, "man"}
     }, frsgui);
+
 
     auto squares_two = Style("squares_two", fr::ApplyBy::GROUP, 17, {
         {fr::KEY::BACKGROUND_COLOR, sf::Color::Black}

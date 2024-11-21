@@ -9,8 +9,6 @@ fr::Input::Input(const std::shared_ptr<Rendering::Renderer>& renderer_ptr)
         is_number_only_input = false;
         selected = false;
         stored_data = "";
-        load_text();
-
         has_cursor = true;
 }
 
@@ -20,8 +18,6 @@ fr::Input::Input(const std::shared_ptr<Rendering::Renderer>& renderer_ptr, std::
         is_number_only_input = false;
         selected = false;
         stored_data = "";
-        load_text();
-
         has_cursor = true;
 }
 
@@ -31,8 +27,6 @@ fr::Input::Input(const std::shared_ptr<Rendering::Renderer>& renderer_ptr, std::
         is_number_only_input = false;
         selected = false;
         stored_data = "";
-        load_text();
-
         has_cursor = true;
 }
 
@@ -42,8 +36,6 @@ fr::Input::Input(const std::shared_ptr<Rendering::Renderer>& renderer_ptr, std::
         is_number_only_input = false;
         selected = false;
         stored_data = "";
-        load_text();
-
         has_cursor = true;
 }
 
@@ -53,8 +45,6 @@ fr::Input::Input(const std::shared_ptr<Rendering::Renderer>& renderer_ptr, bool 
 {
         selected = false;
         stored_data = "";
-        load_text();
-
         has_cursor = true;
 }
 
@@ -63,8 +53,6 @@ fr::Input::Input(const std::shared_ptr<Rendering::Renderer>& renderer_ptr, bool 
 {
         selected = false;
         stored_data = "";
-        load_text();
-
         has_cursor = true;
 }
 
@@ -73,8 +61,6 @@ fr::Input::Input(const std::shared_ptr<Rendering::Renderer>& renderer_ptr, bool 
 {
         selected = false;
         stored_data = "";
-        load_text();
-
         has_cursor = true;
 }
 
@@ -83,9 +69,6 @@ fr::Input::Input(const std::shared_ptr<Rendering::Renderer>& renderer_ptr, bool 
 {
         selected = false;
         stored_data = "";
-
-        load_text();
-
         has_cursor = true;
 }
 
@@ -124,19 +107,6 @@ void fr::Input::push_data(sf::Uint32 char_to_add_unicode)
                 setTextString(stored_data);
         }
 }
-
-
-void fr::Input::load_text()
-{
-    if(!font.loadFromFile("C:/dev/FRSGUI/fonts/arial.ttf"))
-    {
-            std::cout << "Font loading error \n";
-    }
-
-    displayd_text.setFont(font);
-
-}
-
 
 std::string fr::Input::get_data()
 {

@@ -19,6 +19,7 @@
 #include "../Rendering_layout/StyleManager.h"
 #include "../Rendering_layout/StyleSheet.h"
 #include "../Event_system/EventDispatcher.h"
+#include "../Utility/ResourceManager.h"
 
 namespace fr {
 
@@ -40,6 +41,9 @@ private:
     // SFML Render window
     std::shared_ptr<sf::RenderWindow> render_window_ptr{};
 
+    // Resource menager
+    Utils::ResourceManager resource_manager;
+
 public:
     explicit FRSGUI(const std::shared_ptr<sf::RenderWindow>& render_window_ptr);
 
@@ -54,6 +58,8 @@ public:
     void addStyle(std::string group_name, std::shared_ptr<fr::Style> style, ApplyBy style_type, int style_priority);
     void dispatchEvent(const sf::Event& event);
     std::shared_ptr<UI_element>& getElementByID(const std::string& id);
+    void add_font(const std::string& font_alias, const std::string& path);
+    sf::Font& get_font(const std::string& font_alias);
 
     Rendering::StyleSheet& style_sheet;
 };

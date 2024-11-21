@@ -10,7 +10,7 @@ namespace fr {
         id = "";
         z_order = 0;
         dirty = false;
-        if(!font.loadFromFile("C:/dev/FRSGUI/fonts/arial.ttf"))
+        if(!font.loadFromFile("./FRSGUI/res/default_font/default.ttf"))
         {
             std::cout << "Font loading error \n";
         }
@@ -32,7 +32,7 @@ namespace fr {
             this->groups.push_back(group);
         }
 
-        if(!font.loadFromFile("C:/dev/FRSGUI/fonts/arial.ttf"))
+        if(!font.loadFromFile("./FRSGUI/res/default_font/default.ttf"))
         {
             std::cout << "Font loading error \n";
         }
@@ -54,7 +54,7 @@ namespace fr {
             this->groups.push_back(group);
         }
 
-        if(!font.loadFromFile("C:/dev/FRSGUI/fonts/arial.ttf"))
+        if(!font.loadFromFile("./FRSGUI/res/default_font/default.ttf"))
         {
             std::cout << "Font loading error \n";
         }
@@ -71,7 +71,7 @@ namespace fr {
         z_order = 0;
         dirty = false;
 
-        if(!font.loadFromFile("C:/dev/FRSGUI/fonts/arial.ttf"))
+        if(!font.loadFromFile("./FRSGUI/res/default_font/default.ttf"))
         {
             std::cout << "Font loading error \n";
         }

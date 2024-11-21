@@ -1,16 +1,18 @@
 #ifndef RESOURCEMANAGER_H
 #define RESOURCEMANAGER_H
+#include <vector>
+#include <Graphics.hpp>
+#include <string>
+#include <utility>
 
 namespace fr::Utils {
 
-class ResourceManager {
-    /*
-    Role: Manages resources like fonts, textures, and sounds.
-
-    Key Methods:
-        sf::Font& getFont(const std::string& id): Retrieves a font by ID.
-        sf::Texture& getTexture(const std::string& id): Retrieves a texture by ID.
-     */
+class ResourceManager
+{
+    std::vector<std::pair<std::string, sf::Font>> fonts;
+public:
+    void add_font(const std::string& font_alias, const std::string& path);
+    sf::Font& get_font(const std::string& font_alias);
 };
 
 }

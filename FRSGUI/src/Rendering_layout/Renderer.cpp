@@ -8,7 +8,6 @@
 namespace fr::Rendering {
 
 void applyStylesRectangleShape(std::unordered_map<KEY, int>& current_priority, StyleVec& styleVec, sf::RectangleShape* shape);
-void applyStylesText(std::unordered_map<KEY, int>& current_priority, StyleVec& styleVec, sf::Text& text, sf::Color& cursor_color);
 
 Renderer::Renderer(const std::shared_ptr<sf::RenderWindow>& render_window_ptr, FRSGUI* frsgui_ptr) :
 render_window_ptr(render_window_ptr), frsgui_ptr(frsgui_ptr)
@@ -39,7 +38,8 @@ void Renderer::draw(UI_element* element)
         {KEY::OUTLINE_COLOR, 0},
         {KEY::CURSOR_COLOR, 0},
         {KEY::CHARACTER_SIZE, 0},
-        {KEY::TEXT_COLOR, 0}
+        {KEY::TEXT_COLOR, 0},
+        {KEY::FONT, 0}
     };
 
 
@@ -145,7 +145,7 @@ void Renderer::draw(UI_element* element)
     }
 }
 
-void applyStylesText(std::unordered_map<KEY, int>& current_priority, StyleVec& styleVec, sf::Text& text, sf::Color& cursor_color)
+void Renderer::applyStylesText(std::unordered_map<KEY, int>& current_priority, StyleVec& styleVec, sf::Text& text, sf::Color& cursor_color)
 {
     // Character size
     if (styleVec.style->flags[KEY::CHARACTER_SIZE] && (current_priority[KEY::CHARACTER_SIZE] < styleVec.style_priority)) {
@@ -196,6 +196,23 @@ void applyStylesText(std::unordered_map<KEY, int>& current_priority, StyleVec& s
         }, value);
 
         current_priority[KEY::CURSOR_COLOR] = styleVec.style_priority;
+    }
+
+    // Font
+    if (styleVec.style->flags[KEY::FONT] && (current_priority[KEY::FONT] < styleVec.style_priority)) {
+
+        type value = styleVec.style->getProperty(KEY::FONT);
+
+        std::visit([&](auto&& arg)
+        {
+            using T = std::decay_t<decltype(arg)>;
+            if constexpr(std::is_same_v<T, std::string>)
+            {
+                text.setFont(frsgui_ptr->get_font(arg));
+            }
+        }, value);
+
+        current_priority[KEY::FONT] = styleVec.style_priority;
     }
 }
 

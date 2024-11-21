@@ -16,8 +16,9 @@ namespace fr
         CURSOR_COLOR,
         CHARACTER_SIZE,
         TEXT_COLOR,
+        FONT,
 
-        // COUNT - only for inner FRSGUI functionality
+        // LAST ELEMENT - only for development use | inner FRSGUI functionality
         DEVEL_LAST_KEY
     };
 
