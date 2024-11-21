@@ -9,12 +9,6 @@ int main()
 
     fr::FRSGUI frsgui(render_window_ptr);
 
-    //std::filesystem::path relativePath = "./fonts/man.ttf";
-    //std::filesystem::path fullPath = std::filesystem::absolute(relativePath);
-    //std::cout << "Full Path: " << fullPath << std::endl;
-
-    frsgui.add_font("man", "./fonts/man.ttf");
-
     // Create GUI here
     const auto square = UI_element(frsgui.getRenderer(), "Foo", {
         "squares",
@@ -102,6 +96,8 @@ int main()
         {fr::KEY::CHARACTER_SIZE, 48}
     }, frsgui);
 
+    // Add fonts
+    frsgui.add_font("man", "./fonts/man.ttf");
 
     while(render_window_ptr->isOpen())
     {
