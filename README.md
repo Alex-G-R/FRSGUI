@@ -17,7 +17,8 @@ Task priority:
       - Input: 
           - Textarea 
           - Number inputs 
-      - Slider 
+      - Slider
+      - Text block
   - ~~Custom styling to these new elements~~
   - ~~Custom handler functions for elements~~ 
 
