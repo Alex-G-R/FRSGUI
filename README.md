@@ -18,6 +18,8 @@ Task priority:
           - Textarea 
           - Number inputs 
       - Slider
+          - numbers slider
+          - custom sliders
       - Text block
   - ~~Custom styling to these new elements~~
   - ~~Custom handler functions for elements~~ 
