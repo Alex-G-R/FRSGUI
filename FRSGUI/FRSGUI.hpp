@@ -3,10 +3,10 @@
 #define FRSGUI_HPP
 
 #include "Source/Core/FRSGUI.h"
-#include "Source/Core/UIElement_derived/Button.h"
-#include "Source/Core/UIElement_derived/Input.h"
-#include "Source/Utility/StyleVec.h"
-#include "Source/Utility/HelperFunctions.hpp"
-#include "Source/Utility/KEY.h"
+#include "Source/GUI/UIElement_derived/Button.h"
+#include "Source/GUI/UIElement_derived/Input.h"
+#include "Source/GUI/Styling/StyleVec.h"
+#include "Source/Wrappers/Wrapper.hpp"
+#include "Source/GUI/Styling/Enums/KEY.h"
 
 #endif

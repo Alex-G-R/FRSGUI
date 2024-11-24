@@ -6,7 +6,7 @@
 #include <variant>
 #include <string>
 
-#include "KEY.h"
+#include "Enums/KEY.h"
 
 namespace fr {
 

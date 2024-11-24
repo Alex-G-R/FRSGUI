@@ -2,8 +2,8 @@
 
 #include <iostream>
 
-#include "../Core/UIElement_derived/Button.h"
-#include "../Core/FRSGUI.h"
+#include "../UIElement_derived/Button.h"
+#include "../../Core/FRSGUI.h"
 
 namespace fr::Events {
     EventDispatcher::EventDispatcher(std::vector<std::shared_ptr<UIElement> > &elements_ptr, FRSGUI* frsgui_ptr) :

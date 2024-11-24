@@ -1,8 +1,8 @@
 #ifndef BUTTON_H
 #define BUTTON_H
 
-#include "../FRSGUI.h"
-#include "../UIElement.h"
+#include "../../Core/FRSGUI.h"
+#include "../../GUI/UIElement.h"
 #include <functional>
 
 namespace fr {

@@ -12,14 +12,14 @@
 #include <memory>
 
 /* Inner header files */
-#include "GUI.h"
-#include "UIElement.h"
-#include "../Rendering_layout/Renderer.h"
-#include "../Utility/Style.h"
-#include "../Rendering_layout/StyleManager.h"
-#include "../Rendering_layout/StyleSheet.h"
-#include "../Event_system/EventDispatcher.h"
-#include "../Utility/ResourceManager.h"
+#include "../GUI/GUI.h"
+#include "../GUI/UIElement.h"
+#include "Rendering/Renderer.h"
+#include "../GUI/Styling/Style.h"
+#include "../GUI/Styling/StyleManager.h"
+#include "../GUI/Styling/StyleSheet.h"
+#include "../GUI/Events/EventDispatcher.h"
+#include "Utility/ResourceManager.h"
 
 namespace fr {
 

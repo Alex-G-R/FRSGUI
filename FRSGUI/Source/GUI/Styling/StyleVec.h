@@ -5,8 +5,8 @@
 #include <string>
 #include <memory>
 
-#include "../Utility/Style.h"
-#include "../Utility/ApplyBy.h"
+#include "Style.h"
+#include "./Enums/ApplyBy.h"
 
 namespace fr
 {

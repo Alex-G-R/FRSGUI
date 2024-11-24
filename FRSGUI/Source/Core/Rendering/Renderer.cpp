@@ -1,6 +1,6 @@
 #include "Renderer.h"
-#include "../Core/FRSGUI.h"
-#include "../Core/UIElement.h"
+#include "../FRSGUI.h"
+#include "../../GUI/UIElement.h"
 #include <iostream>
 #include <type_traits>
 #include <functional>
