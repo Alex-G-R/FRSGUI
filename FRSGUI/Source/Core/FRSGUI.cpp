@@ -21,7 +21,7 @@ namespace fr {
     }
 
     // GUI public methods acces
-    void FRSGUI::addElement(const std::shared_ptr<UI_element>& element)
+    void FRSGUI::addElement(const std::shared_ptr<UIElement>& element)
     {
         gui.addElement(element);
     }
@@ -36,7 +36,7 @@ namespace fr {
         event_dispatcher.dispatchEvent(event);
     }
 
-    std::shared_ptr<UI_element>& FRSGUI::getElementByID(const std::string &id)
+    std::shared_ptr<UIElement>& FRSGUI::getElementByID(const std::string &id)
     {
         return gui.getElementByID(id);
     }

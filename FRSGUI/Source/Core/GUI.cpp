@@ -23,12 +23,12 @@ namespace fr {
 
     }
 
-    void GUI::addElement(const std::shared_ptr<UI_element>& element)
+    void GUI::addElement(const std::shared_ptr<UIElement>& element)
     {
         elements.emplace_back(element);
     }
 
-    std::shared_ptr<UI_element>& GUI::getElementByID(const std::string& id)
+    std::shared_ptr<UIElement>& GUI::getElementByID(const std::string& id)
     {
         for(auto& element : elements)
         {

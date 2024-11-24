@@ -10,7 +10,7 @@ class GUI;
 
 namespace fr {
 
-class UI_element {
+class UIElement {
 private:
     sf::RectangleShape shape;
 
@@ -18,7 +18,7 @@ private:
     std::vector<std::string> groups;
 
     // Not used for now
-    std::vector<std::shared_ptr<UI_element>> children;
+    std::vector<std::shared_ptr<UIElement>> children;
     int z_order;
     bool dirty;
     // -----
@@ -31,11 +31,11 @@ protected:
 
 public:
     // Constructor
-    explicit UI_element(const std::shared_ptr<Rendering::Renderer>& renderer_ptr);
-    UI_element(const std::shared_ptr<Rendering::Renderer>& renderer_ptr, std::string ID, std::initializer_list<std::string> groups);
-    UI_element(const std::shared_ptr<Rendering::Renderer>& renderer_ptr, std::initializer_list<std::string> groups);
-    UI_element(const std::shared_ptr<Rendering::Renderer>& renderer_ptr, std::string ID);
-    virtual ~UI_element();
+    explicit UIElement(const std::shared_ptr<Rendering::Renderer>& renderer_ptr);
+    UIElement(const std::shared_ptr<Rendering::Renderer>& renderer_ptr, std::string ID, std::initializer_list<std::string> groups);
+    UIElement(const std::shared_ptr<Rendering::Renderer>& renderer_ptr, std::initializer_list<std::string> groups);
+    UIElement(const std::shared_ptr<Rendering::Renderer>& renderer_ptr, std::string ID);
+    virtual ~UIElement();
 
     // Methods
     virtual void Render();
@@ -46,7 +46,7 @@ public:
     // Setters
     void setID(const std::string& id);
     void addGroup(const std::string& group);
-    void addChild(const std::shared_ptr<UI_element>& child);
+    void addChild(const std::shared_ptr<UIElement>& child);
     void setZOrder(int z_order);
     void setDirty(bool is_dirty);
     void setTextString(const std::string& text);
@@ -55,7 +55,7 @@ public:
     // Getters
     std::string getID();
     std::vector<std::string>& getGroupsVector();
-    std::vector<std::shared_ptr<UI_element>>& getChildren();
+    std::vector<std::shared_ptr<UIElement>>& getChildren();
     int getZOrder();
     bool isDirty();
     sf::RectangleShape* getShape();

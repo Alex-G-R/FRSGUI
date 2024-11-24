@@ -11,7 +11,7 @@ namespace fr {
     enum class KEY;
     class StyleVec;
     class Input;
-    class UI_element;
+    class UIElement;
     class FRSGUI;
 }
 
@@ -25,8 +25,8 @@ private:
     void applyStylesText(std::unordered_map<KEY, int>& current_priority, StyleVec& styleVec, sf::Text& text, sf::Color& cursor_color);
 public:
     explicit Renderer(const std::shared_ptr<sf::RenderWindow>& render_window_ptr, FRSGUI* frsgui_ptr);
-    void draw(UI_element* element);
-    bool shouldRender(UI_element* element);
+    void draw(UIElement* element);
+    bool shouldRender(UIElement* element);
 };
 
 }

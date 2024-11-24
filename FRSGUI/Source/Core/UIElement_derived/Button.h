@@ -7,7 +7,7 @@
 
 namespace fr {
 
-class Button : public UI_element {
+class Button : public UIElement {
 private:
     std::function<void()> onClickCallback; // Callback function for click events
 

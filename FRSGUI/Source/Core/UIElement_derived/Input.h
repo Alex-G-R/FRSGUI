@@ -7,7 +7,7 @@
 
 namespace fr
 {
-class Input : public UI_element{
+class Input : public UIElement{
 private:
     // Numeric flag
     bool is_number_only_input;

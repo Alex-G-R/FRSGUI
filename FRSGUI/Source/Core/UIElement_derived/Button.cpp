@@ -3,25 +3,25 @@
 namespace fr {
 
     Button::Button(const std::shared_ptr<Rendering::Renderer>& renderer_ptr)
-        : UI_element(renderer_ptr)
+        : UIElement(renderer_ptr)
     {
 
     }
 
     Button::Button(const std::shared_ptr<Rendering::Renderer>& renderer_ptr, std::string ID)
-        : UI_element(renderer_ptr, std::move(ID))
+        : UIElement(renderer_ptr, std::move(ID))
     {
 
     }
 
     Button::Button(const std::shared_ptr<Rendering::Renderer>& renderer_ptr, std::initializer_list<std::string> groups)
-        : UI_element(renderer_ptr, groups)
+        : UIElement(renderer_ptr, groups)
     {
 
     }
 
     Button::Button(const std::shared_ptr<Rendering::Renderer>& renderer_ptr, std::string ID, std::initializer_list<std::string> groups)
-        : UI_element(renderer_ptr, std::move(ID), groups)
+        : UIElement(renderer_ptr, std::move(ID), groups)
     {
 
     }

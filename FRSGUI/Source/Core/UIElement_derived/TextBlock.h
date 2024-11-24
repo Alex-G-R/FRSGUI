@@ -3,7 +3,7 @@
 
 namespace fr {
 
-class Text_block {
+class TextBlock {
 
 };
 

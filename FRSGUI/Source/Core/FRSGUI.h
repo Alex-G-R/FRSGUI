@@ -54,10 +54,10 @@ public:
     std::shared_ptr<Rendering::Renderer> getRenderer();
 
     // GUI methods public acces
-    void addElement(const std::shared_ptr<UI_element>& element);
+    void addElement(const std::shared_ptr<UIElement>& element);
     void addStyle(std::string group_name, std::shared_ptr<Style> style, ApplyBy style_type, int style_priority);
     void dispatchEvent(const sf::Event& event);
-    std::shared_ptr<UI_element>& getElementByID(const std::string& id);
+    std::shared_ptr<UIElement>& getElementByID(const std::string& id);
     std::shared_ptr<Input>& getInputByID(const std::string& id);
     void addFont(const std::string& font_alias, const std::string& path);
     sf::Font& getFont(const std::string& font_alias);

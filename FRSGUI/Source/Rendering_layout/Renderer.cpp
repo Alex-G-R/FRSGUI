@@ -15,7 +15,7 @@ render_window_ptr(render_window_ptr), frsgui_ptr(frsgui_ptr)
 
 }
 
-void Renderer::draw(UI_element* element)
+void Renderer::draw(UIElement* element)
 {
     //Only render if is visible
     if(!shouldRender(element))
@@ -298,7 +298,7 @@ void applyStylesRectangleShape(std::unordered_map<KEY, int>& current_priority, S
 }
 
 
-bool Renderer::shouldRender(UI_element* element)
+bool Renderer::shouldRender(UIElement* element)
 {
     // Helper lambda to check visibility property
     // This eliminates code duplication and makes the logic clearer

@@ -4,7 +4,7 @@
 #include <iostream>
 
 fr::Input::Input(const std::shared_ptr<Rendering::Renderer>& renderer_ptr)
-        : UI_element(renderer_ptr)
+        : UIElement(renderer_ptr)
 {
         is_number_only_input = false;
         selected = false;
@@ -13,7 +13,7 @@ fr::Input::Input(const std::shared_ptr<Rendering::Renderer>& renderer_ptr)
 }
 
 fr::Input::Input(const std::shared_ptr<Rendering::Renderer>& renderer_ptr, std::string ID)
-        : UI_element(renderer_ptr, std::move(ID))
+        : UIElement(renderer_ptr, std::move(ID))
 {
         is_number_only_input = false;
         selected = false;
@@ -22,7 +22,7 @@ fr::Input::Input(const std::shared_ptr<Rendering::Renderer>& renderer_ptr, std::
 }
 
 fr::Input::Input(const std::shared_ptr<Rendering::Renderer>& renderer_ptr, std::initializer_list<std::string> groups)
-    : UI_element(renderer_ptr, groups)
+    : UIElement(renderer_ptr, groups)
 {
         is_number_only_input = false;
         selected = false;
@@ -31,7 +31,7 @@ fr::Input::Input(const std::shared_ptr<Rendering::Renderer>& renderer_ptr, std::
 }
 
 fr::Input::Input(const std::shared_ptr<Rendering::Renderer>& renderer_ptr, std::string ID, std::initializer_list<std::string> groups)
-    : UI_element(renderer_ptr, std::move(ID), groups)
+    : UIElement(renderer_ptr, std::move(ID), groups)
 {
         is_number_only_input = false;
         selected = false;
@@ -41,7 +41,7 @@ fr::Input::Input(const std::shared_ptr<Rendering::Renderer>& renderer_ptr, std::
 
 
 fr::Input::Input(const std::shared_ptr<Rendering::Renderer>& renderer_ptr, bool is_number_only_input)
-        : UI_element(renderer_ptr), is_number_only_input(is_number_only_input)
+        : UIElement(renderer_ptr), is_number_only_input(is_number_only_input)
 {
         selected = false;
         stored_data = "";
@@ -49,7 +49,7 @@ fr::Input::Input(const std::shared_ptr<Rendering::Renderer>& renderer_ptr, bool 
 }
 
 fr::Input::Input(const std::shared_ptr<Rendering::Renderer>& renderer_ptr, bool is_number_only_input, std::string ID)
-        : UI_element(renderer_ptr, std::move(ID)), is_number_only_input(is_number_only_input)
+        : UIElement(renderer_ptr, std::move(ID)), is_number_only_input(is_number_only_input)
 {
         selected = false;
         stored_data = "";
@@ -57,7 +57,7 @@ fr::Input::Input(const std::shared_ptr<Rendering::Renderer>& renderer_ptr, bool 
 }
 
 fr::Input::Input(const std::shared_ptr<Rendering::Renderer>& renderer_ptr, bool is_number_only_input, std::initializer_list<std::string> groups)
-    : UI_element(renderer_ptr, groups), is_number_only_input(is_number_only_input)
+    : UIElement(renderer_ptr, groups), is_number_only_input(is_number_only_input)
 {
         selected = false;
         stored_data = "";
@@ -65,7 +65,7 @@ fr::Input::Input(const std::shared_ptr<Rendering::Renderer>& renderer_ptr, bool 
 }
 
 fr::Input::Input(const std::shared_ptr<Rendering::Renderer>& renderer_ptr, bool is_number_only_input, std::string ID, std::initializer_list<std::string> groups)
-    : UI_element(renderer_ptr, std::move(ID), groups), is_number_only_input(is_number_only_input)
+    : UIElement(renderer_ptr, std::move(ID), groups), is_number_only_input(is_number_only_input)
 {
         selected = false;
         stored_data = "";
