@@ -3,7 +3,7 @@
 
 #include "StyleSheet.h"
 
-namespace fr::Rendering {
+namespace fr {
 
 class StyleManager {
 public:

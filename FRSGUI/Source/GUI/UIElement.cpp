@@ -4,7 +4,7 @@
 namespace fr {
 
     // constructor and overloads
-    UIElement::UIElement(const std::shared_ptr<Rendering::Renderer> &renderer_ptr):
+    UIElement::UIElement(const std::shared_ptr<Renderer> &renderer_ptr):
     renderer_ptr(renderer_ptr)
     {
         id = "";
@@ -20,7 +20,7 @@ namespace fr {
         selected = false;
     }
 
-    UIElement::UIElement(const std::shared_ptr<Rendering::Renderer>& renderer_ptr, std::string ID, std::initializer_list<std::string> groups):
+    UIElement::UIElement(const std::shared_ptr<Renderer>& renderer_ptr, std::string ID, std::initializer_list<std::string> groups):
     renderer_ptr(renderer_ptr)
     {
         id = std::move(ID);
@@ -42,7 +42,7 @@ namespace fr {
         selected = false;
     }
 
-    UIElement::UIElement(const std::shared_ptr<Rendering::Renderer>& renderer_ptr, std::initializer_list<std::string> groups):
+    UIElement::UIElement(const std::shared_ptr<Renderer>& renderer_ptr, std::initializer_list<std::string> groups):
     renderer_ptr(renderer_ptr)
     {
         id = "";
@@ -64,7 +64,7 @@ namespace fr {
         selected = false;
     }
 
-    UIElement::UIElement(const std::shared_ptr<Rendering::Renderer>& renderer_ptr, std::string ID):
+    UIElement::UIElement(const std::shared_ptr<Renderer>& renderer_ptr, std::string ID):
     renderer_ptr(renderer_ptr)
     {
         id = std::move(ID);

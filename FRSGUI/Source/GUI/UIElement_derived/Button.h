@@ -13,10 +13,10 @@ private:
 
 public:
     // Constructor
-    explicit Button(const std::shared_ptr<Rendering::Renderer>& renderer_ptr);
-    Button(const std::shared_ptr<Rendering::Renderer>& renderer_ptr, std::string ID, std::initializer_list<std::string> groups);
-    Button(const std::shared_ptr<Rendering::Renderer>& renderer_ptr, std::initializer_list<std::string> groups);
-    Button(const std::shared_ptr<Rendering::Renderer>& renderer_ptr, std::string ID);
+    explicit Button(const std::shared_ptr<Renderer>& renderer_ptr);
+    Button(const std::shared_ptr<Renderer>& renderer_ptr, std::string ID, std::initializer_list<std::string> groups);
+    Button(const std::shared_ptr<Renderer>& renderer_ptr, std::initializer_list<std::string> groups);
+    Button(const std::shared_ptr<Renderer>& renderer_ptr, std::string ID);
 
    // Set the click callback function
    void setOnClick(const std::function<void()>& callback);

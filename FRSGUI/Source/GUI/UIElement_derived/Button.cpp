@@ -2,25 +2,25 @@
 
 namespace fr {
 
-    Button::Button(const std::shared_ptr<Rendering::Renderer>& renderer_ptr)
+    Button::Button(const std::shared_ptr<Renderer>& renderer_ptr)
         : UIElement(renderer_ptr)
     {
 
     }
 
-    Button::Button(const std::shared_ptr<Rendering::Renderer>& renderer_ptr, std::string ID)
+    Button::Button(const std::shared_ptr<Renderer>& renderer_ptr, std::string ID)
         : UIElement(renderer_ptr, std::move(ID))
     {
 
     }
 
-    Button::Button(const std::shared_ptr<Rendering::Renderer>& renderer_ptr, std::initializer_list<std::string> groups)
+    Button::Button(const std::shared_ptr<Renderer>& renderer_ptr, std::initializer_list<std::string> groups)
         : UIElement(renderer_ptr, groups)
     {
 
     }
 
-    Button::Button(const std::shared_ptr<Rendering::Renderer>& renderer_ptr, std::string ID, std::initializer_list<std::string> groups)
+    Button::Button(const std::shared_ptr<Renderer>& renderer_ptr, std::string ID, std::initializer_list<std::string> groups)
         : UIElement(renderer_ptr, std::move(ID), groups)
     {
 

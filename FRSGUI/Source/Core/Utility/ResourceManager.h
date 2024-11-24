@@ -5,7 +5,7 @@
 #include <string>
 #include <utility>
 
-namespace fr::Utils {
+namespace fr {
 
 class ResourceManager
 {

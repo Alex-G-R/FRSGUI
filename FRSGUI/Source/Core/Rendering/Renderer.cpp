@@ -5,7 +5,7 @@
 #include <type_traits>
 #include <functional>
 
-namespace fr::Rendering {
+namespace fr {
 
 void applyStylesRectangleShape(std::unordered_map<KEY, int>& current_priority, StyleVec& styleVec, sf::RectangleShape* shape);
 

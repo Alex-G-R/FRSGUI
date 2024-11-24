@@ -15,7 +15,7 @@ namespace fr {
     class FRSGUI;
 }
 
-namespace fr::Rendering {
+namespace fr {
 
 class Renderer {
 private:

@@ -5,7 +5,7 @@
 #include "../UIElement_derived/Button.h"
 #include "../../Core/FRSGUI.h"
 
-namespace fr::Events {
+namespace fr {
     EventDispatcher::EventDispatcher(std::vector<std::shared_ptr<UIElement> > &elements_ptr, FRSGUI* frsgui_ptr) :
     elements_ptr(elements_ptr), frsgui_ptr(frsgui_ptr)
     {

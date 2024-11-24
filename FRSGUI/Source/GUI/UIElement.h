@@ -27,14 +27,14 @@ private:
     sf::Text text;
 
 protected:
-    std::shared_ptr<Rendering::Renderer> renderer_ptr{};
+    std::shared_ptr<Renderer> renderer_ptr{};
 
 public:
     // Constructor
-    explicit UIElement(const std::shared_ptr<Rendering::Renderer>& renderer_ptr);
-    UIElement(const std::shared_ptr<Rendering::Renderer>& renderer_ptr, std::string ID, std::initializer_list<std::string> groups);
-    UIElement(const std::shared_ptr<Rendering::Renderer>& renderer_ptr, std::initializer_list<std::string> groups);
-    UIElement(const std::shared_ptr<Rendering::Renderer>& renderer_ptr, std::string ID);
+    explicit UIElement(const std::shared_ptr<Renderer>& renderer_ptr);
+    UIElement(const std::shared_ptr<Renderer>& renderer_ptr, std::string ID, std::initializer_list<std::string> groups);
+    UIElement(const std::shared_ptr<Renderer>& renderer_ptr, std::initializer_list<std::string> groups);
+    UIElement(const std::shared_ptr<Renderer>& renderer_ptr, std::string ID);
     virtual ~UIElement();
 
     // Methods

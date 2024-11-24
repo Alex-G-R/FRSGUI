@@ -1,5 +1,5 @@
 #include "StyleManager.h"
 
-namespace fr::Rendering {
+namespace fr {
     StyleManager::StyleManager() = default;
 }

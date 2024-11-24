@@ -7,7 +7,7 @@
 #include <memory>
 
 
-namespace fr::Events {
+namespace fr {
 
 class EventDispatcher {
 public:

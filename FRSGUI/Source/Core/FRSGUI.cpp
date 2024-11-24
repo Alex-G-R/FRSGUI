@@ -15,7 +15,7 @@ namespace fr {
 
 
     // Getters
-    std::shared_ptr<Rendering::Renderer> FRSGUI::getRenderer()
+    std::shared_ptr<Renderer> FRSGUI::getRenderer()
     {
         return renerer_ptr;
     }

@@ -2,7 +2,7 @@
 #include <iostream>
 #include <filesystem>
 
-namespace fr::Utils {
+namespace fr {
 
     void ResourceManager::addFont(const std::string& font_alias, const std::string& path)
     {

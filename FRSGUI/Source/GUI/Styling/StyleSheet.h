@@ -7,7 +7,7 @@
 #include "StyleVec.h"
 #include "Style.h"
 
-namespace fr::Rendering {
+namespace fr {
 
     class StyleSheet {
 

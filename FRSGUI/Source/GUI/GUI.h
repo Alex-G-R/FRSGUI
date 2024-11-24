@@ -15,11 +15,11 @@ namespace fr {
 class GUI {
 private:
     std::shared_ptr<sf::RenderWindow> render_window_ptr{};
-    std::shared_ptr<Rendering::Renderer> renderer_ptr{};
+    std::shared_ptr<Renderer> renderer_ptr{};
 
 
 public:
-    GUI(const std::shared_ptr<sf::RenderWindow>& render_window_ptr, const std::shared_ptr<Rendering::Renderer>& renderer_ptr);
+    GUI(const std::shared_ptr<sf::RenderWindow>& render_window_ptr, const std::shared_ptr<Renderer>& renderer_ptr);
 
     std::vector<std::shared_ptr<UIElement>> elements;
 

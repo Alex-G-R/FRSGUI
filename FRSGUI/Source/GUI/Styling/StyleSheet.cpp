@@ -1,6 +1,6 @@
 #include "StyleSheet.h"
 
-namespace fr::Rendering
+namespace fr
 {
     StyleSheet::StyleSheet()
     {
