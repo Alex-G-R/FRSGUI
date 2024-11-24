@@ -72,7 +72,7 @@ int main()
         player.move(10.f, 0.f);
 
         /* Styles manipulation by style capture */
-        squares_style->update_style({
+        squares_style->updateStyle({
             {fr::KEY::BACKGROUND_COLOR, sf::Color::Yellow},
             {fr::KEY::OUTLINE_THICKNESS, 2}
         });
@@ -84,7 +84,7 @@ int main()
         // Operation on data from inputs
         auto num1 = frsgui.getInputByID("num1");
         auto num2 = frsgui.getInputByID("num2");
-        std::cout << "Addition result: " << num1->get_data<float>() + num2->get_data<float>() << "\n";
+        std::cout << "Addition result: " << num1->getDataAs<double>() + num2->getDataAs<double>() << "\n";
 
     });
 
@@ -110,7 +110,7 @@ int main()
     }, frsgui);
 
     // Add fonts
-    frsgui.add_font("man", "./fonts/man.ttf");
+    frsgui.addFont("man", "./fonts/man.ttf");
 
     while(render_window_ptr->isOpen())
     {

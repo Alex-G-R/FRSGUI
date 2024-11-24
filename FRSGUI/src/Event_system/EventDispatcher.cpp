@@ -16,31 +16,31 @@ namespace fr::Events {
     {
         if(event.type == sf::Event::MouseButtonPressed && event.mouseButton.button == sf::Mouse::Left)
         {
-            Handle_LeftMouseButtonClick(event);
+            HandleLeftMouseButtonClick(event);
         }
         else if(event.type == sf::Event::TextEntered)
         {
-            Handle_TextEnterd(event);
+            HandleTextEnterd(event);
         }
     }
 
-    void EventDispatcher::Handle_TextEnterd(const sf::Event &event)
+    void EventDispatcher::HandleTextEnterd(const sf::Event &event)
     {
         // Search for a selected input field and if found send in the unicode data from the event
-        for(const auto& input : get_input_elements())
+        for(const auto& input : getInputElements())
         {
-            if(input->get_select() == true)
+            if(input->getSelect() == true)
             {
                 if(event.text.unicode < 128)
                 {
-                    input->push_data(event.text.unicode);
+                    input->pushData(event.text.unicode);
                 }
             }
         }
     }
 
 
-    void EventDispatcher::Handle_LeftMouseButtonClick(const sf::Event &event)
+    void EventDispatcher::HandleLeftMouseButtonClick(const sf::Event &event)
     {
         bool input_selected = false;
 
@@ -51,10 +51,10 @@ namespace fr::Events {
             {
                 if(auto* input = dynamic_cast<Input*>(element.get()))
                 {
-                    if(input->get_select() == false)
+                    if(input->getSelect() == false)
                     {
-                        deselect_inputs();
-                        input->set_select(true);
+                        deselectInputs();
+                        input->setSelect(true);
                         input_selected = true;
                         break;
                     }
@@ -71,24 +71,24 @@ namespace fr::Events {
 
         // If no input was selected and a button was clicked or clicked outside any element
         if (!input_selected) {
-            deselect_inputs();  // Deselect all inputs if none were selected in event
+            deselectInputs();  // Deselect all inputs if none were selected in event
         }
     }
 
 
-    void EventDispatcher::deselect_inputs()
+    void EventDispatcher::deselectInputs()
     {
-        for(const auto& input : get_input_elements())
+        for(const auto& input : getInputElements())
         {
-            if(input->get_select() == true)
+            if(input->getSelect() == true)
             {
-                input->set_select(false);
+                input->setSelect(false);
                 return;
             }
         }
     }
 
-    std::vector<std::shared_ptr<Input>> EventDispatcher::get_input_elements()
+    std::vector<std::shared_ptr<Input>> EventDispatcher::getInputElements()
     {
         std::vector<std::shared_ptr<Input>> input_elements;
 

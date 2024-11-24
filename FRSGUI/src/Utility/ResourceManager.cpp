@@ -4,7 +4,7 @@
 
 namespace fr::Utils {
 
-    void ResourceManager::add_font(const std::string& font_alias, const std::string& path)
+    void ResourceManager::addFont(const std::string& font_alias, const std::string& path)
     {
         sf::Font font;
         if (!font.loadFromFile(path)) {
@@ -19,7 +19,7 @@ namespace fr::Utils {
         fonts.emplace_back(font_alias,font);
     }
 
-    sf::Font &ResourceManager::get_font(const std::string &font_alias)
+    sf::Font &ResourceManager::getFont(const std::string &font_alias)
     {
         for (auto& font : fonts)
         {

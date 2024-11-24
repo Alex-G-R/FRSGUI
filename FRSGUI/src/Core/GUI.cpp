@@ -10,7 +10,7 @@ namespace fr {
 
     }
 
-    void GUI::Render()
+    void GUI::render()
     {
         for(const auto& element : elements)
         {
@@ -18,7 +18,7 @@ namespace fr {
         }
     }
 
-    void GUI::Update()
+    void GUI::update()
     {
 
     }

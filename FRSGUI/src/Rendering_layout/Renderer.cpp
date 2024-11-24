@@ -208,7 +208,7 @@ void Renderer::applyStylesText(std::unordered_map<KEY, int>& current_priority, S
             using T = std::decay_t<decltype(arg)>;
             if constexpr(std::is_same_v<T, std::string>)
             {
-                text.setFont(frsgui_ptr->get_font(arg));
+                text.setFont(frsgui_ptr->getFont(arg));
             }
         }, value);
 

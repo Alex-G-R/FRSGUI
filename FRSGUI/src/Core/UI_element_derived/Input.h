@@ -30,16 +30,12 @@ public:
     Input(const std::shared_ptr<Rendering::Renderer>& renderer_ptr, bool is_number_only_input, std::initializer_list<std::string> groups);
     Input(const std::shared_ptr<Rendering::Renderer>& renderer_ptr, bool is_number_only_input, std::string ID);
 
-
-    void load_text();
-
-    void set_select(bool selected);
-    bool get_select();
-
-    void push_data(sf::Uint32 char_to_add);
+    void setSelect(bool selected);
+    bool getSelect();
+    void pushData(sf::Uint32 char_to_add);
 
     template <typename T>
-    T get_data()
+    T getDataAs()
     {
         if(stored_data.empty())
             return 0;
@@ -52,9 +48,7 @@ public:
         }
         return value;
     }
-
-    // Specialization for std::string to avoid stream issues
-    std::string get_data() {
+    std::string getData() {
         return stored_data;
     }
 };

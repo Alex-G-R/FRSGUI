@@ -23,8 +23,8 @@ public:
 
     std::vector<std::shared_ptr<UI_element>> elements;
 
-    void Render();
-    void Update();
+    void render();
+    void update();
     void addElement(const std::shared_ptr<UI_element>& element);
 
     std::shared_ptr<UI_element>& getElementByID(const std::string& id);

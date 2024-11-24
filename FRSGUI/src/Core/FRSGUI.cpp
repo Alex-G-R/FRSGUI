@@ -10,7 +10,7 @@ namespace fr {
 
     void FRSGUI::Render()
     {
-        gui.Render();
+        gui.render();
     }
 
 
@@ -46,14 +46,14 @@ namespace fr {
         return gui.getInputByID(id);
     }
 
-    void FRSGUI::add_font(const std::string &font_alias, const std::string &path)
+    void FRSGUI::addFont(const std::string &font_alias, const std::string &path)
     {
-        resource_manager.add_font(font_alias, path);
+        resource_manager.addFont(font_alias, path);
     }
 
-    sf::Font &FRSGUI::get_font(const std::string &font_alias)
+    sf::Font &FRSGUI::getFont(const std::string &font_alias)
     {
-        return resource_manager.get_font(font_alias);
+        return resource_manager.getFont(font_alias);
     }
 
 

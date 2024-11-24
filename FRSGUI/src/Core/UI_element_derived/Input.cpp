@@ -72,7 +72,7 @@ fr::Input::Input(const std::shared_ptr<Rendering::Renderer>& renderer_ptr, bool 
         has_cursor = true;
 }
 
-void fr::Input::push_data(sf::Uint32 char_to_add_unicode)
+void fr::Input::pushData(sf::Uint32 char_to_add_unicode)
 {
         // Ignore enter
         if(char_to_add_unicode == 13)
@@ -108,13 +108,13 @@ void fr::Input::push_data(sf::Uint32 char_to_add_unicode)
         }
 }
 
-void fr::Input::set_select(bool selected)
+void fr::Input::setSelect(bool selected)
 {
     std::cout << "Select changed to " << selected << " from " << this->selected << "\n";
     this->selected = selected;
 }
 
-bool fr::Input::get_select()
+bool fr::Input::getSelect()
 {
     return this->selected;
 }

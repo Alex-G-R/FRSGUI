@@ -5,7 +5,7 @@ namespace fr {
 
     Style::Style(std::initializer_list<std::pair<KEY, type>> init)
     {
-        create_flags();
+        createFlags();
 
         for(const auto& [key, value] : init)
         {
@@ -18,7 +18,7 @@ namespace fr {
         }
     }
 
-    void Style::create_flags()
+    void Style::createFlags()
     {
         for(int key_int = static_cast<int>(KEY::POSITION); key_int < static_cast<int>(KEY::DEVEL_LAST_KEY); ++key_int)
         {
@@ -41,7 +41,7 @@ namespace fr {
         throw std::runtime_error("Property key not found");  // key is not found
     }
 
-    void Style::update_style(std::initializer_list<std::pair<KEY, type> > init)
+    void Style::updateStyle(std::initializer_list<std::pair<KEY, type> > init)
     {
         for(const auto& [key, value] : init)
         {
