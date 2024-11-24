@@ -110,7 +110,6 @@ void fr::Input::pushData(sf::Uint32 char_to_add_unicode)
 
 void fr::Input::setSelect(bool selected)
 {
-    std::cout << "Select changed to " << selected << " from " << this->selected << "\n";
     this->selected = selected;
 }
 

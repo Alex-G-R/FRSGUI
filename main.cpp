@@ -68,7 +68,7 @@ int main()
         frsgui.getElementByID("Foo")->deleteGroup("squares_two");
 
         /* Custom functionality by capture */
-        std::cout << "Button clicked. \n";
+        //std::cout << "Button clicked. \n";
         player.move(10.f, 0.f);
 
         /* Styles manipulation by style capture */
