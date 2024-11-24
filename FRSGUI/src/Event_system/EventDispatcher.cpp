@@ -53,6 +53,7 @@ namespace fr::Events {
                 {
                     if(input->get_select() == false)
                     {
+                        deselect_inputs();
                         input->set_select(true);
                         input_selected = true;
                         break;
