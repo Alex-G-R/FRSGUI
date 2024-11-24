@@ -28,6 +28,7 @@ public:
     void addElement(const std::shared_ptr<UI_element>& element);
 
     std::shared_ptr<UI_element>& getElementByID(const std::string& id);
+    std::shared_ptr<Input>& getInputByID(const std::string& id);
 
     friend class UI_element;
 };

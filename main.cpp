@@ -80,10 +80,16 @@ int main()
         // Size debug |
         // std::cout << "Size of element: " << sizeof(square) << "\n";
         // std::cout << "Size of frsgui: " << sizeof(frsgui) << "\n";
+
+        // Operation on data from inputs
+        auto num1 = frsgui.getInputByID("num1");
+        auto num2 = frsgui.getInputByID("num2");
+        std::cout << "Addition result: " << num1->get_data<float>() + num2->get_data<float>() << "\n";
+
     });
 
     //Bool is_numerical_only is an overload, defaults to false
-    const auto input = Input(frsgui.getRenderer(), false, frsgui);
+    const auto input = Input(frsgui.getRenderer(), true, "num1",frsgui);
     input->addGroup("input");
     auto input_style = Style("input", fr::ApplyBy::GROUP, 1, {
         {fr::KEY::SIZE, sf::Vector2f(300.f, 60.f)},
@@ -94,6 +100,13 @@ int main()
         // ended here
         {fr::KEY::CURSOR_COLOR, sf::Color(133, 134, 135, 255)},
         {fr::KEY::CHARACTER_SIZE, 48}
+    }, frsgui);
+
+    const auto inputTwo = Input(frsgui.getRenderer(), true, "num2",frsgui);
+    inputTwo->addGroup("input");
+    inputTwo->addGroup("inputTwo");
+    auto input_style_two = Style("inputTwo", fr::ApplyBy::GROUP, 2, {
+        {fr::KEY::POSITION, sf::Vector2f(900.f, 500.f)},
     }, frsgui);
 
     // Add fonts

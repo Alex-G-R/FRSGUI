@@ -5,7 +5,7 @@ namespace fr {
     gui(render_window_ptr, renerer_ptr), event_dispatcher(gui.elements, this), render_window_ptr(render_window_ptr),
     renderer(render_window_ptr, this), style_sheet(style_manager.style_sheet)
     {
-        render_window_ptr->setFramerateLimit(120);
+        render_window_ptr->setFramerateLimit(75);
     }
 
     void FRSGUI::Render()
@@ -39,6 +39,11 @@ namespace fr {
     std::shared_ptr<UI_element>& FRSGUI::getElementByID(const std::string &id)
     {
         return gui.getElementByID(id);
+    }
+
+    std::shared_ptr<Input> &FRSGUI::getInputByID(const std::string &id)
+    {
+        return gui.getInputByID(id);
     }
 
     void FRSGUI::add_font(const std::string &font_alias, const std::string &path)

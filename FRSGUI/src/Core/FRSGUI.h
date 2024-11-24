@@ -58,6 +58,7 @@ public:
     void addStyle(std::string group_name, std::shared_ptr<fr::Style> style, ApplyBy style_type, int style_priority);
     void dispatchEvent(const sf::Event& event);
     std::shared_ptr<UI_element>& getElementByID(const std::string& id);
+    std::shared_ptr<Input>& getInputByID(const std::string& id);
     void add_font(const std::string& font_alias, const std::string& path);
     sf::Font& get_font(const std::string& font_alias);
 

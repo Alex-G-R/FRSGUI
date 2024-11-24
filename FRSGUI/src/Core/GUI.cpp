@@ -1,5 +1,7 @@
 #include "GUI.h"
 
+#include "UI_element_derived/Input.h"
+
 
 namespace fr {
     GUI::GUI(const std::shared_ptr<sf::RenderWindow>& render_window_ptr, const std::shared_ptr<Rendering::Renderer>& renderer_ptr) :
@@ -37,5 +39,23 @@ namespace fr {
         };
         throw std::invalid_argument("Provided ID does not match with any element. \n getElementByID([?] <- Invalid ID)");
     }
+
+    std::shared_ptr<Input> &GUI::getInputByID(const std::string &id)
+    {
+        for( auto& element : elements)
+        {
+            if(element->getID() == id)
+            {
+                // Verify the element can be cast to Input
+                if (std::dynamic_pointer_cast<Input>(element)) {
+                    // Cast the reference to the original shared_ptr<UI_element>
+                    return reinterpret_cast<std::shared_ptr<Input>&>(element);
+                }
+                throw std::invalid_argument("Cast failed, getInputByID | GUI.cpp)");
+            }
+        };
+        throw std::invalid_argument("Provided ID does not match with any element. \n getInputByID([?] <- Invalid ID)");
+    }
+
 
 }

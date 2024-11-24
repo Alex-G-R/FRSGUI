@@ -76,43 +76,37 @@ void fr::Input::push_data(sf::Uint32 char_to_add_unicode)
 {
         // Ignore enter
         if(char_to_add_unicode == 13)
-                return;
+            return;
 
         // Handle backspace
         if(stored_data.length() > 0 && char_to_add_unicode == 8)
         {
-                stored_data.pop_back();
-                std::cout << stored_data << "\n";
-                setTextString(stored_data);
-                return;
+            stored_data.pop_back();
+            //std::cout << stored_data << "\n";
+            setTextString(stored_data);
+            return;
         }
 
         if(stored_data.length() == 0 && char_to_add_unicode == 8)
-                return;
+             return;
 
         if(this->is_number_only_input)
         {
-                // Check if char is a number
-                if(char_to_add_unicode > 46 && char_to_add_unicode < 58)
-                {
-                        stored_data += static_cast<char>(char_to_add_unicode);
-                        std::cout << stored_data << "\n";
-                        setTextString(stored_data);
-                }
+            // Check if char is a number or a dot for decimal
+            if(char_to_add_unicode > 47 && char_to_add_unicode < 58 || char_to_add_unicode == 46 )
+            {
+                    stored_data += static_cast<char>(char_to_add_unicode);
+                    //std::cout << stored_data << "\n";
+                    setTextString(stored_data);
+            }
         }
         else
         {
-                stored_data += static_cast<char>(char_to_add_unicode);
-                std::cout << stored_data << "\n";
-                setTextString(stored_data);
+            stored_data += static_cast<char>(char_to_add_unicode);
+            //std::cout << stored_data << "\n";
+            setTextString(stored_data);
         }
 }
-
-std::string fr::Input::get_data()
-{
-    return stored_data;
-}
-
 
 void fr::Input::set_select(bool selected)
 {
