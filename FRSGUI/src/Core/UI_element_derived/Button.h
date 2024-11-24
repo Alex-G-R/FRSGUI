@@ -2,7 +2,7 @@
 #define BUTTON_H
 
 #include "../FRSGUI.h"
-#include "../UI_element.h"
+#include "../UIElement.h"
 #include <functional>
 
 namespace fr {

@@ -6,13 +6,13 @@
 #include "../Core/FRSGUI.h"
 
 /* Raw Ui_element and overloads with group declaration built-in */
-#include "Constructor_overloads/UI_element-overloads.h"
+#include "Constructor_overloads/UIElementOverloads.h"
 
 /* Button and overloads with group declaration built-in */
-#include "Constructor_overloads/Button-overloads.h"
+#include "Constructor_overloads/ButtonOverloads.h"
 
 /* Input and Input overload for numeric only and overloads with group declaration built-in */
-#include "Constructor_overloads/Input-overloads.h"
+#include "Constructor_overloads/InputOverloads.h"
 
 /* Style block */
 inline std::shared_ptr<fr::Style> Style(std::string style_name, fr::ApplyBy styletype, int style_priority,std::initializer_list<std::pair<fr::KEY, fr::type>> init, fr::FRSGUI& frsgui)

@@ -1,7 +1,7 @@
 
 #ifndef INPUT_H
 #define INPUT_H
-#include "../UI_element.h"
+#include "../UIElement.h"
 #include <sstream>
 #include <stdexcept>
 

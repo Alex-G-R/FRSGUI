@@ -2,7 +2,7 @@
 #define EVENTDISPATCHER_H
 
 #include "SFML/Graphics.hpp"
-#include "../Core/UI_element.h"
+#include "../Core/UIElement.h"
 #include "../Core/UI_element_derived/Input.h"
 #include <memory>
 

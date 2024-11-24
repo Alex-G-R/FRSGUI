@@ -8,8 +8,8 @@ add_executable(FRSGUI main.cpp
         FRSGUI/src/Core/FRSGUI.h
         FRSGUI/src/Core/GUI.cpp
         FRSGUI/src/Core/GUI.h
-        FRSGUI/src/Core/UI_element.cpp
-        FRSGUI/src/Core/UI_element.h
+        FRSGUI/src/Core/UIElement.cpp
+        FRSGUI/src/Core/UIElement.h
         FRSGUI/src/Core/UI_element_derived/Button.cpp
         FRSGUI/src/Core/UI_element_derived/Button.h
         FRSGUI/src/Event_system/EventDispatcher.cpp
@@ -36,9 +36,9 @@ add_executable(FRSGUI main.cpp
         FRSGUI/src/Utility/KEY.h
         FRSGUI/src/Core/UI_element_derived/Input.cpp
         FRSGUI/src/Core/UI_element_derived/Input.h
-        FRSGUI/src/Utility/Constructor_overloads/Input-overloads.h
-        FRSGUI/src/Utility/Constructor_overloads/Button-overloads.h
-        FRSGUI/src/Utility/Constructor_overloads/UI_element-overloads.h
+        FRSGUI/src/Utility/Constructor_overloads/InputOverloads.h
+        FRSGUI/src/Utility/Constructor_overloads/ButtonOverloads.h
+        FRSGUI/src/Utility/Constructor_overloads/UIElementOverloads.h
 )
 
 set(SFML_STATIC_LIBRARIES TRUE)

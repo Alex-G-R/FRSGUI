@@ -13,7 +13,7 @@
 
 /* Inner header files */
 #include "GUI.h"
-#include "UI_element.h"
+#include "UIElement.h"
 #include "../Rendering_layout/Renderer.h"
 #include "../Utility/Style.h"
 #include "../Rendering_layout/StyleManager.h"
