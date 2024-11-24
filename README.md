@@ -7,6 +7,7 @@ Framework for Rapid and Simple development of General User Interface application
 # Objectives
 
 Task priority: 
+  - Stardarise the naming convention for functions and variables
   - ~~Add FONT as a styling option, defualt font, functions to change default font, folder for default font in the FRSGUI dir~~
   - ~~Add Text element to UI_element class, create public getters. Standardize the draw fuction for Text and Elements~~
   - ~~Rebuilding the style system to <unordered_map> with <variant> instead of variables on top of variables (making the system scalable and easy to add new styles)~~
