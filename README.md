@@ -37,13 +37,13 @@ Task priority:
     - Dynamic interaction with elements? (drag and drop, resize by mouse)
    
 # Naming convention
-FRSGUI namespace: fr
-Variables: snake_case
-Variables: snake_case
-Classes: PascalCase
-Files: PascalCase
-Folders: Pascal_snakecase
-Abbreviations: CL(capital letters)
-Functions: camelCase
-Wrapper functions: PascalCase
+  - FRSGUI namespace: fr
+  - Variables: snake_case
+  - Variables: snake_case
+  - Classes: PascalCase
+  - Files: PascalCase
+  - Folders: Pascal_snakecase
+  - Abbreviations: CL(capital letters)
+  - Functions: camelCase
+  - Wrapper functions: PascalCase
   
