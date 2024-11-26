@@ -39,7 +39,6 @@ Task priority:
 # Naming convention
   - FRSGUI namespace: `fr`
   - Variables: `snake_case`
-  - Variables: `snake_case`
   - Classes: `PascalCase`
   - Files: `PascalCase`
   - Folders: `Pascal_snakecase`
