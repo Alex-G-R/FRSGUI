@@ -84,7 +84,7 @@ void Renderer::draw(UIElement* element)
     sf::Text text = element->getText();
 
     // Set the text position relative to input field
-    text.setPosition(elementPosition.x, elementPosition.y);
+    //text.setPosition(elementPosition.x, elementPosition.y);
 
     // Get the full text string from input
     std::string fullText = element->getTextString();
@@ -99,6 +99,8 @@ void Renderer::draw(UIElement* element)
         if (styleVec.style_type == ApplyBy::ID && styleVec.group_name == element_id)
         { // Apply style by ID
             applyStylesText(current_priority, styleVec, text, cursor_color);
+            // Center text verticaly
+            text.setPosition(elementPosition.x, elementPosition.y + (shape->getSize().y / 2) - (text.getLocalBounds().height / 2 + text.getLocalBounds().top));
         }
         else if (styleVec.style_type == ApplyBy::GROUP) {
             // Apply style if it matches one of the elements groups
@@ -107,6 +109,8 @@ void Renderer::draw(UIElement* element)
                 if (group == styleVec.group_name)
                 {
                     applyStylesText(current_priority, styleVec, text, cursor_color);
+                    // Center text verticaly
+                    text.setPosition(elementPosition.x, elementPosition.y + (shape->getSize().y / 2) - (text.getLocalBounds().height / 2 + text.getLocalBounds().top));
                     break;
                 }
             }
@@ -138,12 +142,14 @@ void Renderer::draw(UIElement* element)
 
             // Position the cursor at the end of the main text
             float cursorXPosition = text.getGlobalBounds().left + text.getGlobalBounds().width;
-            cursor.setPosition(cursorXPosition+1, elementPosition.y);
+            // Center cursor verticaly
+            cursor.setPosition(cursorXPosition+1, elementPosition.y + (shape->getSize().y / 2) - (cursor.getLocalBounds().height / 2 + cursor.getLocalBounds().top));
             // Draw the cursor `|`
             render_window_ptr->draw(cursor);
         }
     }
 }
+
 
 void Renderer::applyStylesText(std::unordered_map<KEY, int>& current_priority, StyleVec& styleVec, sf::Text& text, sf::Color& cursor_color)
 {

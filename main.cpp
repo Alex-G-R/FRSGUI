@@ -99,7 +99,7 @@ int main()
         {fr::KEY::BACKGROUND_COLOR, sf::Color(35, 34, 33)},
         // ended here
         {fr::KEY::CURSOR_COLOR, sf::Color(133, 134, 135, 255)},
-        {fr::KEY::CHARACTER_SIZE, 48}
+        {fr::KEY::CHARACTER_SIZE, 50}
     }, frsgui);
 
     const auto inputTwo = Input(frsgui.getRenderer(), true, "num2",frsgui);
