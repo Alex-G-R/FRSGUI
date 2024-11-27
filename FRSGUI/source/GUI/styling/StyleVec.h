@@ -6,7 +6,7 @@
 #include <memory>
 
 #include "Style.h"
-#include "./Enums/ApplyBy.h"
+#include "./enums/ApplyBy.h"
 
 namespace fr
 {

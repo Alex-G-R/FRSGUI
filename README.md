@@ -41,8 +41,8 @@ Task priority:
   - Variables: `snake_case`
   - Classes: `PascalCase`
   - Files: `PascalCase`
-  - Folders: `Pascal_snakecase`
+  - Folders: `snake_case`
   - Abbreviations: `CL(capital letters)`
   - Functions: `camelCase`
-  - Wrapper functions: `PascalCase`
+  - Constructor wrapper functions: `PascalCase | (same name as the constructor class)`
   

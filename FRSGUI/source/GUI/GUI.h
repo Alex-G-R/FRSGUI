@@ -4,7 +4,7 @@
 #include <SFML/Graphics.hpp>
 
 #include "UIElement.h"
-#include "../Core/Rendering/Renderer.h"
+#include "../core/rendering/Renderer.h"
 
 #include <vector>
 #include <memory>

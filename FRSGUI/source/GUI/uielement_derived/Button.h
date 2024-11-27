@@ -1,7 +1,7 @@
 #ifndef BUTTON_H
 #define BUTTON_H
 
-#include "../../Core/FRSGUI.h"
+#include "../../core/FRSGUI.h"
 #include "../../GUI/UIElement.h"
 #include <functional>
 

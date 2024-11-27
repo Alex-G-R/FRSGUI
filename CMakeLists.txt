@@ -4,41 +4,41 @@ project(FRSGUI)
 set(CMAKE_CXX_STANDARD 17)
 
 add_executable(FRSGUI main.cpp
-        FRSGUI/Source/Core/FRSGUI.cpp
-        FRSGUI/Source/Core/FRSGUI.h
+        FRSGUI/source/Core/FRSGUI.cpp
+        FRSGUI/source/Core/FRSGUI.h
         FRSGUI/Source/GUI/GUI.cpp
         FRSGUI/Source/GUI/GUI.h
         FRSGUI/Source/GUI/UIElement.cpp
         FRSGUI/Source/GUI/UIElement.h
-        FRSGUI/Source/GUI/UIElement_derived/Button.cpp
-        FRSGUI/Source/GUI/UIElement_derived/Button.h
-        FRSGUI/Source/GUI/Events/EventDispatcher.cpp
-        FRSGUI/Source/GUI/Events/EventDispatcher.h
-        FRSGUI/Source/Core/Rendering/Renderer.cpp
-        FRSGUI/Source/Core/Rendering/Renderer.h
-        FRSGUI/Source/GUI/Styling/StyleManager.cpp
-        FRSGUI/Source/GUI/Styling/StyleManager.h
-        FRSGUI/Source/GUI/Styling/Style.cpp
-        FRSGUI/Source/GUI/Styling/Style.h
-        FRSGUI/Source/Core/Utility/ResourceManager.cpp
-        FRSGUI/Source/Core/Utility/ResourceManager.h
+        FRSGUI/source/GUI/UIElement_derived/Button.cpp
+        FRSGUI/source/GUI/UIElement_derived/Button.h
+        FRSGUI/source/GUI/Events/EventDispatcher.cpp
+        FRSGUI/source/GUI/Events/EventDispatcher.h
+        FRSGUI/source/core/Rendering/Renderer.cpp
+        FRSGUI/source/core/Rendering/Renderer.h
+        FRSGUI/source/GUI/Styling/StyleManager.cpp
+        FRSGUI/source/GUI/Styling/StyleManager.h
+        FRSGUI/source/GUI/Styling/Style.cpp
+        FRSGUI/source/GUI/Styling/Style.h
+        FRSGUI/source/core/Utility/ResourceManager.cpp
+        FRSGUI/source/core/Utility/ResourceManager.h
         FRSGUI/FRSGUI.hpp
-        FRSGUI/Source/GUI/Styling/StyleSheet.cpp
-        FRSGUI/Source/GUI/Styling/StyleSheet.h
-        FRSGUI/Source/GUI/Styling/Enums/ApplyBy.h
-        FRSGUI/Source/GUI/Styling/StyleVec.h
-        FRSGUI/Source/GUI/Styling/StyleVec.cpp
-        FRSGUI/Source/GUI/UIElement_derived/Slider.cpp
-        FRSGUI/Source/GUI/UIElement_derived/Slider.h
-        FRSGUI/Source/Wrappers/Wrapper.hpp
-        FRSGUI/Source/GUI/Styling/Enums/KEY.h
-        FRSGUI/Source/GUI/UIElement_derived/Input.cpp
-        FRSGUI/Source/GUI/UIElement_derived/Input.h
-        FRSGUI/Source/Wrappers/Constructor_overloads/InputOverloads.h
-        FRSGUI/Source/Wrappers/Constructor_overloads/ButtonOverloads.h
-        FRSGUI/Source/Wrappers/Constructor_overloads/UIElementOverloads.h
-        FRSGUI/Source/GUI/UIElement_derived/TextBlock.cpp
-        FRSGUI/Source/GUI/UIElement_derived/TextBlock.h
+        FRSGUI/source/GUI/Styling/StyleSheet.cpp
+        FRSGUI/source/GUI/Styling/StyleSheet.h
+        FRSGUI/source/GUI/styling/Enums/ApplyBy.h
+        FRSGUI/source/GUI/Styling/StyleVec.h
+        FRSGUI/source/GUI/Styling/StyleVec.cpp
+        FRSGUI/source/GUI/UIElement_derived/Slider.cpp
+        FRSGUI/source/GUI/UIElement_derived/Slider.h
+        FRSGUI/source/Wrappers/Wrapper.hpp
+        FRSGUI/source/GUI/styling/Enums/KEY.h
+        FRSGUI/source/GUI/UIElement_derived/Input.cpp
+        FRSGUI/source/GUI/UIElement_derived/Input.h
+        FRSGUI/source/wrappers/Constructor_overloads/InputOverloads.h
+        FRSGUI/source/wrappers/Constructor_overloads/ButtonOverloads.h
+        FRSGUI/source/wrappers/Constructor_overloads/UIElementOverloads.h
+        FRSGUI/source/GUI/UIElement_derived/TextBlock.cpp
+        FRSGUI/source/GUI/UIElement_derived/TextBlock.h
 )
 
 set(SFML_STATIC_LIBRARIES TRUE)

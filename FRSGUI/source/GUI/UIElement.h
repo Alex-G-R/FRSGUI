@@ -2,7 +2,7 @@
 #define UI_ELEMENT_H
 
 #include <Graphics.hpp>
-#include "../Core/Rendering/Renderer.h"
+#include "../core/rendering/Renderer.h"
 #include <memory>
 #include <string>
 
