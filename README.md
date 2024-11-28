@@ -18,6 +18,8 @@ Task priority:
       - each element must be a child of some element
       - add layouts like, center, left, right, top, bottom
       - margin, padding
+  - Add labels that can be tied to elements
+  - Add placeholder for inputs (default text if no user data is inputed)
   - Create hard-coded UI_elements: 
       - ~~Button~~
       - Input: 
