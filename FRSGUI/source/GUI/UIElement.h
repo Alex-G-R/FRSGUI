@@ -85,6 +85,7 @@ public:
         explicit Builder(FRSGUI* frsgui);
         Builder& setID(const std::string& id);
         Builder& addGroup(const std::string& group);
+        Builder& addGroups(const std::initializer_list<std::string>& groups);
         Builder& setText(TextType text);
         Builder& isNumericalOnly(bool isNumericalOnly);
         std::shared_ptr<UIElement> buildUIElement();

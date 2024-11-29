@@ -215,6 +215,16 @@ namespace fr {
         return *this;
     }
 
+    UIElement::Builder &UIElement::Builder::addGroups(const std::initializer_list<std::string> &groups)
+    {
+        for(auto& group : groups)
+        {
+            this->groups.push_back(group);
+        }
+        return *this;
+    }
+
+
     UIElement::Builder& UIElement::Builder::setText(TextType text) {
         this->text = text;
         return *this;

@@ -10,10 +10,7 @@ int main()
     // Create GUI here
     const auto square = fr::UIElement::Builder(&frsgui)
     .setID("Foo")
-    .addGroup("squares")
-    .addGroup("squares_two")
-    .addGroup("squares_three")
-    .addGroup("squares_four")
+    .addGroups({"squares", "squares_two", "squares_three", "squares_four"})
     .setText("Hello FRSGUI!")
     .buildUIElement();
 
