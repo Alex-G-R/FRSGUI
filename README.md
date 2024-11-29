@@ -18,13 +18,18 @@ Task priority:
       - each element must be a child of some element
       - add layouts like, center, left, right, top, bottom
       - margin, padding
-  - Add labels that can be tied to elements
-  - Add placeholder for inputs (default text if no user data is inputed)
+  - other Styling options
+      - Add labels that can be tied to elements
+      - Add placeholder for inputs (default text if no user data is inputed)
+      - add an ability to create smooth edges to elements (css border-radius type shii)
+      - hover styling (effect on mouse over the element)
   - Create hard-coded UI_elements: 
       - ~~Button~~
       - Input: 
-          - Textarea 
-          - Number inputs 
+          - ~~Textarea~~ 
+          - ~~Number inputs~~
+          - Checkbox
+          - Radio checkbox?
       - Slider
           - numbers slider
           - custom sliders
