@@ -7,9 +7,14 @@
 #include <string>
 #include <variant>
 
+/* Forward declaration */
 class GUI;
 
 namespace fr {
+
+/* Forward declaration */
+class Button;
+class Input;
 
 class UIElement {
 private:
@@ -19,9 +24,9 @@ private:
     std::vector<std::string> groups;
 
     // Not used for now
-    std::vector<std::shared_ptr<UIElement>> children;
-    int z_order;
-    bool dirty;
+    // std::vector<std::shared_ptr<UIElement>> children;
+    // int z_order;
+    // bool dirty;
     // -----
 
     using TextType = std::variant<std::string,const char*, int, double, float>;
@@ -48,18 +53,18 @@ public:
     // Setters
     void setID(const std::string& id);
     void addGroup(const std::string& group);
-    void addChild(const std::shared_ptr<UIElement>& child);
-    void setZOrder(int z_order);
-    void setDirty(bool is_dirty);
-    void setTextString(TextType text);
+    //void addChild(const std::shared_ptr<UIElement>& child);
+    //void setZOrder(int z_order);
+    //void setDirty(bool is_dirty);
+    void setText(TextType text);
 
 
     // Getters
     std::string getID();
     std::vector<std::string>& getGroupsVector();
-    std::vector<std::shared_ptr<UIElement>>& getChildren();
-    int getZOrder();
-    bool isDirty();
+    //std::vector<std::shared_ptr<UIElement>>& getChildren();
+    //int getZOrder();
+    //bool isDirty();
     sf::RectangleShape* getShape();
     std::string getTextString();
     sf::Text& getText();
@@ -67,6 +72,27 @@ public:
     // Flags
     bool has_cursor;
     bool selected;
+
+    //Builder class to construct UIElement objects
+    class Builder {
+    protected:
+        FRSGUI* frsgui;
+        std::string id;
+        std::vector<std::string> groups;
+        TextType text;
+        bool numerical_only;
+    public:
+        explicit Builder(FRSGUI* frsgui);
+        Builder& setID(const std::string& id);
+        Builder& addGroup(const std::string& group);
+        Builder& setText(TextType text);
+        Builder& isNumericalOnly(bool isNumericalOnly);
+        std::shared_ptr<UIElement> buildUIElement();
+        std::shared_ptr<UIElement> buildTextBlock();
+        std::shared_ptr<fr::Button> buildButton();
+        std::shared_ptr<fr::Input> buildInput();
+    };
+
 };
 
 }

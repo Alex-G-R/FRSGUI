@@ -1,7 +1,5 @@
 #include "FRSGUI/FRSGUI.hpp"
-
 #include <iostream>
-#include <filesystem>
 
 int main()
 {
@@ -10,13 +8,14 @@ int main()
     fr::FRSGUI frsgui(render_window_ptr);
 
     // Create GUI here
-    const auto square = UIElement(frsgui.getRenderer(), "Foo", {
-        "squares",
-        "squares_two",
-        "squares_three",
-        "squares_four"
-    }, frsgui);
-    square->setTextString("Hello FRSGUI!");
+    const auto square = fr::UIElement::Builder(&frsgui)
+    .setID("Foo")
+    .addGroup("squares")
+    .addGroup("squares_two")
+    .addGroup("squares_three")
+    .addGroup("squares_four")
+    .setText("Hello FRSGUI!")
+    .buildUIElement();
 
     auto squares_style = Style("squares", fr::ApplyBy::GROUP, 1,{
         {fr::KEY::POSITION, sf::Vector2f(50.f, 50.f)},
@@ -44,9 +43,11 @@ int main()
     }, frsgui);
 
     //button test
-    const auto btn = Button(frsgui.getRenderer(), frsgui);
-    btn->addGroup("btn");
-    btn->setTextString("Button");
+    const auto btn = fr::Button::Builder(&frsgui)
+    .addGroup("btn")
+    .setText("Button")
+    .buildButton();
+
     auto btn_style = Style("btn", fr::ApplyBy::GROUP, 1,{
         {fr::KEY::SIZE, sf::Vector2f(100.f, 100.f)},
         {fr::KEY::POSITION, sf::Vector2f(800.f, 300.f)},
@@ -89,12 +90,16 @@ int main()
         const auto addition_result = num1->getDataAs<double>() + num2->getDataAs<double>();
 
         // You can pass numbers now!
-        frsgui.getElementByID("result")->setTextString(addition_result);
+        frsgui.getElementByID("result")->setText(addition_result);
     });
 
     //Bool is_numerical_only is an overload, defaults to false
-    const auto input = Input(frsgui.getRenderer(), true, "num1",frsgui);
-    input->addGroup("input");
+    const auto input = fr::Input::Builder(&frsgui)
+    .addGroup("input")
+    .isNumericalOnly(true)
+    .setID("num1")
+    .buildInput();
+
     auto input_style = Style("input", fr::ApplyBy::GROUP, 1, {
         {fr::KEY::SIZE, sf::Vector2f(300.f, 60.f)},
         {fr::KEY::POSITION, sf::Vector2f(500.f, 500.f)},
@@ -106,9 +111,13 @@ int main()
         {fr::KEY::CHARACTER_SIZE, 50}
     }, frsgui);
 
-    const auto inputTwo = Input(frsgui.getRenderer(), true, "num2",frsgui);
-    inputTwo->addGroup("input");
-    inputTwo->addGroup("inputTwo");
+    const auto inputTwo = fr::Input::Builder(&frsgui)
+    .addGroup("input")
+    .addGroup("inputTwo")
+    .isNumericalOnly(true)
+    .setID("num2")
+    .buildInput();
+
     auto input_style_two = Style("inputTwo", fr::ApplyBy::GROUP, 2, {
         {fr::KEY::POSITION, sf::Vector2f(900.f, 500.f)},
     }, frsgui);
@@ -117,7 +126,11 @@ int main()
     frsgui.addFont("man", "./fonts/man.ttf");
 
     // add textblock
-    const auto result = TextBlock(frsgui.getRenderer(), "result", {"textblock_style"}, frsgui);
+    const auto result = fr::TextBlock::Builder(&frsgui)
+    .addGroup("textblock_style")
+    .setID("result")
+    .buildTextBlock();
+
     auto textblock_style = Style("textblock_style", fr::ApplyBy::GROUP, 1, {
         {fr::KEY::CHARACTER_SIZE, 64},
         {fr::KEY::TEXT_COLOR, sf::Color::Blue},

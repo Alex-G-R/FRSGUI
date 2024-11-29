@@ -83,7 +83,7 @@ void fr::Input::pushData(sf::Uint32 char_to_add_unicode)
         {
             stored_data.pop_back();
             //std::cout << stored_data << "\n";
-            setTextString(stored_data);
+            setText(stored_data);
             return;
         }
 
@@ -97,14 +97,14 @@ void fr::Input::pushData(sf::Uint32 char_to_add_unicode)
             {
                     stored_data += static_cast<char>(char_to_add_unicode);
                     //std::cout << stored_data << "\n";
-                    setTextString(stored_data);
+                    setText(stored_data);
             }
         }
         else
         {
             stored_data += static_cast<char>(char_to_add_unicode);
             //std::cout << stored_data << "\n";
-            setTextString(stored_data);
+            setText(stored_data);
         }
 }
 

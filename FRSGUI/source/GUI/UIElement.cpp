@@ -1,4 +1,7 @@
 #include "UIElement.h"
+#include "../core/FRSGUI.h"
+#include "uielement_derived/Button.h"
+#include "uielement_derived/Input.h"
 #include <iostream>
 
 namespace fr {
@@ -8,8 +11,7 @@ namespace fr {
     renderer_ptr(renderer_ptr)
     {
         id = "";
-        z_order = 0;
-        dirty = false;
+
         if(!font.loadFromFile("./FRSGUI/resources/default_font/default.ttf"))
         {
             std::cout << "Font loading error \n";
@@ -24,8 +26,7 @@ namespace fr {
     renderer_ptr(renderer_ptr)
     {
         id = std::move(ID);
-        z_order = 0;
-        dirty = false;
+
 
         for(const auto& group : groups)
         {
@@ -46,8 +47,6 @@ namespace fr {
     renderer_ptr(renderer_ptr)
     {
         id = "";
-        z_order = 0;
-        dirty = false;
 
         for(const auto& group : groups)
         {
@@ -68,8 +67,7 @@ namespace fr {
     renderer_ptr(renderer_ptr)
     {
         id = std::move(ID);
-        z_order = 0;
-        dirty = false;
+
 
         if(!font.loadFromFile("./FRSGUI/resources/default_font/default.ttf"))
         {
@@ -116,7 +114,7 @@ namespace fr {
     {
         groups.emplace_back(group);
     }
-
+/*
     void UIElement::addChild(const std::shared_ptr<UIElement>& child)
     {
         children.emplace_back(child);
@@ -131,8 +129,8 @@ namespace fr {
     {
         dirty = is_dirty;
     }
-
-    void UIElement::setTextString(TextType text)
+*/
+    void UIElement::setText(TextType text)
     {
         std::visit([this](auto&& value)
         {
@@ -171,7 +169,7 @@ namespace fr {
     {
         return groups;
     }
-
+/*
     std::vector<std::shared_ptr<UIElement>>& UIElement::getChildren()
     {
         return children;
@@ -186,7 +184,7 @@ namespace fr {
     {
         return dirty;
     }
-
+*/
     sf::RectangleShape *UIElement::getShape()
     {
         return &shape;
@@ -202,6 +200,82 @@ namespace fr {
         return text;
     }
 
+
+    // Constructor for Builder
+    UIElement::Builder::Builder(FRSGUI* frsgui) : frsgui(frsgui) {}
+
+    // Setters
+    UIElement::Builder& UIElement::Builder::setID(const std::string& id) {
+        this->id = id;
+        return *this;
+    }
+
+    UIElement::Builder& UIElement::Builder::addGroup(const std::string& group) {
+        groups.push_back(group);
+        return *this;
+    }
+
+    UIElement::Builder& UIElement::Builder::setText(TextType text) {
+        this->text = text;
+        return *this;
+    }
+
+    UIElement::Builder &UIElement::Builder::isNumericalOnly(bool isNumericalOnly)
+    {
+        this->numerical_only = isNumericalOnly;
+        return *this;
+    }
+
+
+    // Build method
+    std::shared_ptr<UIElement> UIElement::Builder::buildUIElement() {
+
+        auto instance = std::make_shared<UIElement>(frsgui->getRenderer());
+
+        instance->setID(id);
+        for (const auto& group : groups) {
+            instance->addGroup(group);
+        }
+        instance->setText(text);
+
+        frsgui->addElement(instance);
+
+        return instance;
+    }
+
+    std::shared_ptr<UIElement> UIElement::Builder::buildTextBlock() {
+        return buildUIElement();
+    }
+
+    std::shared_ptr<fr::Button> UIElement::Builder::buildButton()
+    {
+        auto instance = std::make_shared<Button>(frsgui->getRenderer());
+
+        instance->setID(id);
+        for (const auto& group : groups) {
+            instance->addGroup(group);
+        }
+        instance->setText(text);
+
+        frsgui->addElement(instance);
+
+        return instance;
+    }
+
+    std::shared_ptr<fr::Input> UIElement::Builder::buildInput()
+    {
+        auto instance = std::make_shared<Input>(frsgui->getRenderer(), numerical_only);
+
+        instance->setID(id);
+        for (const auto& group : groups) {
+            instance->addGroup(group);
+        }
+        instance->setText(text);
+
+        frsgui->addElement(instance);
+
+        return instance;
+    }
 
 
 }
