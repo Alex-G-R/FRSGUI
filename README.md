@@ -34,7 +34,7 @@ Task priority:
       - Slider
           - numbers slider
           - custom sliders
-      - Text block
+      - ~~Text block~~
   - ~~Custom styling to these new elements~~
   - ~~Custom handler functions for elements~~ 
 
