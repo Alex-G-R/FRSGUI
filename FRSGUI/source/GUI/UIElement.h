@@ -24,7 +24,7 @@ private:
     bool dirty;
     // -----
 
-    using TextVariant = std::variant<std::string,const char*, int, double, float>;
+    using TextType = std::variant<std::string,const char*, int, double, float>;
     sf::Font font;
     sf::Text text;
 
@@ -51,7 +51,7 @@ public:
     void addChild(const std::shared_ptr<UIElement>& child);
     void setZOrder(int z_order);
     void setDirty(bool is_dirty);
-    void setTextString(TextVariant text);
+    void setTextString(TextType text);
 
 
     // Getters

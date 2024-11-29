@@ -132,7 +132,7 @@ namespace fr {
         dirty = is_dirty;
     }
 
-    void UIElement::setTextString(TextVariant text)
+    void UIElement::setTextString(TextType text)
     {
         std::visit([this](auto&& value)
         {

@@ -88,7 +88,7 @@ int main()
         const auto num2 = frsgui.getInputByID("num2");
         const auto addition_result = num1->getDataAs<double>() + num2->getDataAs<double>();
 
-        // Make it so u can pass a template
+        // You can pass numbers now!
         frsgui.getElementByID("result")->setTextString(addition_result);
     });
 
