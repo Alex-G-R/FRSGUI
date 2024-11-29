@@ -10,7 +10,7 @@ int main()
     fr::FRSGUI frsgui(render_window_ptr);
 
     // Create GUI here
-    const auto square = UI_element(frsgui.getRenderer(), "Foo", {
+    const auto square = UIElement(frsgui.getRenderer(), "Foo", {
         "squares",
         "squares_two",
         "squares_three",
@@ -46,11 +46,13 @@ int main()
     //button test
     const auto btn = Button(frsgui.getRenderer(), frsgui);
     btn->addGroup("btn");
-
+    btn->setTextString("Button");
     auto btn_style = Style("btn", fr::ApplyBy::GROUP, 1,{
         {fr::KEY::SIZE, sf::Vector2f(100.f, 100.f)},
         {fr::KEY::POSITION, sf::Vector2f(800.f, 300.f)},
-        {fr::KEY::BACKGROUND_COLOR, sf::Color::Cyan}
+        {fr::KEY::BACKGROUND_COLOR, sf::Color::Cyan},
+        {fr::KEY::CHARACTER_SIZE, 30},
+        {fr::KEY::TEXT_COLOR, sf::Color::Black}
     }, frsgui);
 
     // testing custom event handlers
@@ -82,10 +84,12 @@ int main()
         // std::cout << "Size of frsgui: " << sizeof(frsgui) << "\n";
 
         // Operation on data from inputs
-        auto num1 = frsgui.getInputByID("num1");
-        auto num2 = frsgui.getInputByID("num2");
-        std::cout << "Addition result: " << num1->getDataAs<double>() + num2->getDataAs<double>() << "\n";
+        const auto num1 = frsgui.getInputByID("num1");
+        const auto num2 = frsgui.getInputByID("num2");
+        const auto addition_result = num1->getDataAs<double>() + num2->getDataAs<double>();
 
+        // Make it so u can pass a template
+        frsgui.getElementByID("result")->setTextString(addition_result);
     });
 
     //Bool is_numerical_only is an overload, defaults to false
@@ -111,6 +115,16 @@ int main()
 
     // Add fonts
     frsgui.addFont("man", "./fonts/man.ttf");
+
+    // add textblock
+    const auto result = TextBlock(frsgui.getRenderer(), "result", {"textblock_style"}, frsgui);
+    auto textblock_style = Style("textblock_style", fr::ApplyBy::GROUP, 1, {
+        {fr::KEY::CHARACTER_SIZE, 64},
+        {fr::KEY::TEXT_COLOR, sf::Color::Blue},
+        {fr::KEY::POSITION, sf::Vector2f(700.f, 700.f)},
+        {fr::KEY::SIZE, sf::Vector2f(300.f, 80.f)},
+        {fr::KEY::BACKGROUND_COLOR, sf::Color::Black}
+    }, frsgui);
 
     while(render_window_ptr->isOpen())
     {

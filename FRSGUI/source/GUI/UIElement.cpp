@@ -132,9 +132,32 @@ namespace fr {
         dirty = is_dirty;
     }
 
-    void UIElement::setTextString(const std::string& text)
+    void UIElement::setTextString(TextVariant text)
     {
-        this->text.setString(text);
+        std::visit([this](auto&& value)
+        {
+            using T = std::decay_t<decltype(value)>;
+            if constexpr (std::is_arithmetic_v<T>)
+            {
+                // Convert numbers to string
+                std::string str = std::to_string(value);
+
+                // Remove zeros
+                str.erase(str.find_last_not_of('0') + 1);
+
+                // Remove trailing dot if exists
+                if(str.back() == '.')
+                {
+                    str.pop_back();
+                }
+
+                this->text.setString(str);
+            }
+            else if constexpr (std::is_same_v<T, std::string> || std::is_same_v<T, const char*>)
+            {
+                this->text.setString(value); // Use strings directly
+            }
+        }, text);
     }
 
 

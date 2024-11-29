@@ -5,6 +5,7 @@
 #include "../core/rendering/Renderer.h"
 #include <memory>
 #include <string>
+#include <variant>
 
 class GUI;
 
@@ -23,6 +24,7 @@ private:
     bool dirty;
     // -----
 
+    using TextVariant = std::variant<std::string,const char*, int, double, float>;
     sf::Font font;
     sf::Text text;
 
@@ -49,7 +51,7 @@ public:
     void addChild(const std::shared_ptr<UIElement>& child);
     void setZOrder(int z_order);
     void setDirty(bool is_dirty);
-    void setTextString(const std::string& text);
+    void setTextString(TextVariant text);
 
 
     // Getters

@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.28)
 project(FRSGUI)
 
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 20)
 
 add_executable(FRSGUI main.cpp
         FRSGUI/source/Core/FRSGUI.cpp
@@ -34,9 +34,6 @@ add_executable(FRSGUI main.cpp
         FRSGUI/source/GUI/styling/Enums/KEY.h
         FRSGUI/source/GUI/UIElement_derived/Input.cpp
         FRSGUI/source/GUI/UIElement_derived/Input.h
-        FRSGUI/source/wrappers/Constructor_overloads/InputOverloads.h
-        FRSGUI/source/wrappers/Constructor_overloads/ButtonOverloads.h
-        FRSGUI/source/wrappers/Constructor_overloads/UIElementOverloads.h
         FRSGUI/source/GUI/UIElement_derived/TextBlock.cpp
         FRSGUI/source/GUI/UIElement_derived/TextBlock.h
 )
