@@ -24,6 +24,7 @@ Task priority:
       - Add placeholder for inputs (default text if no user data is inputed)
       - add an ability to create smooth edges to elements (css border-radius type shii)
       - hover styling (effect on mouse over the element)
+      - text styling (bold, italic etc)
   - Create hard-coded UI_elements: 
       - ~~Button~~
       - Input: 
