@@ -36,6 +36,8 @@ add_executable(FRSGUI main.cpp
         FRSGUI/source/GUI/UIElement_derived/Input.h
         FRSGUI/source/GUI/UIElement_derived/TextBlock.cpp
         FRSGUI/source/GUI/UIElement_derived/TextBlock.h
+        FRSGUI/source/GUI/uielement_derived/Checkbox.h
+        FRSGUI/source/GUI/uielement_derived/Checkbox.cpp
 )
 
 set(SFML_STATIC_LIBRARIES TRUE)
