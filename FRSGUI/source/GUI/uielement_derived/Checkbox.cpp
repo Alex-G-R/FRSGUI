@@ -29,8 +29,6 @@ namespace fr {
 
         select_mark.setPosition(sf::Vector2f(checkbox_pos.x + offset.x, checkbox_pos.y + offset.y));
 
-        select_mark.setFillColor(sf::Color::Black);
-
         renderer_ptr->drawSelectMark(&select_mark, this);
     }
 
