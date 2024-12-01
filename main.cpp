@@ -70,6 +70,7 @@ int main()
         /* Custom functionality by capture */
         //std::cout << "Button clicked. \n";
         // Player will move only when checkbox is selected
+        //(frsgui.getCheckboxByID("checkbox_id")->getSelect() == true) That under the hood is (reinterpret_cast<std::shared_ptr<fr::Checkbox>&>(frsgui.getUIElementByID("checkbox_id"))->getSelect() == true)
         if(frsgui.getCheckboxByID("checkbox_id")->getSelect() == true)
         {
             player.move(10.f, 0.f);
