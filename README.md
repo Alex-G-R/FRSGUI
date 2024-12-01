@@ -30,7 +30,7 @@ Task priority:
       - Input: 
           - ~~Textarea~~ 
           - ~~Number inputs~~
-          - Checkbox
+          - ~~Checkbox~~
           - Radio checkbox?
       - Slider
           - numbers slider
