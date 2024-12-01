@@ -1,6 +1,8 @@
 #include "GUI.h"
 
 #include "uielement_derived/Input.h"
+#include "uielement_derived/Button.h"
+#include "uielement_derived/Checkbox.h"
 
 
 namespace fr {
@@ -50,6 +52,40 @@ namespace fr {
                 if (std::dynamic_pointer_cast<Input>(element)) {
                     // Cast the reference to the original shared_ptr<UI_element>
                     return reinterpret_cast<std::shared_ptr<Input>&>(element);
+                }
+                throw std::invalid_argument("Cast failed, getInputByID | GUI.cpp)");
+            }
+        };
+        throw std::invalid_argument("Provided ID does not match with any element. \n getInputByID([?] <- Invalid ID)");
+    }
+
+    std::shared_ptr<Button> &GUI::getButtonByID(const std::string &id)
+    {
+        for( auto& element : elements)
+        {
+            if(element->getID() == id)
+            {
+                // Verify the element can be cast to Input
+                if (std::dynamic_pointer_cast<Button>(element)) {
+                    // Cast the reference to the original shared_ptr<UI_element>
+                    return reinterpret_cast<std::shared_ptr<Button>&>(element);
+                }
+                throw std::invalid_argument("Cast failed, getInputByID | GUI.cpp)");
+            }
+        };
+        throw std::invalid_argument("Provided ID does not match with any element. \n getInputByID([?] <- Invalid ID)");
+    }
+
+    std::shared_ptr<Checkbox> &GUI::getCheckboxByID(const std::string &id)
+    {
+        for( auto& element : elements)
+        {
+            if(element->getID() == id)
+            {
+                // Verify the element can be cast to Input
+                if (std::dynamic_pointer_cast<Checkbox>(element)) {
+                    // Cast the reference to the original shared_ptr<UI_element>
+                    return reinterpret_cast<std::shared_ptr<Checkbox>&>(element);
                 }
                 throw std::invalid_argument("Cast failed, getInputByID | GUI.cpp)");
             }

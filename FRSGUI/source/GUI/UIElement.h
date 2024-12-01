@@ -15,6 +15,7 @@ namespace fr {
 /* Forward declaration */
 class Button;
 class Input;
+class Checkbox;
 
 class UIElement {
 private:
@@ -92,6 +93,7 @@ public:
         std::shared_ptr<UIElement> buildTextBlock();
         std::shared_ptr<fr::Button> buildButton();
         std::shared_ptr<fr::Input> buildInput();
+        std::shared_ptr<fr::Checkbox> buildCheckbox();
     };
 
 };

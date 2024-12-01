@@ -2,6 +2,7 @@
 #include "../core/FRSGUI.h"
 #include "uielement_derived/Button.h"
 #include "uielement_derived/Input.h"
+#include "uielement_derived/Checkbox.h"
 #include <iostream>
 
 namespace fr {
@@ -275,6 +276,21 @@ namespace fr {
     std::shared_ptr<fr::Input> UIElement::Builder::buildInput()
     {
         auto instance = std::make_shared<Input>(frsgui->getRenderer(), numerical_only);
+
+        instance->setID(id);
+        for (const auto& group : groups) {
+            instance->addGroup(group);
+        }
+        instance->setText(text);
+
+        frsgui->addElement(instance);
+
+        return instance;
+    }
+
+    std::shared_ptr<fr::Checkbox> UIElement::Builder::buildCheckbox()
+    {
+        auto instance = std::make_shared<Checkbox>(frsgui->getRenderer());
 
         instance->setID(id);
         for (const auto& group : groups) {

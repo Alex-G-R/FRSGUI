@@ -17,6 +17,7 @@ namespace fr
         CHARACTER_SIZE,
         TEXT_COLOR,
         FONT,
+        SELECT_MARK_COLOR,
 
         // LAST ELEMENT - only for development use | inner FRSGUI functionality
         DEVEL_LAST_KEY

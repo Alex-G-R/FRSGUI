@@ -53,12 +53,14 @@ public:
     // Getters
     std::shared_ptr<Renderer> getRenderer();
 
-    // GUI methods public acces
+    //methods public acces
     void addElement(const std::shared_ptr<UIElement>& element);
     void addStyle(std::string group_name, std::shared_ptr<Style> style, ApplyBy style_type, int style_priority);
     void dispatchEvent(const sf::Event& event);
-    std::shared_ptr<UIElement>& getElementByID(const std::string& id);
+    std::shared_ptr<UIElement>& getUIElementByID(const std::string& id);
     std::shared_ptr<Input>& getInputByID(const std::string& id);
+    std::shared_ptr<Button>& getButtonByID(const std::string& id);
+    std::shared_ptr<Checkbox>& getCheckboxByID(const std::string& id);
     void addFont(const std::string& font_alias, const std::string& path);
     sf::Font& getFont(const std::string& font_alias);
 

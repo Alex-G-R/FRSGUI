@@ -65,11 +65,15 @@ int main()
         //square->deleteGroup("squares");
 
         /* Object manipulation by FRSGUI capture */
-        frsgui.getElementByID("Foo")->deleteGroup("squares_two");
+        frsgui.getUIElementByID("Foo")->deleteGroup("squares_two");
 
         /* Custom functionality by capture */
         //std::cout << "Button clicked. \n";
-        player.move(10.f, 0.f);
+        // Player will move only when checkbox is selected
+        if(frsgui.getCheckboxByID("checkbox_id")->getSelect() == true)
+        {
+            player.move(10.f, 0.f);
+        }
 
         /* Styles manipulation by style capture */
         squares_style->updateStyle({
@@ -87,7 +91,7 @@ int main()
         const auto addition_result = num1->getDataAs<double>() + num2->getDataAs<double>();
 
         // You can pass numbers now!
-        frsgui.getElementByID("result")->setText(addition_result);
+        frsgui.getUIElementByID("result")->setText(addition_result);
     });
 
     //Bool is_numerical_only is an overload, defaults to false
@@ -134,6 +138,21 @@ int main()
         {fr::KEY::POSITION, sf::Vector2f(700.f, 700.f)},
         {fr::KEY::SIZE, sf::Vector2f(300.f, 80.f)},
         {fr::KEY::BACKGROUND_COLOR, sf::Color::Black}
+    }, frsgui);
+
+    // Test checkbox
+    const auto checkbox = fr::Checkbox::Builder(&frsgui)
+    .addGroup("checkbox_style")
+    .setID("checkbox_id")
+    .buildCheckbox();
+
+    auto checkbox_style = Style("checkbox_style", fr::ApplyBy::GROUP, 1, {
+        {fr::KEY::POSITION, sf::Vector2f(1700.f, 200.f)},
+        {fr::KEY::SIZE, sf::Vector2f(100.f, 100.f)},
+        {fr::KEY::BACKGROUND_COLOR, sf::Color::White},
+        {fr::KEY::OUTLINE_COLOR, sf::Color(134, 135, 136)},
+        {fr::KEY::OUTLINE_THICKNESS, 8.f},
+        {fr::KEY::SELECT_MARK_COLOR, sf::Color(134, 135, 136)}
     }, frsgui);
 
     while(render_window_ptr->isOpen())

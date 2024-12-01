@@ -3,6 +3,7 @@
 #include <iostream>
 
 #include "../uielement_derived/Button.h"
+#include "../uielement_derived/Checkbox.h"
 #include "../../core/FRSGUI.h"
 
 namespace fr {
@@ -65,6 +66,21 @@ namespace fr {
                     // The element is a Button - so call the click function
                     button->click();
                     break;
+                }
+
+                // Attempt to dynamically cast the UI_element to a Checkbox
+                if (auto* checkbox = dynamic_cast<Checkbox*>(element.get())) {
+                    // The element is a Checkbox - so update the select status
+                    if(checkbox->getSelect() == false)
+                    {
+                        checkbox->setSelect(true);
+                        break;
+                    }
+                    if(checkbox->getSelect() == true)
+                    {
+                        checkbox->setSelect(false);
+                        break;
+                    }
                 }
             }
         }

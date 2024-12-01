@@ -4,6 +4,7 @@
 #include <iostream>
 #include <type_traits>
 #include <functional>
+#include "../../GUI/uielement_derived/Checkbox.h"
 
 namespace fr {
 
@@ -301,6 +302,60 @@ void applyStylesRectangleShape(std::unordered_map<KEY, int>& current_priority, S
         }, value);
         current_priority[KEY::OUTLINE_COLOR] = styleVec.style_priority;
     }
+}
+
+void applyStylesSelectMark(std::unordered_map<KEY, int>& current_priority, StyleVec& styleVec, sf::RectangleShape& shape)
+{
+    if (styleVec.style->flags[KEY::SELECT_MARK_COLOR] && (current_priority[KEY::SELECT_MARK_COLOR] < styleVec.style_priority)) {
+        type value = styleVec.style->getProperty(KEY::SELECT_MARK_COLOR);
+        std::visit([&](auto&& arg)
+        {
+            using T = std::decay_t<decltype(arg)>;
+            if constexpr(std::is_same_v<T, sf::Color>)
+            {
+                shape.setFillColor(arg);
+            }
+        }, value);
+        current_priority[KEY::SELECT_MARK_COLOR] = styleVec.style_priority;
+    }
+}
+
+void Renderer::drawSelectMark(sf::RectangleShape *shape_ptr, Checkbox *checkbox_ptr)
+{
+    if(shape_ptr == nullptr || checkbox_ptr == nullptr)
+    {
+        std::cerr << "FRSGUI | Renderer.cpp | passed pointer is a null pointer | drawSelectMark(some argument == nullptr) <---" << std::endl;
+        return;
+    }
+
+    auto checkbox = *checkbox_ptr;
+    auto shape = *shape_ptr;
+
+    std::unordered_map<KEY, int> current_priority{
+        {KEY::SELECT_MARK_COLOR, 0}
+    };
+
+    for (auto& styleVec : frsgui_ptr->style_sheet.getStyleVec())
+    {
+        // Check if the style should apply by ID or group(class)
+        if (styleVec.style_type == ApplyBy::ID && styleVec.group_name == checkbox.getID())
+        {
+            applyStylesSelectMark(current_priority, styleVec, shape);
+        }
+        else if (styleVec.style_type == ApplyBy::GROUP) {
+            // Apply style if it matches one of the elements groups
+            for (const auto& group : checkbox.getGroupsVector())
+            {
+                if (group == styleVec.group_name)
+                {
+                    applyStylesSelectMark(current_priority, styleVec, shape);
+                    break;
+                }
+            }
+        }
+    }
+
+    render_window_ptr->draw(shape);
 }
 
 

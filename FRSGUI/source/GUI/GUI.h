@@ -29,6 +29,8 @@ public:
 
     std::shared_ptr<UIElement>& getElementByID(const std::string& id);
     std::shared_ptr<Input>& getInputByID(const std::string& id);
+    std::shared_ptr<Button>& getButtonByID(const std::string& id);
+    std::shared_ptr<Checkbox>& getCheckboxByID(const std::string& id);
 
     friend class UIElement;
 };

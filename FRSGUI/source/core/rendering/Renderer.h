@@ -8,6 +8,7 @@
 
 // Forward declaration
 namespace fr {
+    class Checkbox;
     enum class KEY;
     class StyleVec;
     class Input;
@@ -26,6 +27,7 @@ private:
 public:
     explicit Renderer(const std::shared_ptr<sf::RenderWindow>& render_window_ptr, FRSGUI* frsgui_ptr);
     void draw(UIElement* element);
+    void drawSelectMark(sf::RectangleShape* shape_ptr, Checkbox *checkbox_ptr);
     bool shouldRender(UIElement* element);
 };
 

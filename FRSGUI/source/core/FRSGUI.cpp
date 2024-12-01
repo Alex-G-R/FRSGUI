@@ -36,7 +36,7 @@ namespace fr {
         event_dispatcher.dispatchEvent(event);
     }
 
-    std::shared_ptr<UIElement>& FRSGUI::getElementByID(const std::string &id)
+    std::shared_ptr<UIElement>& FRSGUI::getUIElementByID(const std::string &id)
     {
         return gui.getElementByID(id);
     }
@@ -44,6 +44,16 @@ namespace fr {
     std::shared_ptr<Input> &FRSGUI::getInputByID(const std::string &id)
     {
         return gui.getInputByID(id);
+    }
+
+    std::shared_ptr<Button> &FRSGUI::getButtonByID(const std::string &id)
+    {
+        return gui.getButtonByID(id);
+    }
+
+    std::shared_ptr<Checkbox> &FRSGUI::getCheckboxByID(const std::string &id)
+    {
+        return gui.getCheckboxByID(id);
     }
 
     void FRSGUI::addFont(const std::string &font_alias, const std::string &path)
