@@ -19,12 +19,12 @@ Task priority:
       - each element must be a child of some element
       - add layouts like, center, left, right, top, bottom
       - margin, padding
+      - height, width
   - other Styling options
       - Add labels that can be tied to elements
       - Add placeholder for inputs (default text if no user data is inputed)
       - add an ability to create smooth edges to elements (css border-radius type shii)
       - hover styling (effect on mouse over the element)
-      - text styling (bold, italic etc)
   - Create hard-coded UI_elements: 
       - ~~Button~~
       - Input: 
