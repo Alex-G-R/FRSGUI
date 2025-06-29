@@ -101,7 +101,7 @@ void Renderer::draw(UIElement* element)
         { // Apply style by ID
             applyStylesText(current_priority, styleVec, text, cursor_color);
             // Center text verticaly
-            text.setPosition(elementPosition.x, elementPosition.y + (shape->getSize().y / 2) - (text.getLocalBounds().height / 2 + text.getLocalBounds().top));
+            text.setPosition(sf::Vector2f(elementPosition.x, elementPosition.y + (shape->getSize().y / 2) - (text.getLocalBounds().size.y/ 2 + text.getLocalBounds().position.y)));
         }
         else if (styleVec.style_type == ApplyBy::GROUP) {
             // Apply style if it matches one of the elements groups
@@ -111,7 +111,7 @@ void Renderer::draw(UIElement* element)
                 {
                     applyStylesText(current_priority, styleVec, text, cursor_color);
                     // Center text verticaly
-                    text.setPosition(elementPosition.x, elementPosition.y + (shape->getSize().y / 2) - (text.getLocalBounds().height / 2 + text.getLocalBounds().top));
+                    text.setPosition(sf::Vector2f(elementPosition.x, elementPosition.y + (shape->getSize().y / 2) - (text.getLocalBounds().size.y / 2 + text.getLocalBounds().position.y)));
                     break;
                 }
             }
@@ -119,7 +119,7 @@ void Renderer::draw(UIElement* element)
     }
 
     // Check if text width exceeds input field width
-    while (text.getGlobalBounds().width + 10 > elementWidth && !fullText.empty()) {
+    while (text.getGlobalBounds().size.x + 10 > elementWidth && !fullText.empty()) {
         // If too wide remove characters from the beginning of the string
         fullText.erase(0, 1);
         text.setString(fullText);
@@ -142,9 +142,9 @@ void Renderer::draw(UIElement* element)
             cursor.setFillColor(cursor_color);
 
             // Position the cursor at the end of the main text
-            float cursorXPosition = text.getGlobalBounds().left + text.getGlobalBounds().width;
+            float cursorXPosition = text.getGlobalBounds().position.x + text.getGlobalBounds().size.x;
             // Center cursor verticaly
-            cursor.setPosition(cursorXPosition+1, elementPosition.y + (shape->getSize().y / 2) - (cursor.getLocalBounds().height / 2 + cursor.getLocalBounds().top));
+            cursor.setPosition(sf::Vector2f(cursorXPosition+1, elementPosition.y + (shape->getSize().y / 2) - (cursor.getLocalBounds().size.y / 2 + cursor.getLocalBounds().position.y)));
             // Draw the cursor `|`
             render_window_ptr->draw(cursor);
         }

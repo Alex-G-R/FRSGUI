@@ -1,7 +1,7 @@
 #ifndef RESOURCEMANAGER_H
 #define RESOURCEMANAGER_H
 #include <vector>
-#include <Graphics.hpp>
+#include <SFML/Graphics.hpp>
 #include <string>
 #include <utility>
 

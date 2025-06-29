@@ -3,7 +3,7 @@
 
 int main()
 {
-    const auto render_window_ptr = std::make_shared<sf::RenderWindow>(sf::VideoMode(1920, 1080), "FRSGUI test", sf::Style::Default);
+    const auto render_window_ptr = std::make_shared<sf::RenderWindow>(sf::VideoMode(sf::Vector2u(1920, 1080)), "FRSGUI test", sf::Style::Default);
 
     fr::FRSGUI frsgui(render_window_ptr);
 
@@ -56,7 +56,7 @@ int main()
     // testing custom event handlers
     sf::RectangleShape player;
     player.setFillColor(sf::Color::White);
-    player.setPosition(800.f, 800.f);
+    player.setPosition(sf::Vector2f(800.f, 800.f));
     player.setSize(sf::Vector2f(50.f, 50.f));
 
     btn->setOnClick([&player, &square, &frsgui, &squares_style]()
@@ -73,7 +73,7 @@ int main()
         //(frsgui.getCheckboxByID("checkbox_id")->getSelect() == true) works the same as (reinterpret_cast<std::shared_ptr<fr::Checkbox>&>(frsgui.getUIElementByID("checkbox_id"))->getSelect() == true)
         if(frsgui.getCheckboxByID("checkbox_id")->getSelect() == true)
         {
-            player.move(10.f, 0.f);
+            player.move(sf::Vector2f(10.f, 0.f));
         }
 
         /* Styles manipulation by style capture */
@@ -158,10 +158,9 @@ int main()
 
     while(render_window_ptr->isOpen())
     {
-        sf::Event event{};
-        while(render_window_ptr->pollEvent(event))
+        while(const std::optional<sf::Event> event = render_window_ptr->pollEvent())
         {
-            if(event.type == sf::Event::Closed)
+            if(event->is<sf::Event::Closed>())
             {
                 render_window_ptr->close();
                 break;
@@ -176,6 +175,8 @@ int main()
 
         // Render GUI at the end
         frsgui.Render();
+
+        // Display
         render_window_ptr->display();
     }
 

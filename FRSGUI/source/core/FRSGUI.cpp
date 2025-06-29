@@ -31,7 +31,7 @@ namespace fr {
         style_sheet.addStyleVec(StyleVec(std::move(group_name), style, style_type, style_priority));
     }
 
-    void FRSGUI::dispatchEvent(const sf::Event &event)
+    void FRSGUI::dispatchEvent(const std::optional<sf::Event> &event)
     {
         event_dispatcher.dispatchEvent(event);
     }

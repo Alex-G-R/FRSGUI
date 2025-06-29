@@ -9,72 +9,114 @@ namespace fr {
 
     // constructor and overloads
     UIElement::UIElement(const std::shared_ptr<Renderer> &renderer_ptr):
-    renderer_ptr(renderer_ptr)
+    renderer_ptr(renderer_ptr),font(), text(font)
     {
+        // IMMEDIATELY CHECK THE FONT LOADING RESULT
+        if(!font.openFromFile("./FRSGUI/resources/default_font/default.ttf"))
+        {
+            std::cerr << "ERROR: Font loading failed for: ./FRSGUI/resources/default_font/default.ttf\n";
+            // *** CRITICAL: You MUST handle this failure gracefully or exit ***
+            // If the font fails to load, text.setFont(font) later will be problematic.
+            // A common approach is to throw an exception or exit.
+            throw std::runtime_error("Failed to load default font.");
+        }
+        else
+        {
+            std::cout << "Font loaded successfully: ./FRSGUI/resources/default_font/default.ttf\n";
+        }
+
         id = "";
 
-        if(!font.loadFromFile("./FRSGUI/resources/default_font/default.ttf"))
-        {
-            std::cout << "Font loading error \n";
-        }
         text.setFont(font);
+        text.setString("");
 
         has_cursor = false;
         selected = false;
     }
 
     UIElement::UIElement(const std::shared_ptr<Renderer>& renderer_ptr, std::string ID, std::initializer_list<std::string> groups):
-    renderer_ptr(renderer_ptr)
+        renderer_ptr(renderer_ptr),font(), text(font)
     {
+        // IMMEDIATELY CHECK THE FONT LOADING RESULT
+        if(!font.openFromFile("./FRSGUI/resources/default_font/default.ttf"))
+        {
+            std::cerr << "ERROR: Font loading failed for: ./FRSGUI/resources/default_font/default.ttf\n";
+            // *** CRITICAL: You MUST handle this failure gracefully or exit ***
+            // If the font fails to load, text.setFont(font) later will be problematic.
+            // A common approach is to throw an exception or exit.
+            throw std::runtime_error("Failed to load default font.");
+        }
+        else
+        {
+            std::cout << "Font loaded successfully: ./FRSGUI/resources/default_font/default.ttf\n";
+        }
+
         id = std::move(ID);
 
 
-        for(const auto& group : groups)
+        for (const auto &group: groups)
         {
             this->groups.push_back(group);
         }
 
-        if(!font.loadFromFile("./FRSGUI/resources/default_font/default.ttf"))
-        {
-            std::cout << "Font loading error \n";
-        }
         text.setFont(font);
+        text.setString("");
 
         has_cursor = false;
         selected = false;
     }
 
     UIElement::UIElement(const std::shared_ptr<Renderer>& renderer_ptr, std::initializer_list<std::string> groups):
-    renderer_ptr(renderer_ptr)
+    renderer_ptr(renderer_ptr),font(), text(font)
     {
+        // IMMEDIATELY CHECK THE FONT LOADING RESULT
+        if(!font.openFromFile("./FRSGUI/resources/default_font/default.ttf"))
+        {
+            std::cerr << "ERROR: Font loading failed for: ./FRSGUI/resources/default_font/default.ttf\n";
+            // *** CRITICAL: You MUST handle this failure gracefully or exit ***
+            // If the font fails to load, text.setFont(font) later will be problematic.
+            // A common approach is to throw an exception or exit.
+            throw std::runtime_error("Failed to load default font.");
+        }
+        else
+        {
+            std::cout << "Font loaded successfully: ./FRSGUI/resources/default_font/default.ttf\n";
+        }
+
         id = "";
 
         for(const auto& group : groups)
         {
             this->groups.push_back(group);
         }
-
-        if(!font.loadFromFile("./FRSGUI/resources/default_font/default.ttf"))
-        {
-            std::cout << "Font loading error \n";
-        }
         text.setFont(font);
+        text.setString("");
 
         has_cursor = false;
         selected = false;
     }
 
     UIElement::UIElement(const std::shared_ptr<Renderer>& renderer_ptr, std::string ID):
-    renderer_ptr(renderer_ptr)
+    renderer_ptr(renderer_ptr),font(), text(font)
     {
+        // IMMEDIATELY CHECK THE FONT LOADING RESULT
+        if(!font.openFromFile("./FRSGUI/resources/default_font/default.ttf"))
+        {
+            std::cerr << "ERROR: Font loading failed for: ./FRSGUI/resources/default_font/default.ttf\n";
+            // *** CRITICAL: You MUST handle this failure gracefully or exit ***
+            // If the font fails to load, text.setFont(font) later will be problematic.
+            // A common approach is to throw an exception or exit.
+            throw std::runtime_error("Failed to load default font.");
+        }
+        else
+        {
+            std::cout << "Font loaded successfully: ./FRSGUI/resources/default_font/default.ttf\n";
+        }
+
         id = std::move(ID);
 
-
-        if(!font.loadFromFile("./FRSGUI/resources/default_font/default.ttf"))
-        {
-            std::cout << "Font loading error \n";
-        }
         text.setFont(font);
+        text.setString("");
 
         has_cursor = false;
         selected = false;

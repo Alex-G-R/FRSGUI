@@ -1,7 +1,7 @@
 #ifndef STYLE_H
 #define STYLE_H
 
-#include <Graphics.hpp>
+#include <SFML/Graphics.hpp>
 #include <unordered_map>
 #include <variant>
 #include <string>
