@@ -13,42 +13,51 @@ namespace fr {
 
     }
 
-    void EventDispatcher::dispatchEvent(const sf::Event &event)
+    void EventDispatcher::dispatchEvent(const std::optional<sf::Event> &event)
     {
-        if(event.type == sf::Event::MouseButtonPressed && event.mouseButton.button == sf::Mouse::Left)
-        {
-            HandleLeftMouseButtonClick(event);
+        if (!event.has_value()) {
+            return;
         }
-        else if(event.type == sf::Event::TextEntered)
+
+        const sf::Event& actualEvent = event.value(); // Or *event
+
+        if (const auto* mouseButtonEvent = actualEvent.getIf<sf::Event::MouseButtonPressed>()) {
+            if (mouseButtonEvent->button == sf::Mouse::Button::Left) {
+                HandleLeftMouseButtonClick(*mouseButtonEvent); // Pass the actual struct
+            }
+        }
+        else if(const auto* textEnteredEvent = actualEvent.getIf<sf::Event::TextEntered>())
         {
-            HandleTextEnterd(event);
+            HandleTextEnterd(*textEnteredEvent);
         }
     }
 
-    void EventDispatcher::HandleTextEnterd(const sf::Event &event)
+    void EventDispatcher::HandleTextEnterd(const sf::Event::TextEntered &event)
     {
         // Search for a selected input field and if found send in the unicode data from the event
         for(const auto& input : getInputElements())
         {
             if(input->getSelect() == true)
             {
-                if(event.text.unicode < 128)
+                //std::cout << "Text Entered (Unicode value): " << static_cast<uint32_t>(event.unicode) << std::endl;
+
+                if(event.unicode < 128)
                 {
-                    input->pushData(event.text.unicode);
+                    input->pushData(event.unicode);
                 }
             }
         }
     }
 
 
-    void EventDispatcher::HandleLeftMouseButtonClick(const sf::Event &event)
+    void EventDispatcher::HandleLeftMouseButtonClick(const sf::Event::MouseButtonPressed &event)
     {
         bool input_selected = false;
 
         for(const auto& element : elements_ptr)
         {
             // Check if the mouse is within the rectangle's bounds
-            if (element->getShape()->getGlobalBounds().contains(static_cast<float>(event.mouseButton.x) ,static_cast<float>(event.mouseButton.y)))
+            if (element->getShape()->getGlobalBounds().contains(sf::Vector2f(static_cast<float>(event.position.x) ,static_cast<float>(event.position.y))))
             {
                 if(auto* input = dynamic_cast<Input*>(element.get()))
                 {

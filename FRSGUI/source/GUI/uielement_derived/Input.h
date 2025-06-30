@@ -32,7 +32,7 @@ public:
 
     void setSelect(bool selected);
     bool getSelect();
-    void pushData(sf::Uint32 char_to_add);
+    void pushData(char32_t char_to_add);
 
     template <typename T>
     T getDataAs()

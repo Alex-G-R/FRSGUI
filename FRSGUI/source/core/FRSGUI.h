@@ -2,11 +2,11 @@
 #define FRSGUI_H
 
 /* SFML */
-#include <Graphics.hpp>
-#include <System.hpp>
-#include <Window.hpp>
-#include <Audio.hpp>
-#include <Network.hpp>
+#include <SFML/Graphics.hpp>
+#include <SFML/System.hpp>
+#include <SFML/Window.hpp>
+#include <SFML/Audio.hpp>
+#include <SFML/Network.hpp>
 
 /* Standard lib */
 #include <memory>
@@ -38,13 +38,12 @@ private:
     // Style manager
     StyleManager style_manager;
 
-    // SFML Render window
-    std::shared_ptr<sf::RenderWindow> render_window_ptr{};
-
     // Resource menager
     ResourceManager resource_manager;
 
 public:
+    // SFML Render window
+    std::shared_ptr<sf::RenderWindow> render_window_ptr{};
     explicit FRSGUI(const std::shared_ptr<sf::RenderWindow>& render_window_ptr);
 
     // Methods
@@ -56,7 +55,7 @@ public:
     //methods public acces
     void addElement(const std::shared_ptr<UIElement>& element);
     void addStyle(std::string group_name, std::shared_ptr<Style> style, ApplyBy style_type, int style_priority);
-    void dispatchEvent(const sf::Event& event);
+    void dispatchEvent(const std::optional<sf::Event> &event);
     std::shared_ptr<UIElement>& getUIElementByID(const std::string& id);
     std::shared_ptr<Input>& getInputByID(const std::string& id);
     std::shared_ptr<Button>& getButtonByID(const std::string& id);

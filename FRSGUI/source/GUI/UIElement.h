@@ -1,7 +1,7 @@
 #ifndef UI_ELEMENT_H
 #define UI_ELEMENT_H
 
-#include <Graphics.hpp>
+#include <SFML/Graphics.hpp>
 #include "../core/rendering/Renderer.h"
 #include <memory>
 #include <string>

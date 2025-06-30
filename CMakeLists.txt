@@ -1,7 +1,20 @@
-cmake_minimum_required(VERSION 3.28)
+cmake_minimum_required(VERSION 3.31)
 project(FRSGUI)
 
 set(CMAKE_CXX_STANDARD 20)
+
+# Define the path to your local SFML installation within the project
+set(SFML_ROOT "${CMAKE_CURRENT_SOURCE_DIR}/FRSGUI/external_libs/SFML")
+
+# Add the include directories
+include_directories("${SFML_ROOT}/include")
+
+# Tell CMake to search for libraries in our custom lib directory
+link_directories("${SFML_ROOT}/lib")
+
+# Define a preprocessor definition for static linking
+# This is important for SFML to know it's being statically linked
+add_definitions(-DSFML_STATIC)
 
 add_executable(FRSGUI main.cpp
         FRSGUI/source/Core/FRSGUI.cpp
@@ -40,9 +53,43 @@ add_executable(FRSGUI main.cpp
         FRSGUI/source/GUI/uielement_derived/Checkbox.cpp
 )
 
-set(SFML_STATIC_LIBRARIES TRUE)
-set(SFML_DIR C:/dev/DEVEL/SFML/lib/cmake/SFML)
-find_package(SFML COMPONENTS system window graphics audio network REQUIRED)
+# Link SFML components statically and their dependencies.
+# The order of libraries is important for static linking!
+# SFML modules usually come first, followed by their dependencies.
+target_link_libraries(${PROJECT_NAME}
+        sfml-graphics-s
+        sfml-window-s
+        sfml-system-s
+        sfml-audio-s   # If you're using audio
+        sfml-network-s # If you're using network
 
-include_directories(C:/dev/DEVEL/SFML/include/SFML)
-target_link_libraries(FRSGUI sfml-system sfml-window sfml-graphics sfml-audio)
+        # Core SFML dependencies (crucial for static linking)
+        freetype       # Required by sfml-graphics-s for fonts (this was the missing one!)
+        # jpeg         # Optional: If SFML was compiled with JPEG image support
+        # webp         # Optional: If SFML was compiled with WebP image support
+
+        # Audio dependencies (if sfml-audio-s is used)
+        # openal32     # Core OpenAL library
+        # vorbisfile
+        # vorbis
+        # vorbisenc
+        # ogg
+        # flac
+
+        # Networking dependencies (if sfml-network-s is used)
+        # ws2_32       # Windows Sockets 2 (for networking)
+
+        # System dependencies (for Windows with MinGW)
+        opengl32
+        winmm
+        gdi32
+        # Add other Windows system libraries that SFML might implicitly depend on,
+        # often needed when linking static SFML on MinGW:
+        user32
+        kernel32
+        # Other common ones that might be needed depending on your SFML build:
+        # shell32
+        # ole32
+        # uuid
+        # advapi32
+)
