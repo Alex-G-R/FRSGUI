@@ -8,8 +8,6 @@
 
 namespace fr {
 
-void applyStylesRectangleShape(std::unordered_map<KEY, int>& current_priority, StyleVec& styleVec, sf::RectangleShape* shape);
-
 Renderer::Renderer(const std::shared_ptr<sf::RenderWindow>& render_window_ptr, FRSGUI* frsgui_ptr) :
 render_window_ptr(render_window_ptr), frsgui_ptr(frsgui_ptr)
 {
@@ -223,7 +221,7 @@ void Renderer::applyStylesText(std::unordered_map<KEY, int>& current_priority, S
     }
 }
 
-void applyStylesRectangleShape(std::unordered_map<KEY, int>& current_priority, StyleVec& styleVec, sf::RectangleShape* shape)
+void Renderer::applyStylesRectangleShape(std::unordered_map<KEY, int>& current_priority, StyleVec& styleVec, sf::RectangleShape* shape)
 {
     // Position
     if (styleVec.style->flags[KEY::POSITION] && (current_priority[KEY::POSITION] < styleVec.style_priority)) {
@@ -304,7 +302,7 @@ void applyStylesRectangleShape(std::unordered_map<KEY, int>& current_priority, S
     }
 }
 
-void applyStylesSelectMark(std::unordered_map<KEY, int>& current_priority, StyleVec& styleVec, sf::RectangleShape& shape)
+void Renderer::applyStylesSelectMark(std::unordered_map<KEY, int>& current_priority, StyleVec& styleVec, sf::RectangleShape& shape)
 {
     if (styleVec.style->flags[KEY::SELECT_MARK_COLOR] && (current_priority[KEY::SELECT_MARK_COLOR] < styleVec.style_priority)) {
         type value = styleVec.style->getProperty(KEY::SELECT_MARK_COLOR);

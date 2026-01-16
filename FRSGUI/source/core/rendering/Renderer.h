@@ -23,7 +23,9 @@ private:
     std::shared_ptr<sf::RenderWindow> render_window_ptr;
     FRSGUI* frsgui_ptr{};
 
+    void applyStylesRectangleShape(std::unordered_map<KEY, int>& current_priority, StyleVec& styleVec, sf::RectangleShape* shape);
     void applyStylesText(std::unordered_map<KEY, int>& current_priority, StyleVec& styleVec, sf::Text& text, sf::Color& cursor_color);
+    void applyStylesSelectMark(std::unordered_map<KEY, int>& current_priority, StyleVec& styleVec, sf::RectangleShape& shape);
 public:
     explicit Renderer(const std::shared_ptr<sf::RenderWindow>& render_window_ptr, FRSGUI* frsgui_ptr);
     void draw(UIElement* element);
