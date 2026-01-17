@@ -15,9 +15,6 @@ namespace fr {
         if(!font.openFromFile("./FRSGUI/resources/default_font/default.ttf"))
         {
             std::cerr << "ERROR: Font loading failed for: ./FRSGUI/resources/default_font/default.ttf\n";
-            // *** CRITICAL: You MUST handle this failure gracefully or exit ***
-            // If the font fails to load, text.setFont(font) later will be problematic.
-            // A common approach is to throw an exception or exit.
             throw std::runtime_error("Failed to load default font.");
         }
         else
@@ -41,9 +38,6 @@ namespace fr {
         if(!font.openFromFile("./FRSGUI/resources/default_font/default.ttf"))
         {
             std::cerr << "ERROR: Font loading failed for: ./FRSGUI/resources/default_font/default.ttf\n";
-            // *** CRITICAL: You MUST handle this failure gracefully or exit ***
-            // If the font fails to load, text.setFont(font) later will be problematic.
-            // A common approach is to throw an exception or exit.
             throw std::runtime_error("Failed to load default font.");
         }
         else
@@ -73,9 +67,6 @@ namespace fr {
         if(!font.openFromFile("./FRSGUI/resources/default_font/default.ttf"))
         {
             std::cerr << "ERROR: Font loading failed for: ./FRSGUI/resources/default_font/default.ttf\n";
-            // *** CRITICAL: You MUST handle this failure gracefully or exit ***
-            // If the font fails to load, text.setFont(font) later will be problematic.
-            // A common approach is to throw an exception or exit.
             throw std::runtime_error("Failed to load default font.");
         }
         else
@@ -103,9 +94,6 @@ namespace fr {
         if(!font.openFromFile("./FRSGUI/resources/default_font/default.ttf"))
         {
             std::cerr << "ERROR: Font loading failed for: ./FRSGUI/resources/default_font/default.ttf\n";
-            // *** CRITICAL: You MUST handle this failure gracefully or exit ***
-            // If the font fails to load, text.setFont(font) later will be problematic.
-            // A common approach is to throw an exception or exit.
             throw std::runtime_error("Failed to load default font.");
         }
         else
