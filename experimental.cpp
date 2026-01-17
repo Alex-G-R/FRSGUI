@@ -3,12 +3,12 @@
 int main()
 {
     /* initialize SFML render window, create a pointer to that render window */
-    constexpr int WINDOW_WIDTH = 1920;
-    constexpr int WINDOW_HEIGHT = 1080;
-    const auto RENDER_WINDOW_POINTER = std::make_shared<sf::RenderWindow>(sf::VideoMode(sf::Vector2u(WINDOW_WIDTH, WINDOW_HEIGHT)), "FRSGUI - Window | Alex G", sf::Style::Default);
+    constexpr int W_WIDTH = 1920;
+    constexpr int W_HEIGHT = 1080;
+    const auto WINDOW = std::make_shared<sf::RenderWindow>(sf::VideoMode({W_WIDTH, W_HEIGHT}), "FRSGUI - Window");
 
     /* initialize FRSGUI by passing the render window pointer */
-    fr::FRSGUI FRSGUI(RENDER_WINDOW_POINTER);
+    fr::FRSGUI FRSGUI(WINDOW);
 
     /* Create SFML elements here, custom non FRSGUI visuals */
 
@@ -21,7 +21,7 @@ int main()
     .buildUIElement();
     // Create a style for Banner_main
     auto banner_main_style = Style("Banner_main", fr::ApplyBy::GROUP, 1, {
-        {fr::KEY::POSITION, sf::Vector2f(WINDOW_WIDTH/2 - 500.f/2 , 50.f)},
+        {fr::KEY::POSITION, sf::Vector2f(W_WIDTH/2 - 500.f/2 , 50.f)},
         {fr::KEY::SIZE, sf::Vector2f(500.f, 60.f)},
         {fr::KEY::BACKGROUND_COLOR, sf::Color{0, 255, 0, 255}},
         {fr::KEY::CHARACTER_SIZE, 36},
@@ -37,7 +37,7 @@ int main()
     // Create a style for button_main
     const auto button_main_style = Style("Button_main", fr::ApplyBy::GROUP, 1, {
         {fr::KEY::SIZE, sf::Vector2f(140.f, 100.f)},
-        {fr::KEY::POSITION, sf::Vector2f(WINDOW_WIDTH/6 - 140.f/2, 150.f)},
+        {fr::KEY::POSITION, sf::Vector2f(W_WIDTH/6 - 140.f/2, 150.f)},
         {fr::KEY::BACKGROUND_COLOR, sf::Color::Blue},
         {fr::KEY::CHARACTER_SIZE, 30},
         {fr::KEY::TEXT_COLOR, sf::Color::White},
@@ -132,20 +132,20 @@ int main()
     }, FRSGUI);
 
     /* SFML render loop */
-    while(RENDER_WINDOW_POINTER->isOpen())
+    while(WINDOW->isOpen())
     {
         /* Pool events, if event = close, break the loop if any other pass it to the FRSGUI to handle*/
-        while(const std::optional<sf::Event> event = RENDER_WINDOW_POINTER->pollEvent())
+        while(const std::optional<sf::Event> event = WINDOW->pollEvent())
         {
             if (event->is<sf::Event::Closed>())
             {
-                RENDER_WINDOW_POINTER->close();
+                WINDOW->close();
                 break;
             }
             FRSGUI.dispatchEvent(event);
         }
 
-        RENDER_WINDOW_POINTER->clear();
+        WINDOW->clear();
 
         /* Custom rendering, custom non FRSGUI elements */
 
@@ -154,7 +154,7 @@ int main()
         FRSGUI.Render();
 
         /* SFML display function */
-        RENDER_WINDOW_POINTER->display();
+        WINDOW->display();
     }
     return 0;
 }
