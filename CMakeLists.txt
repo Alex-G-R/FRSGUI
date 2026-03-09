@@ -16,7 +16,7 @@ link_directories("${SFML_ROOT}/lib")
 # This is important for SFML to know it's being statically linked
 add_definitions(-DSFML_STATIC)
 
-add_executable(FRSGUI experimental.cpp
+add_executable(FRSGUI main.cpp
         FRSGUI/source/Core/FRSGUI.cpp
         FRSGUI/source/Core/FRSGUI.h
         FRSGUI/Source/GUI/GUI.cpp
