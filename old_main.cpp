@@ -169,7 +169,7 @@ int main()
         }
 
         render_window_ptr->clear();
-`
+
         // Your rendering
         render_window_ptr->draw(player);
 
