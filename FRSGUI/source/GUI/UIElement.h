@@ -49,12 +49,14 @@ public:
     virtual void Render();
     virtual void Update();
 
-    void deleteGroup(const std::string& group);
+    void deleteGroup(const std::string& group_name);
+    void deleteGroups(const std::vector<std::string>& groups_param);
+    void deleteAllGroups();
 
     // Setters
     void setID(const std::string& id);
     void addGroup(const std::string& group);
-    void addGroups(const std::vector<std::string>& groups);
+    void addGroups(const std::vector<std::string>& groups_param);
     //void addChild(const std::shared_ptr<UIElement>& child);
     //void setZOrder(int z_order);
     //void setDirty(bool is_dirty);

@@ -134,6 +134,21 @@ namespace fr {
         }
     }
 
+    void UIElement::deleteGroups(const std::vector<std::string> &groups_param)
+    {
+        for (const auto &group: groups_param)
+        {
+            this->deleteGroup(group);
+        }
+    }
+
+    void UIElement::deleteAllGroups()
+    {
+        for (auto it = groups.begin(); it != groups.end(); ) {
+            it = groups.erase(it); // Erase returns the next iterator
+        }
+    }
+
 
     // setters
     void UIElement::setID(const std::string& id)
