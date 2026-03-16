@@ -4,9 +4,7 @@ Create a usefull readme
 Make a simple program startup
 
 Kodzik:
-add text centering
 add hover functionality
-FRSGUI.getelembyid(X)->ADDGROUPS bo jest tylko add group -- WORKING
 
 Może?
 dodaj usuwanie obiektow gui
