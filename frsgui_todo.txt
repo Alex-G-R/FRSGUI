@@ -1,0 +1,10 @@
+
+Gitbub repo task:
+Create a usefull readme
+Make a simple program startup
+
+Kodzik:
+add hover functionality
+
+Może?
+dodaj usuwanie obiektow gui

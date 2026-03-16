@@ -98,8 +98,7 @@ void Renderer::draw(UIElement* element)
         if (styleVec.style_type == ApplyBy::ID && styleVec.group_name == element_id)
         { // Apply style by ID
             applyStylesText(current_priority, styleVec, text, cursor_color);
-            // Center text verticaly
-            text.setPosition(sf::Vector2f(elementPosition.x, elementPosition.y + (shape->getSize().y / 2) - (text.getLocalBounds().size.y/ 2 + text.getLocalBounds().position.y)));
+            checkTextAlignment(current_priority, styleVec, text, shape, element->has_cursor);
         }
         else if (styleVec.style_type == ApplyBy::GROUP) {
             // Apply style if it matches one of the elements groups
@@ -108,8 +107,7 @@ void Renderer::draw(UIElement* element)
                 if (group == styleVec.group_name)
                 {
                     applyStylesText(current_priority, styleVec, text, cursor_color);
-                    // Center text verticaly
-                    text.setPosition(sf::Vector2f(elementPosition.x, elementPosition.y + (shape->getSize().y / 2) - (text.getLocalBounds().size.y / 2 + text.getLocalBounds().position.y)));
+                    checkTextAlignment(current_priority, styleVec, text, shape, element->has_cursor);
                     break;
                 }
             }
@@ -318,6 +316,80 @@ void Renderer::applyStylesSelectMark(std::unordered_map<KEY, int>& current_prior
     }
 }
 
+
+void Renderer::checkTextAlignment(std::unordered_map<KEY, int>& current_priority, StyleVec& styleVec, sf::Text& text, sf::RectangleShape* shape, bool is_an_input_element)
+{
+    auto elementPosition = shape->getPosition();
+
+    // Check vertical alignment
+    if (styleVec.style->flags[KEY::CENTER_TEXT_VERTICALLY]) {
+        if (current_priority[KEY::CENTER_TEXT_VERTICALLY] < styleVec.style_priority)
+        {
+            type value = styleVec.style->getProperty(KEY::CENTER_TEXT_VERTICALLY);
+
+            std::visit([&](auto&& arg)
+            {
+                using T = std::decay_t<decltype(arg)>;
+                if constexpr(std::is_same_v<T, bool>)
+                {
+                    if (arg) // Check if true or false
+                    {   // align vertically
+                        text.setPosition(sf::Vector2f(elementPosition.x, elementPosition.y + (shape->getSize().y / 2) - (text.getLocalBounds().size.y/ 2 + text.getLocalBounds().position.y)));
+                    }
+                    else
+                    {   // default text pos
+                        text.setPosition(sf::Vector2f(elementPosition.x, elementPosition.y));
+                    }
+
+                }
+            }, value);
+
+            current_priority[KEY::CENTER_TEXT_VERTICALLY] = styleVec.style_priority;
+        }
+    }
+    else
+    {
+        // Center text by default
+        text.setPosition(sf::Vector2f(elementPosition.x, elementPosition.y + (shape->getSize().y / 2) - (text.getLocalBounds().size.y/ 2 + text.getLocalBounds().position.y)));
+    }
+
+    // Check horizontal alignment
+    if (is_an_input_element)
+    {
+        return;
+    }
+    if (styleVec.style->flags[KEY::CENTER_TEXT_HORIZONTALLY]) {
+        if (current_priority[KEY::CENTER_TEXT_HORIZONTALLY] < styleVec.style_priority)
+        {
+            type value = styleVec.style->getProperty(KEY::CENTER_TEXT_HORIZONTALLY);
+
+            std::visit([&](auto&& arg)
+            {
+                using T = std::decay_t<decltype(arg)>;
+                if constexpr(std::is_same_v<T, bool>)
+                {
+                    if (arg) // Check if true or false
+                    {   // align horizontally
+                        text.setPosition(sf::Vector2f(shape->getPosition().x + shape->getSize().x / 2.f - (text.getLocalBounds().position.x + text.getLocalBounds().size.x / 2.f), text.getPosition().y));
+                    }
+                    else
+                    {   // default text pos
+                        text.setPosition(sf::Vector2f(elementPosition.x, text.getPosition().y));
+                    }
+
+                }
+            }, value);
+
+            current_priority[KEY::CENTER_TEXT_HORIZONTALLY] = styleVec.style_priority;
+        }
+    }
+    else
+    {
+        // Center text by default
+        text.setPosition(sf::Vector2f(shape->getPosition().x + shape->getSize().x / 2.f - (text.getLocalBounds().position.x + text.getLocalBounds().size.x / 2.f), text.getPosition().y));
+    }
+}
+
 void Renderer::drawSelectMark(sf::RectangleShape *shape_ptr, Checkbox *checkbox_ptr)
 {
     if(shape_ptr == nullptr || checkbox_ptr == nullptr)
@@ -359,8 +431,18 @@ void Renderer::drawSelectMark(sf::RectangleShape *shape_ptr, Checkbox *checkbox_
 
 bool Renderer::shouldRender(UIElement* element)
 {
+    // Check if the element is out of the visible bounds on screen
+    sf::Vector2u window_size = render_window_ptr->getSize();
+    sf::Vector2f elem_pos = element->getShape()->getPosition();
+    sf::Vector2f elem_size = element->getShape()->getSize();
+    if (elem_pos.x > window_size.x || elem_pos.x + elem_size.x < 0 || elem_pos.y > window_size.y || elem_pos.y + elem_size.y< 0)
+    {
+        std::cout << "OUT OF BOUNDS" << std::endl;
+        return false;
+    }
+
+
     // Helper lambda to check visibility property
-    // This eliminates code duplication and makes the logic clearer
     auto checkVisibility = [](const std::shared_ptr<Style>& style) -> bool
     {
         // If VISIBLE flag is not set, element is visible by default
