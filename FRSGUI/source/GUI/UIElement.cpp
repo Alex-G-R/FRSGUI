@@ -19,7 +19,7 @@ namespace fr {
         }
         else
         {
-            std::cout << "Font loaded successfully: ./FRSGUI/resources/default_font/default.ttf\n";
+            // std::cout << "Font loaded successfully: ./FRSGUI/resources/default_font/default.ttf\n";
         }
 
         id = "";
@@ -42,7 +42,7 @@ namespace fr {
         }
         else
         {
-            std::cout << "Font loaded successfully: ./FRSGUI/resources/default_font/default.ttf\n";
+            // std::cout << "Font loaded successfully: ./FRSGUI/resources/default_font/default.ttf\n";
         }
 
         id = std::move(ID);
@@ -71,7 +71,7 @@ namespace fr {
         }
         else
         {
-            std::cout << "Font loaded successfully: ./FRSGUI/resources/default_font/default.ttf\n";
+            // std::cout << "Font loaded successfully: ./FRSGUI/resources/default_font/default.ttf\n";
         }
 
         id = "";
@@ -98,7 +98,7 @@ namespace fr {
         }
         else
         {
-            std::cout << "Font loaded successfully: ./FRSGUI/resources/default_font/default.ttf\n";
+            // std::cout << "Font loaded successfully: ./FRSGUI/resources/default_font/default.ttf\n";
         }
 
         id = std::move(ID);
