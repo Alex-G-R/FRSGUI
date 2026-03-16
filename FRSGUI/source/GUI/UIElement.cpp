@@ -145,6 +145,15 @@ namespace fr {
     {
         groups.emplace_back(group);
     }
+
+    void UIElement::addGroups(const std::vector<std::string> &groups_param)
+    {
+        for (const auto &group: groups_param)
+        {
+            groups.emplace_back(group);
+        }
+    }
+
 /*
     void UIElement::addChild(const std::shared_ptr<UIElement>& child)
     {

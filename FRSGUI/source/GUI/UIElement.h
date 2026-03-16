@@ -54,6 +54,7 @@ public:
     // Setters
     void setID(const std::string& id);
     void addGroup(const std::string& group);
+    void addGroups(const std::vector<std::string>& groups);
     //void addChild(const std::shared_ptr<UIElement>& child);
     //void setZOrder(int z_order);
     //void setDirty(bool is_dirty);

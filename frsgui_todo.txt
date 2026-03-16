@@ -1,6 +1,12 @@
+
+Gitbub repo task:
 Create a usefull readme
 Make a simple program startup
+
+Kodzik:
 add text centering
 add hover functionality
-dodaj usuwanie obiektow gui? moze 
-FRSGUI.getelembyid(X)->ADDGROUPS bo jest tylko add group
+FRSGUI.getelembyid(X)->ADDGROUPS bo jest tylko add group -- WORKING
+
+Może?
+dodaj usuwanie obiektow gui
