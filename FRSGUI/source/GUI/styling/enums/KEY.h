@@ -18,6 +18,8 @@ namespace fr
         TEXT_COLOR,
         FONT,
         SELECT_MARK_COLOR,
+        CENTER_TEXT_VERTICALLY,
+        CENTER_TEXT_HORIZONTALLY,
 
         // LAST ELEMENT - only for development use | inner FRSGUI functionality
         DEVEL_LAST_KEY

@@ -19,7 +19,7 @@ namespace fr {
         }
         else
         {
-            std::cout << "Font loaded successfully: ./FRSGUI/resources/default_font/default.ttf\n";
+            // std::cout << "Font loaded successfully: ./FRSGUI/resources/default_font/default.ttf\n";
         }
 
         id = "";
@@ -42,7 +42,7 @@ namespace fr {
         }
         else
         {
-            std::cout << "Font loaded successfully: ./FRSGUI/resources/default_font/default.ttf\n";
+            // std::cout << "Font loaded successfully: ./FRSGUI/resources/default_font/default.ttf\n";
         }
 
         id = std::move(ID);
@@ -71,7 +71,7 @@ namespace fr {
         }
         else
         {
-            std::cout << "Font loaded successfully: ./FRSGUI/resources/default_font/default.ttf\n";
+            // std::cout << "Font loaded successfully: ./FRSGUI/resources/default_font/default.ttf\n";
         }
 
         id = "";
@@ -98,7 +98,7 @@ namespace fr {
         }
         else
         {
-            std::cout << "Font loaded successfully: ./FRSGUI/resources/default_font/default.ttf\n";
+            // std::cout << "Font loaded successfully: ./FRSGUI/resources/default_font/default.ttf\n";
         }
 
         id = std::move(ID);
@@ -134,6 +134,21 @@ namespace fr {
         }
     }
 
+    void UIElement::deleteGroups(const std::vector<std::string> &groups_param)
+    {
+        for (const auto &group: groups_param)
+        {
+            this->deleteGroup(group);
+        }
+    }
+
+    void UIElement::deleteAllGroups()
+    {
+        for (auto it = groups.begin(); it != groups.end(); ) {
+            it = groups.erase(it); // Erase returns the next iterator
+        }
+    }
+
 
     // setters
     void UIElement::setID(const std::string& id)
@@ -145,6 +160,15 @@ namespace fr {
     {
         groups.emplace_back(group);
     }
+
+    void UIElement::addGroups(const std::vector<std::string> &groups_param)
+    {
+        for (const auto &group: groups_param)
+        {
+            groups.emplace_back(group);
+        }
+    }
+
 /*
     void UIElement::addChild(const std::shared_ptr<UIElement>& child)
     {

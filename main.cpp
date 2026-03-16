@@ -22,10 +22,12 @@ int main()
     // Create a style for Banner_main
     auto banner_main_style = Style("Banner_main", fr::ApplyBy::GROUP, 1, {
         {fr::KEY::POSITION, sf::Vector2f(W_WIDTH/2 - 500.f/2 , 50.f)},
+        //{fr::KEY::POSITION, sf::Vector2f(-501, 50.f)}, Out of bounds
         {fr::KEY::SIZE, sf::Vector2f(500.f, 60.f)},
         {fr::KEY::BACKGROUND_COLOR, sf::Color{0, 255, 0, 255}},
         {fr::KEY::CHARACTER_SIZE, 36},
-        {fr::KEY::TEXT_COLOR, sf::Color::White}
+        {fr::KEY::TEXT_COLOR, sf::Color::White},
+        //{fr::KEY::CENTER_TEXT_HORIZONTALLY, true},
     }, FRSGUI);
 
     // Create a button element as a fr::Button
@@ -36,13 +38,14 @@ int main()
     .buildButton();
     // Create a style for button_main
     const auto button_main_style = Style("Button_main", fr::ApplyBy::GROUP, 1, {
-        {fr::KEY::SIZE, sf::Vector2f(140.f, 100.f)},
-        {fr::KEY::POSITION, sf::Vector2f(W_WIDTH/6 - 140.f/2, 150.f)},
+        {fr::KEY::SIZE, sf::Vector2f(200.f, 100.f)},
+        {fr::KEY::POSITION, sf::Vector2f(W_WIDTH/6 - 200.f/2, 150.f)},
         {fr::KEY::BACKGROUND_COLOR, sf::Color::Blue},
         {fr::KEY::CHARACTER_SIZE, 30},
         {fr::KEY::TEXT_COLOR, sf::Color::White},
         {fr::KEY::OUTLINE_THICKNESS, 4.f},
         {fr::KEY::OUTLINE_COLOR, sf::Color{160, 160, 255, 255}},
+        //{fr::KEY::CENTER_TEXT_VERTICALLY, false}
     }, FRSGUI);
     // Create functionality for the button
     int banner_status = 0;
@@ -114,7 +117,8 @@ int main()
         {fr::KEY::TEXT_COLOR, sf::Color::White},
         {fr::KEY::POSITION, sf::Vector2f(1300.f, 490.f)},
         {fr::KEY::SIZE, sf::Vector2f(300.f, 80.f)},
-        {fr::KEY::BACKGROUND_COLOR, sf::Color::Black}
+        {fr::KEY::BACKGROUND_COLOR, sf::Color::Black},
+        {fr::KEY::CENTER_TEXT_HORIZONTALLY, false}
     }, FRSGUI);
 
     /* Create a checkbox */
