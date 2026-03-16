@@ -4,4 +4,3 @@ add text centering
 add hover functionality
 dodaj usuwanie obiektow gui? moze 
 FRSGUI.getelembyid(X)->ADDGROUPS bo jest tylko add group
-Pass rendering objects out of window range -- WORKING
