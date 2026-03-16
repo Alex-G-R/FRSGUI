@@ -432,13 +432,16 @@ void Renderer::drawSelectMark(sf::RectangleShape *shape_ptr, Checkbox *checkbox_
 bool Renderer::shouldRender(UIElement* element)
 {
     // Check if the element is out of the visible bounds on screen
-    sf::Vector2u window_size = render_window_ptr->getSize();
-    sf::Vector2f elem_pos = element->getShape()->getPosition();
-    sf::Vector2f elem_size = element->getShape()->getSize();
-    if (elem_pos.x > window_size.x || elem_pos.x + elem_size.x < 0 || elem_pos.y > window_size.y || elem_pos.y + elem_size.y< 0)
+    if (frsgui_ptr->rendering_out_of_the_original_window_bounds == false)
     {
-        // std::cout << "OUT OF BOUNDS" << std::endl;
-        return false;
+        sf::Vector2u window_size = render_window_ptr->getSize();
+        sf::Vector2f elem_pos = element->getShape()->getPosition();
+        sf::Vector2f elem_size = element->getShape()->getSize();
+        if (elem_pos.x > window_size.x || elem_pos.x + elem_size.x < 0 || elem_pos.y > window_size.y || elem_pos.y + elem_size.y< 0)
+        {
+            std::cout << "OUT OF BOUNDS" << std::endl;
+            return false;
+        }
     }
 
 

@@ -27,7 +27,7 @@ class FRSGUI {
 private:
     // Renderer
     Renderer renderer;
-    std::shared_ptr<Renderer> renerer_ptr = std::make_shared<Renderer>(renderer);
+    std::shared_ptr<Renderer> renderer_ptr = std::make_shared<Renderer>(renderer);
 
     // GUI
     GUI gui;
@@ -45,6 +45,9 @@ public:
     // SFML Render window
     std::shared_ptr<sf::RenderWindow> render_window_ptr{};
     explicit FRSGUI(const std::shared_ptr<sf::RenderWindow>& render_window_ptr);
+
+    bool rendering_out_of_the_original_window_bounds;
+    void enableRenderingOutOfTheOriginalWindowBounds(bool enable);
 
     // Methods
     void Render();
