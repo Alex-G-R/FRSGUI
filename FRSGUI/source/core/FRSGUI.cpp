@@ -2,10 +2,11 @@
 
 namespace fr {
     FRSGUI::FRSGUI(const std::shared_ptr<sf::RenderWindow>& render_window_ptr) :
-    gui(render_window_ptr, renerer_ptr), event_dispatcher(gui.elements, this), render_window_ptr(render_window_ptr),
+    gui(render_window_ptr, renderer_ptr), event_dispatcher(gui.elements, this), render_window_ptr(render_window_ptr),
     renderer(render_window_ptr, this), style_sheet(style_manager.style_sheet)
     {
         render_window_ptr->setFramerateLimit(75);
+        rendering_out_of_the_original_window_bounds = false;
     }
 
     void FRSGUI::Render()
@@ -13,11 +14,16 @@ namespace fr {
         gui.render();
     }
 
+    void FRSGUI::enableRenderingOutOfTheOriginalWindowBounds(bool enable)
+    {
+        rendering_out_of_the_original_window_bounds = enable;
+    }
+
 
     // Getters
     std::shared_ptr<Renderer> FRSGUI::getRenderer()
     {
-        return renerer_ptr;
+        return renderer_ptr;
     }
 
     // GUI public methods acces

@@ -9,6 +9,7 @@ int main()
 
     /* initialize FRSGUI by passing the render window pointer */
     fr::FRSGUI FRSGUI(WINDOW);
+    //FRSGUI.enableRenderingOutOfTheOriginalWindowBounds(true);
 
     /* Create SFML elements here, custom non FRSGUI visuals */
 
@@ -22,7 +23,7 @@ int main()
     // Create a style for Banner_main
     auto banner_main_style = Style("Banner_main", fr::ApplyBy::GROUP, 1, {
         {fr::KEY::POSITION, sf::Vector2f(W_WIDTH/2 - 500.f/2 , 50.f)},
-        //{fr::KEY::POSITION, sf::Vector2f(-501, 50.f)}, Out of bounds
+        //{fr::KEY::POSITION, sf::Vector2f(-501, 50.f)}, //Out of bounds
         {fr::KEY::SIZE, sf::Vector2f(500.f, 60.f)},
         {fr::KEY::BACKGROUND_COLOR, sf::Color{0, 255, 0, 255}},
         {fr::KEY::CHARACTER_SIZE, 36},
