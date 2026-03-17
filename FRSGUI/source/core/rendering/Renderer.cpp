@@ -439,7 +439,6 @@ bool Renderer::shouldRender(UIElement* element)
         sf::Vector2f elem_size = element->getShape()->getSize();
         if (elem_pos.x > window_size.x || elem_pos.x + elem_size.x < 0 || elem_pos.y > window_size.y || elem_pos.y + elem_size.y< 0)
         {
-            std::cout << "OUT OF BOUNDS" << std::endl;
             return false;
         }
     }
