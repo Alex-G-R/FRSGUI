@@ -83,7 +83,8 @@ void styleSheet(fr::FRSGUI &FRSGUI)
         {fr::KEY::BACKGROUND_COLOR, sf::Color{0, 255, 0, 255}},
         {fr::KEY::CHARACTER_SIZE, 36},
         {fr::KEY::TEXT_COLOR, sf::Color::White},
-        //{fr::KEY::CENTER_TEXT_HORIZONTALLY, true},
+        //{fr::KEY::CENTER_TEXT_VERTICALLY, false},
+        //{fr::KEY::CENTER_TEXT_HORIZONTALLY, false}
     }, FRSGUI);
 
     // Button_main
@@ -95,7 +96,8 @@ void styleSheet(fr::FRSGUI &FRSGUI)
         {fr::KEY::TEXT_COLOR, sf::Color::White},
         {fr::KEY::OUTLINE_THICKNESS, 4.f},
         {fr::KEY::OUTLINE_COLOR, sf::Color{160, 160, 255, 255}},
-        //{fr::KEY::CENTER_TEXT_VERTICALLY, false}
+        //{fr::KEY::CENTER_TEXT_VERTICALLY, false},
+        //{fr::KEY::CENTER_TEXT_HORIZONTALLY, false}
     }, FRSGUI);
 
     // red_bg_style
