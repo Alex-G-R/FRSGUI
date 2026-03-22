@@ -34,11 +34,15 @@ void Renderer::draw(UIElement* element)
         {KEY::SIZE, 0},
         {KEY::BACKGROUND_COLOR, 0},
         {KEY::OUTLINE_THICKNESS, 0},
+        {KEY::VISIBLE, 0},
         {KEY::OUTLINE_COLOR, 0},
         {KEY::CURSOR_COLOR, 0},
         {KEY::CHARACTER_SIZE, 0},
         {KEY::TEXT_COLOR, 0},
-        {KEY::FONT, 0}
+        {KEY::FONT, 0},
+        {KEY::SELECT_MARK_COLOR, 0},
+        {KEY::CENTER_TEXT_HORIZONTALLY, 0},
+        {KEY::CENTER_TEXT_VERTICALLY, 0}
     };
 
 
@@ -347,9 +351,9 @@ void Renderer::checkTextAlignment(std::unordered_map<KEY, int>& current_priority
             current_priority[KEY::CENTER_TEXT_VERTICALLY] = styleVec.style_priority;
         }
     }
-    else
+    else if (current_priority[KEY::CENTER_TEXT_VERTICALLY] == 0)
     {
-        // Center text by default
+        // Center text by default, only if havent been touched by any other styling
         text.setPosition(sf::Vector2f(elementPosition.x, elementPosition.y + (shape->getSize().y / 2) - (text.getLocalBounds().size.y/ 2 + text.getLocalBounds().position.y)));
     }
 
@@ -383,9 +387,9 @@ void Renderer::checkTextAlignment(std::unordered_map<KEY, int>& current_priority
             current_priority[KEY::CENTER_TEXT_HORIZONTALLY] = styleVec.style_priority;
         }
     }
-    else
+    else if (current_priority[KEY::CENTER_TEXT_HORIZONTALLY] == 0)
     {
-        // Center text by default
+        // Center text by default, only if havent been touched by any other styling
         text.setPosition(sf::Vector2f(shape->getPosition().x + shape->getSize().x / 2.f - (text.getLocalBounds().position.x + text.getLocalBounds().size.x / 2.f), text.getPosition().y));
     }
 }
